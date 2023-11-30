@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/components/BottomNavigationComponent.dart';
-import 'package:learnquran/pages/learn-word.dart';
+import 'package:learnquran/pages/learn_word.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const LearnWordPage("")),
+              MaterialPageRoute(builder: (context) => const LearnWordPage()),
             );
           },
         ),

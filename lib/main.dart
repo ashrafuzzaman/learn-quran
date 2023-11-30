@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learnquran/pages/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  // final file = File('assets/words-en.yaml');
+  // final yamlString = file.readAsStringSync();
+  // final doc = loadYaml(yamlString);
+
+  // print(doc['words']);
+  // rootBundle.loadString('assets/data/words-en.yaml').then((yamlString) {
+  //   Map<String, dynamic> words = loadYaml(yamlString);
+  //   print('===============================================');
+  //   print(words);
+  //   print('===============================================');
+  // });
+
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +27,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: "Learn Quran",
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('bn'), // English
+      ],
       home: HomePage(),
     );
   }

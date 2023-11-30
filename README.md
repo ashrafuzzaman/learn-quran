@@ -1,6 +1,6 @@
-# learnquran
+# Learn Quran
 
-A new Flutter project.
+A Flutter project to learn the words and the meaning of Quran in different stages.
 
 ## Getting Started
 
