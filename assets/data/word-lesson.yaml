@@ -1,0 +1,14 @@
+lessons:
+  -
+    name: Level 1
+    description: The 72 words covers 45% of the Quran
+    words:
+      -
+        arabic: هنذا
+        meaning: This
+      -
+        arabic: ذلك
+        meaning: That
+      -
+        arabic: هلز ه
+        meaning: This for feminie

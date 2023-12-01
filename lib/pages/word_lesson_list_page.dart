@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/components/BottomNavigationComponent.dart';
-import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/providers/words_provider.dart';
+import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/pages/word_list_page.dart';
+import 'package:learnquran/repository/word_lesson_repo.dart';
 
-class LearnWordPage extends StatelessWidget {
-  const LearnWordPage({super.key});
-
-  // final Future<List<Word>> _words = wordsProvider();
+class WordLessonListPage extends StatelessWidget {
+  const WordLessonListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var words = wordsProvider();
+    var wordLessonRepo = WordLessonRepo();
 
     return FutureBuilder(
-        future: words,
-        builder: (context, AsyncSnapshot<List<Word>> snapshot) {
+        future: wordLessonRepo.getLessons(),
+        builder: (context, AsyncSnapshot<List<WordLesson>> snapshot) {
           return Scaffold(
             appBar: AppBar(
               title: const Text(
@@ -33,23 +32,31 @@ class LearnWordPage extends StatelessWidget {
 }
 
 class WordListWidget extends StatelessWidget {
-  final AsyncSnapshot<List<Word>> wordList;
+  final AsyncSnapshot<List<WordLesson>> lessons;
 
-  const WordListWidget(this.wordList, {super.key});
+  const WordListWidget(this.lessons, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!wordList.hasData) {
+    if (!lessons.hasData) {
       return const CircularProgressIndicator();
     }
 
     return ListView(
-        children: wordList.data!
-            .map((word) => ListTile(
+        children: lessons.data!
+            .map((lesson) => ListTile(
                   title: Text(
-                    word.arabic,
+                    lesson.name,
                     style: TextStyle(fontSize: 48),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return WordListPage(lesson.words);
+                      }),
+                    );
+                  },
                 ))
             .toList());
   }
