@@ -1,7 +1,20 @@
 lessons:
   -
-    name: Level 1
-    description: The 72 words covers 45% of the Quran
+    name: Level 1 (72 words)
+    description: The 72 words covers 45% of the Quran. These includes preposition, pronouns, question
+    words:
+      -
+        arabic: هنذا
+        meaning: This
+      -
+        arabic: ذلك
+        meaning: That
+      -
+        arabic: هلز ه
+        meaning: This for feminie
+  -
+    name: Level 2 (100 words)
+    description: The 100 words covers 28% of the Quran. These includes nouns
     words:
       -
         arabic: هنذا

@@ -37,7 +37,11 @@ class WordListWidget extends StatelessWidget {
             .map((word) => ListTile(
                   title: Text(
                     word.arabic,
-                    style: TextStyle(fontSize: 48),
+                    style: const TextStyle(fontSize: 48),
+                  ),
+                  subtitle: Text(
+                    word.meaning,
+                    style: const TextStyle(fontSize: 24),
                   ),
                 ))
             .toList());

@@ -47,7 +47,11 @@ class WordListWidget extends StatelessWidget {
             .map((lesson) => ListTile(
                   title: Text(
                     lesson.name,
-                    style: TextStyle(fontSize: 48),
+                    style: const TextStyle(fontSize: 32),
+                  ),
+                  subtitle: Text(
+                    lesson.description,
+                    style: const TextStyle(fontSize: 18),
                   ),
                   onTap: () {
                     Navigator.push(
