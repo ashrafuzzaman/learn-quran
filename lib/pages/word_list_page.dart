@@ -34,14 +34,19 @@ class WordListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
         children: words
-            .map((word) => ListTile(
-                  title: Text(
-                    word.arabic,
-                    style: const TextStyle(fontSize: 48),
-                  ),
-                  subtitle: Text(
-                    word.meaning,
-                    style: const TextStyle(fontSize: 24),
+            .map((word) => Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Card(
+                    child: ListTile(
+                      title: Text(
+                        word.arabic,
+                        style: const TextStyle(fontSize: 48),
+                      ),
+                      subtitle: Text(
+                        word.meaning,
+                        style: const TextStyle(fontSize: 24),
+                      ),
+                    ),
                   ),
                 ))
             .toList());

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/BottomNavigationComponent.dart';
 import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/pages/word_list_page.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
@@ -25,7 +24,7 @@ class WordLessonListPage extends StatelessWidget {
               elevation: 3,
             ),
             body: WordListWidget(snapshot),
-            bottomNavigationBar: const BottomNavigationComponent(),
+            // bottomNavigationBar: const BottomNavigationComponent(),
           );
         });
   }
@@ -44,23 +43,28 @@ class WordListWidget extends StatelessWidget {
 
     return ListView(
         children: lessons.data!
-            .map((lesson) => ListTile(
-                  title: Text(
-                    lesson.name,
-                    style: const TextStyle(fontSize: 32),
+            .map((lesson) => Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Card(
+                    child: ListTile(
+                      title: Text(
+                        lesson.name,
+                        style: const TextStyle(fontSize: 32),
+                      ),
+                      subtitle: Text(
+                        lesson.description,
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return WordListPage(lesson.words);
+                          }),
+                        );
+                      },
+                    ),
                   ),
-                  subtitle: Text(
-                    lesson.description,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return WordListPage(lesson.words);
-                      }),
-                    );
-                  },
                 ))
             .toList());
   }
