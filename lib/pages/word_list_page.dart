@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/WordListBottomNavigationComponent.dart';
+import 'package:learnquran/components/WordListWidget.dart';
 import 'package:learnquran/dto/word.dart';
 
-class WordListPage extends StatelessWidget {
+class WordListPage extends StatefulWidget {
   final List<Word> words;
 
   const WordListPage(this.words, {super.key});
+
+  @override
+  State<WordListPage> createState() => _WordListPageState();
+}
+
+class _WordListPageState extends State<WordListPage> {
+  static const int listViewIndex = 0;
+  int _selectedIndex = listViewIndex;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  bool _isListView() {
+    return _selectedIndex == listViewIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,36 +37,22 @@ class WordListPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 3,
       ),
-      body: WordListWidget(words),
-      bottomNavigationBar: const WordListBottomNavigationComponent(),
+      body: _isListView() ? WordListWidget(widget.words) : const Text("Word view"),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: "List View",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.view_carousel),
+            label: "Word view",
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
     );
-  }
-}
-
-class WordListWidget extends StatelessWidget {
-  final List<Word> words;
-
-  const WordListWidget(this.words, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-        children: words
-            .map((word) => Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Card(
-                    child: ListTile(
-                      title: Text(
-                        word.arabic,
-                        style: const TextStyle(fontSize: 48),
-                      ),
-                      subtitle: Text(
-                        word.meaning,
-                        style: const TextStyle(fontSize: 24),
-                      ),
-                    ),
-                  ),
-                ))
-            .toList());
   }
 }
