@@ -31,18 +31,18 @@ class WordLessonListPage extends StatelessWidget {
 }
 
 class WordListWidget extends StatelessWidget {
-  final AsyncSnapshot<List<WordLesson>> lessons;
+  final AsyncSnapshot<List<WordLesson>> lessonsSnapshot;
 
-  const WordListWidget(this.lessons, {super.key});
+  const WordListWidget(this.lessonsSnapshot, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!lessons.hasData) {
+    if (!lessonsSnapshot.hasData) {
       return const CircularProgressIndicator();
     }
 
     return ListView(
-        children: lessons.data!
+        children: lessonsSnapshot.data!
             .map((lesson) => Padding(
                   padding: const EdgeInsets.all(10),
                   child: Card(

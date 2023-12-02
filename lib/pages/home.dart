@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/BottomNavigationComponent.dart';
 import 'package:learnquran/pages/word_lesson_list_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -33,7 +32,6 @@ class HomePage extends StatelessWidget {
           title: Text('Learn Grammer'),
         ),
       ]),
-      bottomNavigationBar: const BottomNavigationComponent(),
     );
   }
 }

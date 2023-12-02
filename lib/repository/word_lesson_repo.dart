@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
-import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/dto/word_lesson.dart';
 import 'package:yaml/yaml.dart';
 
@@ -14,8 +13,7 @@ class WordLessonRepo {
     } on Exception {
       throw Exception("Language not supported");
     }
-    final lessonsData = loadYaml(yamlString)['lessons'];
-    return List<WordLesson>.from(lessonsData.map((lesson) => WordLesson(lesson['name'], lesson['description'],
-        List<Word>.from(lesson['words'].map((word) => Word(arabic: word['arabic'], meaning: word['meaning']))))));
+    final data = loadYaml(yamlString);
+    return List<WordLesson>.from(data['lessons'].map((lesson) => WordLesson.fromMap(lesson)));
   }
 }

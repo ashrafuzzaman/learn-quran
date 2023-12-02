@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/BottomNavigationComponent.dart';
+import 'package:learnquran/components/WordListBottomNavigationComponent.dart';
 import 'package:learnquran/dto/word.dart';
 
 class WordListPage extends StatelessWidget {
@@ -20,7 +20,7 @@ class WordListPage extends StatelessWidget {
         elevation: 3,
       ),
       body: WordListWidget(words),
-      bottomNavigationBar: const BottomNavigationComponent(),
+      bottomNavigationBar: const WordListBottomNavigationComponent(),
     );
   }
 }
