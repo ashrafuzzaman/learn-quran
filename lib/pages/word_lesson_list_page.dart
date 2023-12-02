@@ -11,7 +11,7 @@ class WordLessonListPage extends StatelessWidget {
     var wordLessonRepo = WordLessonRepo();
 
     return FutureBuilder(
-        future: wordLessonRepo.getLessons(),
+        future: wordLessonRepo.getLessons(const Locale("en")),
         builder: (context, AsyncSnapshot<List<WordLesson>> snapshot) {
           return Scaffold(
             appBar: AppBar(
