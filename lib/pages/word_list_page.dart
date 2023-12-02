@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/WordListWidget.dart';
+import 'package:learnquran/components/word_list_widget.dart';
 import 'package:learnquran/dto/word.dart';
 
 class WordListPage extends StatefulWidget {
@@ -38,21 +38,21 @@ class _WordListPageState extends State<WordListPage> {
         elevation: 3,
       ),
       body: _isListView() ? WordListWidget(widget.words) : const Text("Word view"),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: "List View",
+      bottomNavigationBar: NavigationBar(
+          selectedIndex: _selectedIndex,
+          onDestinationSelected: _onItemTapped,
+          destinations: const <Widget>[
+            NavigationDestination(
+              icon: Icon(Icons.list),
+              label: "List View",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.view_carousel),
+              label: "Word view",
+            ),
+          ]
+          // selectedItemColor: Colors.amber[800],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.view_carousel),
-            label: "Word view",
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
-      ),
     );
   }
 }
