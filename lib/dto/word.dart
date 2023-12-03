@@ -6,6 +6,17 @@ enum Gender { male, female }
 
 enum Plurality { singular, dual, plural }
 
+const Map<String, Plurality> pluralityMap = {
+  's': Plurality.singular,
+  'd': Plurality.dual,
+  'p': Plurality.plural,
+};
+
+const Map<String, Gender> genderMap = {
+  'male': Gender.male,
+  'female': Gender.female,
+};
+
 @freezed
 class Word {
   final int sequence;
