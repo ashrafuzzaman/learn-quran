@@ -7,13 +7,15 @@ import 'package:yaml/yaml.dart';
 class WordLessonRepo {
   Future<List<WordLesson>> getLessons(Locale local) async {
     String yamlString;
+    List<String> splits;
     try {
       var corpusPath = "assets/data/word-lesson-${local.languageCode}.yaml";
       yamlString = await rootBundle.loadString(corpusPath);
+      splits = yamlString.split(RegExp(r'-{3,}'));
     } on Exception {
       throw Exception("Language not supported");
     }
-    final data = loadYaml(yamlString);
+    final data = loadYaml(splits[splits.length - 1]);
     return List<WordLesson>.from(
         data['lessons'].asMap().entries.map((entry) => WordLesson.fromMap(entry.value, entry.key)));
   }

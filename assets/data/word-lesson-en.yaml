@@ -1,17 +1,71 @@
+---
+The words have arabic text, the meaning.
+The plurality can have,
+  s -> Singular
+  d -> Dual
+  p -> Plural
+
+The gender can have male/female. gender can be optional
+---
 lessons:
   -
     name: Level 1 (72 words)
     description: The 72 words covers 45% of the Quran. These includes preposition, pronouns, question
     words:
       -
-        arabic: هذَا
+        arabic: هََٰذَا
         meaning: This
+        plurality: s
+        gender: male
       -
-        arabic: ذلك
+        arabic: ذََٰلِكَ
         meaning: That
+        plurality: s
+        gender: male
       -
-        arabic: هلز ه
-        meaning: This for feminie
+        arabic: هََٰذِه
+        meaning: This
+        plurality: s
+        gender: female
+      -
+        arabic: تِلۡكَ
+        meaning: That
+        plurality: s
+        gender: female
+      -
+        arabic: ه ؤُلََّٓء
+        meaning: These
+        plurality: p
+      -
+        arabic: وْ لئِكَ
+        meaning: Those
+        plurality: p
+      -
+        arabic: ٱ ا لَِّي
+        meaning: He who
+        plurality: s
+        gender: male
+      -
+        arabic: ٱ ا لتِ
+        meaning: She who
+        plurality: s
+        gender: female
+      -
+        arabic: ٱ ا لَِّينَ
+        meaning: Those who
+        plurality: p
+      -
+        arabic: هََٰذِه
+        meaning: These
+        plurality: p
+      -
+        arabic: تِلۡكَ
+        meaning: Those
+        plurality: p
+      -
+        arabic: ٱ ا لتِ
+        meaning: Those who
+        plurality: p
   -
     name: Level 2 (100 words)
     description: The 100 words covers 28% of the Quran. These includes nouns

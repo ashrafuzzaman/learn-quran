@@ -19,7 +19,7 @@ class _WordPageviewWidgetState extends State<WordPageviewWidget> {
       children: widget.words
           .map((word) => Padding(
                 padding: const EdgeInsets.all(5),
-                child: WordFlipCard(word),
+                child: WordFlipCard(word: word),
               ))
           .toList(),
     );

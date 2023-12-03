@@ -49,7 +49,7 @@ class _WordListPageState extends State<WordListPage> {
             ),
             NavigationDestination(
               icon: Icon(Icons.view_carousel),
-              label: "Word view",
+              label: "Flipcard view",
             ),
           ]
           // selectedItemColor: Colors.amber[800],
