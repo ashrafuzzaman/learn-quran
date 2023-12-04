@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/theme/app_colors.dart';
+import 'package:learnquran/theme/theme_extension_colors.dart';
 
-AppColors colors(context) => Theme.of(context).extension<AppColors>()!;
+ThemeExtensionColors colors(context) =>
+    Theme.of(context).extension<ThemeExtensionColors>()!;
 
-ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
+ThemeData getLightTheme() {
   return ThemeData(
-    extensions: <ThemeExtension<AppColors>>[
-      AppColors(
-        defaultWordBackground:
-            isDarkTheme ? Colors.amber[50] : Colors.amber.shade50,
-        maleWordBackground:
-            isDarkTheme ? Colors.blue.shade100 : Colors.blue.shade50,
-        femaleWordBackground: isDarkTheme ? Colors.pink : Colors.pink.shade50,
+    extensions: <ThemeExtension<ThemeExtensionColors>>[
+      ThemeExtensionColors(
+        defaultWordBackground: Colors.amber.shade300,
+        maleWordBackground: Colors.blue.shade200,
+        femaleWordBackground: Colors.pink.shade200,
+        defaultWordIcon: Colors.amber.shade900,
+        maleWordIcon: Colors.blue.shade900,
+        femaleWordIcon: Colors.pink.shade600,
+      )
+    ],
+  );
+}
+
+ThemeData getDarkTheme() {
+  return ThemeData(
+    extensions: <ThemeExtension<ThemeExtensionColors>>[
+      ThemeExtensionColors(
+        defaultWordBackground: Colors.amber.shade300,
+        maleWordBackground: Colors.blue.shade200,
+        femaleWordBackground: Colors.pink.shade200,
+        defaultWordIcon: Colors.amber.shade300,
+        maleWordIcon: Colors.blue.shade200,
+        femaleWordIcon: Colors.pink.shade200,
       )
     ],
   );

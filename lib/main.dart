@@ -18,7 +18,8 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Learn Quran",
-      theme: getAppTheme(context, ref.watch(appThemeProvider)),
+      theme: getLightTheme(),
+      // darkTheme: getDarkTheme(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
