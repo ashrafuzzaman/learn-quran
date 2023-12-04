@@ -1,5 +1,20 @@
 {
   "cSpell.words": [
     "riverpod"
-  ]
+  ],
+  "files.exclude": {
+    ".dart_tool": true,
+    "build": true,
+    "ios": true,
+    "linux": true,
+    "macos": true,
+    "web": true,
+    "windows": true
+  },
+  "search.exclude": {
+    "linux/*": true,
+    "macos": true,
+    "web": true,
+    "windows": true
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
+import 'package:learnquran/theme/theme_helper.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
@@ -9,22 +10,15 @@ class WordListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-        children: words
-            .map((word) => Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Card(
-                    child: ListTile(
-                      title: Text(
-                        word.arabic,
-                        style: const TextStyle(fontSize: 48),
-                      ),
-                      subtitle: Text(
-                        word.meaning,
-                        style: const TextStyle(fontSize: 24),
-                      ),
-                    ),
-                  ),
-                ))
-            .toList());
+      children: ListTile.divideTiles(
+          context: context,
+          tiles: words.map((word) => ListTile(
+                tileColor: getWordBackgroundColor(context, word),
+                contentPadding: const EdgeInsets.all(5),
+                title: Text(word.arabic, style: const TextStyle(fontSize: 48)),
+                subtitle:
+                    Text(word.meaning, style: const TextStyle(fontSize: 24)),
+              ))).toList(),
+    );
   }
 }

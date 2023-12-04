@@ -13,57 +13,57 @@ lessons:
     description: The 72 words covers 45% of the Quran. These includes preposition, pronouns, question
     words:
       -
-        arabic: هََٰذَا
+        arabic: هَٰذَا
         meaning: This
         plurality: s
         gender: male
       -
-        arabic: ذََٰلِكَ
+        arabic: ذَٰلِكَ
         meaning: That
         plurality: s
         gender: male
       -
-        arabic: هََٰذِه
+        arabic: هَٰذِهِ
         meaning: This
         plurality: s
         gender: female
       -
-        arabic: تِلۡكَ
+        arabic: تِلْكَ
         meaning: That
         plurality: s
         gender: female
       -
-        arabic: ه ؤُلََّٓء
+        arabic: هَٰؤُلَاءِ
         meaning: These
         plurality: p
       -
-        arabic: وْ لئِكَ
+        arabic: أُولَٰئِكَ
         meaning: Those
         plurality: p
       -
-        arabic: ٱ ا لَِّي
+        arabic: الَّذِي
         meaning: He who
         plurality: s
         gender: male
       -
-        arabic: ٱ ا لتِ
+        arabic: التي
         meaning: She who
         plurality: s
         gender: female
       -
-        arabic: ٱ ا لَِّينَ
+        arabic: الَّذِينَ
         meaning: Those who
         plurality: p
       -
-        arabic: هََٰذِه
+        arabic: هَٰذِهِ
         meaning: These
         plurality: p
       -
-        arabic: تِلۡكَ
+        arabic: تِلْكَ
         meaning: Those
         plurality: p
       -
-        arabic: ٱ ا لتِ
+        arabic: التي
         meaning: Those who
         plurality: p
   -
@@ -71,11 +71,56 @@ lessons:
     description: The 100 words covers 28% of the Quran. These includes nouns
     words:
       -
-        arabic: هنذا
+        arabic: هَٰذَا
         meaning: This
+        plurality: s
+        gender: male
       -
-        arabic: ذلك
+        arabic: ذَٰلِكَ
         meaning: That
+        plurality: s
+        gender: male
       -
-        arabic: هلز ه
-        meaning: This for feminie
+        arabic: هَٰذِهِ
+        meaning: This
+        plurality: s
+        gender: female
+      -
+        arabic: تِلْكَ
+        meaning: That
+        plurality: s
+        gender: female
+      -
+        arabic: هَٰؤُلَاءِ
+        meaning: These
+        plurality: p
+      -
+        arabic: أُولَٰئِكَ
+        meaning: Those
+        plurality: p
+      -
+        arabic: الَّذِي
+        meaning: He who
+        plurality: s
+        gender: male
+      -
+        arabic: التي
+        meaning: She who
+        plurality: s
+        gender: female
+      -
+        arabic: الَّذِينَ
+        meaning: Those who
+        plurality: p
+      -
+        arabic: هَٰذِهِ
+        meaning: These
+        plurality: p
+      -
+        arabic: تِلْكَ
+        meaning: Those
+        plurality: p
+      -
+        arabic: التي
+        meaning: Those who
+        plurality: p
