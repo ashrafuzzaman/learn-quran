@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:learnquran/pages/home.dart';
+import 'package:learnquran/screens/home.dart';
 import 'package:learnquran/theme/app_theme.dart';
 import 'package:learnquran/theme/app_theme_provider.dart';
 

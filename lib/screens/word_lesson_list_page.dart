@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word_lesson.dart';
-import 'package:learnquran/pages/word_list_page.dart';
+import 'package:learnquran/screens/word_list_page.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
 
 class WordLessonListPage extends StatelessWidget {
@@ -17,7 +17,10 @@ class WordLessonListPage extends StatelessWidget {
             appBar: AppBar(
               title: const Text(
                 'Learn Quranic words',
-                style: TextStyle(color: Colors.black87, fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
               centerTitle: true,
               backgroundColor: Colors.white,

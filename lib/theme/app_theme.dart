@@ -9,8 +9,8 @@ ThemeData getLightTheme() {
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         defaultWordBackground: Colors.amber.shade300,
-        maleWordBackground: Colors.blue.shade200,
-        femaleWordBackground: Colors.pink.shade200,
+        maleWordBackground: Colors.blue.shade50,
+        femaleWordBackground: Colors.pink.shade50,
         defaultWordIcon: Colors.amber.shade900,
         maleWordIcon: Colors.blue.shade900,
         femaleWordIcon: Colors.pink.shade600,
