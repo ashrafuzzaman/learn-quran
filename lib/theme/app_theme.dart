@@ -12,8 +12,8 @@ ThemeData getLightTheme() {
         maleWordBackground: Colors.blue.shade50,
         femaleWordBackground: Colors.pink.shade50,
         defaultWordIcon: Colors.amber.shade900,
-        maleWordIcon: Colors.blue.shade900,
-        femaleWordIcon: Colors.pink.shade600,
+        maleWordIcon: Colors.blue.shade400,
+        femaleWordIcon: Colors.pink.shade400,
       )
     ],
   );
