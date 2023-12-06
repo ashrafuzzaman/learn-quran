@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/theme/theme_helper.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
@@ -16,7 +16,7 @@ class WordListWidget extends StatelessWidget {
           context: context,
           tiles: words.map((word) => ListTile(
                 contentPadding: const EdgeInsets.all(5),
-                title: Text(word.arabic, style: const TextStyle(fontSize: 48)),
+                title: ArabicText(word.arabic),
                 onTap: () {
                   hanleTap(word.id);
                 },

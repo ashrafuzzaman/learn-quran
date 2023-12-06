@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learnquran/cubit/arabic_font_cubit.dart';
+import 'package:learnquran/dto/font_family.dart';
+import 'package:learnquran/widgets/text/arabic_text.dart';
 
 /// Flutter code sample for [Radio].
 
@@ -10,54 +14,41 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Radio Sample')),
       body: const Center(
-        child: RadioExample(),
+        child: FontSelector(),
       ),
     );
   }
 }
 
-enum FontFamilyOptions { alqalam, neirizi }
+class FontSelector extends StatelessWidget {
+  const FontSelector({super.key});
 
-const Map<FontFamilyOptions, String> fontMap = {
-  FontFamilyOptions.alqalam: "Al-Qalam",
-  FontFamilyOptions.neirizi: "Neirizi",
-};
-
-class RadioExample extends StatefulWidget {
-  const RadioExample({super.key});
-
-  @override
-  State<RadioExample> createState() => _RadioExampleState();
-}
-
-class _RadioExampleState extends State<RadioExample> {
-  FontFamilyOptions _fontFamily = FontFamilyOptions.alqalam;
   static const arabicTextSample =
       "ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ";
 
   @override
   Widget build(BuildContext context) {
-    var fontOptions = fontMap.keys.map((_fontFamilyKey) => ListTile(
-          title: Text(fontMap[_fontFamilyKey]!),
-          leading: Radio<FontFamilyOptions>(
-            value: _fontFamilyKey,
-            groupValue: _fontFamily,
-            onChanged: (FontFamilyOptions? fontFamily) {
-              setState(() {
-                _fontFamily = fontFamily!;
-              });
-            },
-          ),
-        ));
+    var fontOptions = fontMap.keys
+        .map((fontFamilyKey) => BlocBuilder<ArabicFontCubit, FontFamilyOptions>(
+              builder: (context, selectedFontFamilyOption) {
+                return ListTile(
+                  title: Text(fontMap[fontFamilyKey]!),
+                  leading: Radio<FontFamilyOptions>(
+                    value: fontFamilyKey,
+                    groupValue: selectedFontFamilyOption,
+                    onChanged: (FontFamilyOptions? fontFamily) {
+                      context.read<ArabicFontCubit>().select(fontFamily!);
+                    },
+                  ),
+                );
+              },
+            ));
 
     return Column(
       children: <Widget>[
-        ListTile(
-          title: Text(
-            arabicTextSample,
-            style: TextStyle(fontFamily: fontMap[_fontFamily], fontSize: 24),
-          ),
-          subtitle: const Text("Sample arabic text"),
+        const ListTile(
+          title: ArabicText(arabicTextSample),
+          subtitle: Text("Sample arabic text"),
         ),
         ...fontOptions,
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:learnquran/cubit/arabic_font_cubit.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
 import 'package:learnquran/screens/home.dart';
 import 'package:learnquran/theme/app_theme.dart';
@@ -15,8 +16,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LessonsCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LessonsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ArabicFontCubit(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Learn Quran",

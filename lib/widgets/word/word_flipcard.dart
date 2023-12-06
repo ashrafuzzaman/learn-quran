@@ -1,5 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/theme/theme_helper.dart';
@@ -41,11 +42,7 @@ class FlipCardWord extends StatelessWidget {
         width: double.infinity,
         child: Align(
           alignment: Alignment.center,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 48, fontFamily: "Al-Qalam"),
-          ),
+          child: ArabicText(text, textAlign: TextAlign.center, fontSize: 48),
         ),
       )),
     );

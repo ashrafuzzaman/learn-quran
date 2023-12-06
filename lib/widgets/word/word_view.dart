@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
+import 'package:learnquran/widgets/text/arabic_text.dart';
 
 class WordView extends StatelessWidget {
   final Word word;
@@ -14,10 +15,10 @@ class WordView extends StatelessWidget {
     return Center(
       child: Card(
         child: ListTile(
-          title: Text(
+          title: ArabicText(
             word.arabic,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 48, fontFamily: "Al-Qalam"),
+            fontSize: 24,
           ),
           subtitle: Text(
             word.meaning,
