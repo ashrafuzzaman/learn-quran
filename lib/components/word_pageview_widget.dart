@@ -4,8 +4,8 @@ import 'package:learnquran/dto/word.dart';
 
 class WordPageviewWidget extends StatefulWidget {
   final List<Word> words;
-  final int initialPage;
-  const WordPageviewWidget(this.words, this.initialPage, {super.key});
+  final int wordIndex;
+  const WordPageviewWidget(this.words, this.wordIndex, {super.key});
 
   @override
   State<WordPageviewWidget> createState() => _WordPageviewWidgetState();
@@ -14,10 +14,8 @@ class WordPageviewWidget extends StatefulWidget {
 class _WordPageviewWidgetState extends State<WordPageviewWidget> {
   @override
   Widget build(BuildContext context) {
-    print("widget.initialPage");
-    print(widget.initialPage);
     final PageController controller =
-        PageController(initialPage: widget.initialPage);
+        PageController(initialPage: widget.wordIndex);
     return PageView(
       controller: controller,
       children: widget.words

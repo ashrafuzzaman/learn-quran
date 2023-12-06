@@ -7,14 +7,16 @@ import 'package:learnquran/dto/word.dart';
 class WordLesson {
   final String name;
   final String description;
-  final int sequence;
+  final int id;
   final List<Word> words;
 
-  WordLesson(this.name, this.description, this.words, this.sequence);
+  WordLesson(this.name, this.description, this.words, this.id);
 
-  WordLesson.fromMap(MapBase data, this.sequence)
+  WordLesson.fromMap(MapBase data, this.id)
       : name = data['name'],
         description = data['description'],
-        words = List<Word>.from(
-            data['words'].asMap().entries.map((entry) => Word.fromMap(entry.value, entry.key)));
+        words = List<Word>.from(data['words']
+            .asMap()
+            .entries
+            .map((entry) => Word.fromMap(entry.value, entry.key)));
 }

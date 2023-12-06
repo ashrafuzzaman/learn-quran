@@ -19,7 +19,7 @@ const Map<String, Gender> genderMap = {
 
 @freezed
 class Word {
-  final int sequence;
+  final int id;
   final String arabic;
   final String meaning;
   final Gender? gender;
@@ -29,9 +29,9 @@ class Word {
       {required this.plurality,
       required this.arabic,
       required this.meaning,
-      required this.sequence});
+      required this.id});
 
-  Word.fromMap(MapBase data, this.sequence)
+  Word.fromMap(MapBase data, this.id)
       : arabic = data['arabic'],
         meaning = data['meaning'],
         plurality = data['plurality'] == 's'

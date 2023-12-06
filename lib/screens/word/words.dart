@@ -16,7 +16,7 @@ class _WordListPageState extends State<WordListPage> {
   static const int listViewIndex = 0;
   static const int flipCardViewIndex = 1;
   int _selectedIndex = listViewIndex;
-  int _selectedWordId = 0;
+  int _selectedWordIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -29,11 +29,10 @@ class _WordListPageState extends State<WordListPage> {
   }
 
   void _switchToFlipCardView(int wordId) {
-    print("wordId");
-    print(wordId);
+    final wordIndex = widget.words.indexWhere((word) => word.id == wordId);
     setState(() {
       _selectedIndex = flipCardViewIndex;
-      _selectedWordId = wordId;
+      _selectedWordIndex = wordIndex;
     });
   }
 
@@ -54,7 +53,7 @@ class _WordListPageState extends State<WordListPage> {
           ? WordListWidget(widget.words, (int wordId) {
               _switchToFlipCardView(wordId);
             })
-          : WordPageviewWidget(widget.words, 0),
+          : WordPageviewWidget(widget.words, _selectedWordIndex),
       bottomNavigationBar: NavigationBar(
           selectedIndex: _selectedIndex,
           onDestinationSelected: _onItemTapped,

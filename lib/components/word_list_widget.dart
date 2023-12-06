@@ -18,7 +18,7 @@ class WordListWidget extends StatelessWidget {
                 contentPadding: const EdgeInsets.all(5),
                 title: Text(word.arabic, style: const TextStyle(fontSize: 48)),
                 onTap: () {
-                  hanleTap(word.sequence);
+                  hanleTap(word.id);
                 },
                 subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

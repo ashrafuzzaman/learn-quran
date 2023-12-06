@@ -39,12 +39,12 @@ class WordListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (!lessonsSnapshot.hasData) {
-    //   return const CircularProgressIndicator();
-    // }
-
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
       builder: (context, lessons) {
+        if (lessons.isEmpty) {
+          return const CircularProgressIndicator();
+        }
+
         return ListView(
             children: lessons
                 .map((lesson) => Padding(
