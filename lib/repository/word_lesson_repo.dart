@@ -16,7 +16,9 @@ class WordLessonRepo {
       throw Exception("Language not supported");
     }
     final data = loadYaml(splits[splits.length - 1]);
-    return List<WordLesson>.from(
-        data['lessons'].asMap().entries.map((entry) => WordLesson.fromMap(entry.value, entry.key)));
+    return List<WordLesson>.from(data['lessons']
+        .asMap()
+        .entries
+        .map((entry) => WordLesson.fromMap(entry.value, entry.key)));
   }
 }

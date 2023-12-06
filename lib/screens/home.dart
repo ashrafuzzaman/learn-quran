@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/screens/word_lesson_list_page.dart';
+import 'package:learnquran/screens/word/lessons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,19 +36,6 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      // ListView(children: <Widget>[
-      //   ListTile(
-      //     leading: const Icon(Icons.bar_chart_rounded),
-      //     title: const Text('Learn words'),
-      //     onTap: () {
-      //       Navigator.push(
-      //         context,
-      //         MaterialPageRoute(
-      //             builder: (context) => const WordLessonListPage()),
-      //       );
-      //     },
-      //   ),
-      // ]),
     );
   }
 }

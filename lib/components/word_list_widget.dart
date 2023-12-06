@@ -5,8 +5,9 @@ import 'package:learnquran/theme/theme_helper.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
+  final Function(int selectedIndex) hanleTap;
 
-  const WordListWidget(this.words, {super.key});
+  const WordListWidget(this.words, this.hanleTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,9 @@ class WordListWidget extends StatelessWidget {
           tiles: words.map((word) => ListTile(
                 contentPadding: const EdgeInsets.all(5),
                 title: Text(word.arabic, style: const TextStyle(fontSize: 48)),
+                onTap: () {
+                  hanleTap(word.sequence);
+                },
                 subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
