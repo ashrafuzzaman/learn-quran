@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/widgets/quick_font_selector.dart';
 import 'package:learnquran/widgets/word_list_widget.dart';
 import 'package:learnquran/widgets/word_pageview_widget.dart';
 import 'package:learnquran/dto/word.dart';
@@ -40,10 +41,18 @@ class _WordListPageState extends State<WordListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Learn Quranic words',
-          style: TextStyle(
-              color: Colors.black87, fontSize: 24, fontWeight: FontWeight.bold),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Learn Quranic words',
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
+            ),
+            QuickFontSelector()
+          ],
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
