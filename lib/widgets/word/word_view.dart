@@ -17,7 +17,7 @@ class WordView extends StatelessWidget {
           title: Text(
             word.arabic,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 48),
+            style: const TextStyle(fontSize: 48, fontFamily: "Al-Qalam"),
           ),
           subtitle: Text(
             word.meaning,

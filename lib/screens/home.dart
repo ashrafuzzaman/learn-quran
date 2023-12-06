@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/screens/settings.dart';
 import 'package:learnquran/screens/word/lessons.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,24 +19,43 @@ class HomePage extends StatelessWidget {
         elevation: 3,
       ),
       body: Center(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size(88, 36),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
+          child: Column(
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(88, 36),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
             ),
+            child: const Text('Learn words'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const WordLessonListPage()),
+              );
+            },
           ),
-          child: const Text('Learn words'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const WordLessonListPage()),
-            );
-          },
-        ),
-      ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(88, 36),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+            ),
+            child: const Text('Settings'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
+            },
+          ),
+        ],
+      )),
     );
   }
 }

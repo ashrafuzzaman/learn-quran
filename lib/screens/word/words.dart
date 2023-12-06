@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/word_list_widget.dart';
-import 'package:learnquran/components/word_pageview_widget.dart';
+import 'package:learnquran/widgets/word_list_widget.dart';
+import 'package:learnquran/widgets/word_pageview_widget.dart';
 import 'package:learnquran/dto/word.dart';
 
 class WordListPage extends StatefulWidget {

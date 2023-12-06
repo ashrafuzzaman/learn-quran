@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/word/word_icon.dart';
+import 'package:learnquran/widgets/word/word_icon.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/theme/theme_helper.dart';
 

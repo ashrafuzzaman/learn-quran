@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/components/word/word_flipcard.dart';
+import 'package:learnquran/widgets/word/word_flipcard.dart';
 import 'package:learnquran/dto/word.dart';
 
 class WordPageviewWidget extends StatefulWidget {
