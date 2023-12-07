@@ -18,6 +18,7 @@ class ArabicText extends StatelessWidget {
           textAlign: textAlign,
           style: TextStyle(
               fontSize: fontSize,
+              letterSpacing: 0,
               fontFamily: fontMap[selectedFontFamilyOption]),
         );
       },
