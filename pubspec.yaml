@@ -97,6 +97,9 @@ flutter:
     - family: Neirizi
       fonts:
         - asset: fonts/Neirizi.ttf
+    - family: Uthmanic
+      fonts:
+        - asset: fonts/UthmanicHafs1 Ver09_1.otf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

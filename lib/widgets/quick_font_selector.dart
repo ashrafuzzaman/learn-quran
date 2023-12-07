@@ -11,7 +11,7 @@ class QuickFontSelector extends StatelessWidget {
     return BlocBuilder<ArabicFontCubit, FontFamilyOptions>(
       builder: (context, selectedFontFamilyOption) {
         return PopupMenuButton<FontFamilyOptions>(
-          icon: const Icon(Icons.language),
+          icon: const Icon(Icons.font_download),
           initialValue: selectedFontFamilyOption,
           onSelected: (FontFamilyOptions fontFamily) {
             context.read<ArabicFontCubit>().select(fontFamily);

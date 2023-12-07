@@ -23,8 +23,7 @@ class SettingsPage extends StatelessWidget {
 class FontSelector extends StatelessWidget {
   const FontSelector({super.key});
 
-  static const arabicTextSample =
-      "ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ";
+  static const arabicTextSample = "ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ";
 
   @override
   Widget build(BuildContext context) {
