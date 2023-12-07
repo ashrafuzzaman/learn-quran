@@ -17,6 +17,10 @@ lessons:
         meaning: This
         plurality: s
         gender: male
+        examples:
+          -
+            arabic: قَالُواْ هَٰذَا ٱلَّذِي رُزِقۡنَا مِن قَبۡلُۖ
+            meaning: They will say, “This is what we were provided with before,
       -
         arabic: ذَٰلِكَ
         meaning: That

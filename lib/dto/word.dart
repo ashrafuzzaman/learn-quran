@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:learnquran/dto/example.dart';
 
 enum Gender { male, female }
 
@@ -24,9 +25,12 @@ class Word {
   final String meaning;
   final Gender? gender;
   final Plurality plurality;
+  final List<Example>? examples;
 
-  Word(this.gender,
-      {required this.plurality,
+  Word(
+      {this.gender,
+      this.examples,
+      required this.plurality,
       required this.arabic,
       required this.meaning,
       required this.id});
@@ -35,5 +39,7 @@ class Word {
       : arabic = data['arabic'],
         meaning = data['meaning'],
         plurality = pluralityMap[data['plurality']]!,
-        gender = genderMap[data['gender']];
+        gender = genderMap[data['gender']],
+        examples = List<Example>.from((data['examples'] ?? [])
+            .map((example) => Example.fromMap(example)));
 }
