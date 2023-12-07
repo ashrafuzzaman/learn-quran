@@ -1,6 +1,7 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/example.dart';
+import 'package:learnquran/screens/word/word_detials.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
 import 'package:learnquran/dto/word.dart';
@@ -80,35 +81,28 @@ class FlipCardMeaning extends StatelessWidget {
                     ),
                   ),
                 ),
-                ExamplesWidget(examples: word.examples),
-                SizedBox(child: WordIcon(word: word))
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        child: const Text("Examples"),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WordDetails(word: word)),
+                          );
+                        },
+                      ),
+                      WordIcon(word: word),
+                    ],
+                  ),
+                )
               ],
             ),
           )),
     );
-  }
-}
-
-class ExamplesWidget extends StatelessWidget {
-  final List<Example>? examples;
-
-  const ExamplesWidget({super.key, this.examples});
-
-  @override
-  Widget build(BuildContext context) {
-    if (examples!.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-        children: examples!
-            .map((example) => Column(
-                  children: [
-                    ArabicText(
-                      example.arabic,
-                      fontSize: 32,
-                    ),
-                    Text(example.meaning)
-                  ],
-                ))
-            .toList());
   }
 }
