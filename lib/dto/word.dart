@@ -34,10 +34,6 @@ class Word {
   Word.fromMap(MapBase data, this.id)
       : arabic = data['arabic'],
         meaning = data['meaning'],
-        plurality = data['plurality'] == 's'
-            ? Plurality.singular
-            : (data['plurality'] == 'p' ? Plurality.plural : Plurality.dual),
-        gender = data['gender'] == "male"
-            ? Gender.male
-            : (data['gender'] == "female" ? Gender.female : data['gender']);
+        plurality = pluralityMap[data['plurality']]!,
+        gender = genderMap[data['gender']];
 }
