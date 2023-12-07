@@ -15,7 +15,8 @@ class WordListWidget extends StatelessWidget {
       children: ListTile.divideTiles(
           context: context,
           tiles: words.map((word) => ListTile(
-                contentPadding: const EdgeInsets.all(5),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 title: ArabicText(word.arabic),
                 onTap: () {
                   hanleTap(word.id);

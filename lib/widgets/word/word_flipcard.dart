@@ -39,7 +39,7 @@ class FlipCardWord extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Card(
           child: SizedBox(
-        height: 200,
+        height: 250,
         width: double.infinity,
         child: Align(
           alignment: Alignment.center,
