@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/theme/theme_extension_colors.dart';
 import 'package:learnquran/theme/theme_helper.dart';
 
 class WordIcon extends StatelessWidget {
