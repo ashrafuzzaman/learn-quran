@@ -26,50 +26,78 @@ lessons:
         meaning: That
         plurality: s
         gender: male
+        examples:
+          -
+            arabic: ذَٰلِكَ ٱلۡكِتَٰبُ لَا رَيۡبَۛ فِيهِۛ
+            meaning: This (that) is the Book in which there is no doubt
       -
         arabic: هَٰذِهِ
         meaning: This
         plurality: s
         gender: female
+        examples:
+          -
+            arabic: وَلَا تَقۡرَبَا هَٰذِهِ ٱلشَّجَرَةَ
+            meaning: but do not approach this tree
       -
         arabic: تِلْكَ
         meaning: That
         plurality: s
         gender: female
+        examples:
+          -
+            arabic: تِلۡكَ أُمَّةٞ قَدۡ خَلَتۡۖ
+            meaning: That was a nation that has passed on;
       -
-        arabic: هَٰؤُلَاءِ
+        arabic: هَٰٓؤُلَآء
         meaning: These
         plurality: p
+        examples:
+          -
+            arabic: وَجِئۡنَا بِكَ عَلَىٰ هَٰٓؤُلَآءِ شَهِيدٗا
+            meaning: and We bring you as a witness against these?
       -
-        arabic: أُولَٰئِكَ
+        arabic: أُوْلَٰٓئِكَ
         meaning: Those
         plurality: p
+        examples:
+          -
+            arabic: أُوْلَٰٓئِكَ عَلَىٰ هُدٗى مِّن رَّبِّهِمۡۖ وَأُوْلَٰٓئِكَ هُمُ ٱلۡمُفۡلِحُونَ
+            meaning: Those are upon [right] guidance from their Lord, and it is those who are the successful.
       -
-        arabic: الَّذِي
+        arabic: ٱلَّذِي
         meaning: He who
         plurality: s
         gender: male
+        examples:
+          -
+            arabic: مَثَلُهُمۡ كَمَثَلِ ٱلَّذِي ٱسۡتَوۡقَدَ نَارٗا
+            meaning: Their likeness is that of a person who kindled a fire;
       -
-        arabic: التي
+        arabic: ٱلَّتِي
         meaning: She who
         plurality: s
         gender: female
+        examples:
+          -
+            arabic: وَٱتَّقُواْ ٱلنَّارَ ٱلَّتِيٓ أُعِدَّتۡ لِلۡكَٰفِرِينَ ١٣١
+            meaning: And guard yourselves against the Fire that is prepared for the disbelievers.
       -
         arabic: الَّذِينَ
         meaning: Those who
         plurality: p
-      -
-        arabic: هَٰذِهِ
-        meaning: These
-        plurality: p
+        examples:
+          -
+            arabic: صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ
+            meaning: The path of those whom You have blessed,
       -
         arabic: تِلْكَ
         meaning: Those
         plurality: p
-      -
-        arabic: التي
-        meaning: Those who
-        plurality: p
+        examples:
+          -
+            arabic: تِلۡكَ أَمَانِيُّهُمۡۗ
+            meaning: Those are their wishes.
   -
     name: Level 2 (100 words)
     description: The 100 words covers 28% of the Quran. These includes nouns
@@ -79,52 +107,16 @@ lessons:
         meaning: This
         plurality: s
         gender: male
+        examples:
+          -
+            arabic: قَالُواْ هَٰذَا ٱلَّذِي رُزِقۡنَا مِن قَبۡلُۖ
+            meaning: They will say, “This is what we were provided with before,
       -
         arabic: ذَٰلِكَ
         meaning: That
         plurality: s
         gender: male
-      -
-        arabic: هَٰذِهِ
-        meaning: This
-        plurality: s
-        gender: female
-      -
-        arabic: تِلْكَ
-        meaning: That
-        plurality: s
-        gender: female
-      -
-        arabic: هَٰؤُلَاءِ
-        meaning: These
-        plurality: p
-      -
-        arabic: أُولَٰئِكَ
-        meaning: Those
-        plurality: p
-      -
-        arabic: الَّذِي
-        meaning: He who
-        plurality: s
-        gender: male
-      -
-        arabic: التي
-        meaning: She who
-        plurality: s
-        gender: female
-      -
-        arabic: الَّذِينَ
-        meaning: Those who
-        plurality: p
-      -
-        arabic: هَٰذِهِ
-        meaning: These
-        plurality: p
-      -
-        arabic: تِلْكَ
-        meaning: Those
-        plurality: p
-      -
-        arabic: التي
-        meaning: Those who
-        plurality: p
+        examples:
+          -
+            arabic: ذَٰلِكَ ٱلۡكِتَٰبُ لَا رَيۡبَۛ فِيهِۛ
+            meaning: This (that) is the Book in which there is no doubt
