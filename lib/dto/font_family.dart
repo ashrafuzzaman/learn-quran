@@ -1,7 +1,6 @@
-enum FontFamilyOptions { alqalam, uthmanic, neirizi }
+enum FontFamilyOptions { alqalam, uthmanic }
 
 const Map<FontFamilyOptions, String> fontMap = {
   FontFamilyOptions.alqalam: "Al-Qalam",
-  FontFamilyOptions.neirizi: "Neirizi",
   FontFamilyOptions.uthmanic: "Uthmanic",
 };
