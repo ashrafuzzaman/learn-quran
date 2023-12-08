@@ -1,7 +1,4 @@
 {
-  "cSpell.words": [
-    "riverpod"
-  ],
   "files.exclude": {
     ".dart_tool": true,
     "build": true,

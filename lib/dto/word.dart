@@ -24,7 +24,7 @@ class Word {
   final String arabic;
   final String meaning;
   final Gender? gender;
-  final Plurality plurality;
+  final Plurality? plurality;
   final List<Example>? examples;
 
   Word(
@@ -38,7 +38,7 @@ class Word {
   Word.fromMap(MapBase data, this.id)
       : arabic = data['arabic'],
         meaning = data['meaning'],
-        plurality = pluralityMap[data['plurality']]!,
+        plurality = pluralityMap[data['plurality']],
         gender = genderMap[data['gender']],
         examples = List<Example>.from((data['examples'] ?? [])
             .map((example) => Example.fromMap(example)));

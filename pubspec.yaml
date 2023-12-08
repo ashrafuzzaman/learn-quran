@@ -95,17 +95,6 @@ flutter:
     - family: Al-Qalam
       fonts:
         - asset: fonts/Al-Qalam-Quran-Majeed-Regular.ttf
-    - family: Neirizi
-      fonts:
-        - asset: fonts/Neirizi.ttf
     - family: Uthmanic
       fonts:
         - asset: fonts/UthmanicHafs1 Ver09_1.otf
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages

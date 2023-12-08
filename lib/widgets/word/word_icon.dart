@@ -12,6 +12,10 @@ class WordIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (word.gender == null && word.plurality == null) {
+      return const SizedBox.shrink();
+    }
+
     var color = getWordIconColor(context, word);
 
     Map icons = {
@@ -37,10 +41,6 @@ class WordIcon extends StatelessWidget {
 
     final Widget pluralityIcon = icons[word.plurality];
 
-    return Padding(
-        padding: const EdgeInsets.all(5),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [pluralityIcon]));
+    return pluralityIcon;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learnquran/dto/example.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/theme/theme_helper.dart';
+import 'package:learnquran/widgets/quick_font_selector.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
 
@@ -12,7 +13,14 @@ class WordDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            QuickFontSelector(),
+          ],
+        ),
+      ),
       backgroundColor: getWordBackgroundColor(context, word),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

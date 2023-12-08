@@ -98,25 +98,50 @@ lessons:
           -
             arabic: تِلۡكَ أَمَانِيُّهُمۡۗ
             meaning: Those are their wishes.
-  -
-    name: Level 2 (100 words)
-    description: The 100 words covers 28% of the Quran. These includes nouns
-    words:
       -
-        arabic: هَٰذَا
-        meaning: This
-        plurality: s
-        gender: male
+        arabic: نَعَمۡ
+        meaning: Yes
         examples:
           -
-            arabic: قَالُواْ هَٰذَا ٱلَّذِي رُزِقۡنَا مِن قَبۡلُۖ
-            meaning: They will say, “This is what we were provided with before,
+            arabic: فَهَلۡ وَجَدتُّم مَّا وَعَدَ رَبُّكُمۡ حَقّٗاۖ قَالُواْ نَعَمۡ
+            meaning: “Did you find what your Lord promised you to be true?” They will say, “Yes.”
       -
-        arabic: ذَٰلِكَ
-        meaning: That
-        plurality: s
-        gender: male
+        arabic: بَلَي
+        meaning: Yes, indeed
         examples:
           -
-            arabic: ذَٰلِكَ ٱلۡكِتَٰبُ لَا رَيۡبَۛ فِيهِۛ
-            meaning: This (that) is the Book in which there is no doubt
+            arabic: بَلَىٰۚ مَن كَسَبَ سَيِّئَةٗ وَأَحَٰطَتۡ بِهِۦ خَطِيٓـَٔتُهُ
+            meaning: Yes Indeed, whoever commits misdeeds, and becomes besieged by his iniquities—
+          -
+            arabic: بَلَىٰۚ مَنۡ أَسۡلَمَ وَجۡهَهُۥ لِلَّهِ وَهُوَ مُحۡسِنٞ
+            meaning: Indeed, whoever submits his face in Islam to Allah while being a doer of good
+      -
+        arabic: كَلَّا
+        meaning: Certainly not
+        examples:
+          -
+            arabic: كَلَّاۚ سَنَكۡتُبُ مَا يَقُولُ
+            meaning: No indeed! We will write what he says,
+          -
+            arabic: كَلَّآۚ إِنَّهَا كَلِمَةٌ هُوَ قَآئِلُهَاۖ
+            meaning: Certainly not! It is just a word he is saying.
+      -
+        arabic: إِلَّا
+        meaning: Except
+        examples:
+          -
+            arabic: ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلۡحَيُّ ٱلۡقَيُّومُۚ
+            meaning: Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence.
+          -
+            arabic: مَن ذَا ٱلَّذِي يَشۡفَعُ عِندَهُۥٓ إِلَّا بِإِذۡنِهِ
+            meaning: Who is he that can intercede with Him except with His permission?
+      -
+        arabic: إِنۡ .. إِلَّا
+        meaning: Nothing but
+        examples:
+          -
+            arabic: ثُمَّ جَآءُوكَ يَحۡلِفُونَ بِٱللَّهِ إِنۡ أَرَدۡنَآ إِلَّآ إِحۡسَٰنٗا وَتَوۡفِيقًا
+            meaning: We intended nothing but good conduct and accommodation.
+          -
+            arabic: إِنۡ هَٰذَآ إِلَّا سِحۡرٞ مُّبِينٞ
+            meaning: This is nothing but plain magic.
