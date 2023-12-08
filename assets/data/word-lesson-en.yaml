@@ -145,3 +145,23 @@ lessons:
           -
             arabic: إِنۡ هَٰذَآ إِلَّا سِحۡرٞ مُّبِينٞ
             meaning: This is nothing but plain magic.
+      -
+        arabic: مَا .. إِلَّا
+        meaning: Nothing but
+        examples:
+          -
+            arabic: مَا قُلۡتُ لَهُمۡ إِلَّا مَآ أَمَرۡتَنِي بِهِۦ
+            meaning: I said not to them except what You commanded me
+          -
+            arabic: فَقَالَ ٱلۡمَلَؤُاْ ٱلَّذِينَ كَفَرُواْ مِن قَوۡمِهِۦ مَا هَٰذَآ إِلَّا بَشَرٞ مِّثۡلُكُمۡ
+            meaning: But the notables of his people, who disbelieved, said, “This is nothing but a human like you,”
+      -
+        arabic: أَلَّا
+        meaning: That .. not
+        examples:
+          -
+            arabic: إِنِ ٱلۡحُكۡمُ إِلَّا لِلَّهِ أَمَرَ أَلَّا تَعۡبُدُوٓاْ إِلَّآ إِيَّاهُۚ
+            meaning: He has commanded that you worship none but Him.
+          -
+            arabic: وَمَا لَنَآ أَلَّا نَتَوَكَّلَ عَلَى ٱللَّهِ
+            meaning: And why should we not rely upon Allah
