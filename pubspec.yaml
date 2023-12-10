@@ -98,3 +98,12 @@ flutter:
     - family: Uthmanic
       fonts:
         - asset: fonts/UthmanicHafs1 Ver09_1.otf
+    - family: AlQuranAli
+      fonts:
+        - asset: fonts/AlQuranAli-L3A83.ttf
+    - family: Lateef
+      fonts:
+        - asset: fonts/LateefRegOT.ttf
+    - family: Amiri
+      fonts:
+        - asset: fonts/Amiri-Regular.ttf
