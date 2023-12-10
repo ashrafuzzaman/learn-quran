@@ -7,6 +7,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle buttonTextStyle = const TextStyle(fontSize: 22);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -20,16 +22,20 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
+          ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(88, 36),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              minimumSize: const Size(200, 36),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
             ),
-            child: const Text('Learn words'),
+            icon: const Icon(Icons.chrome_reader_mode),
+            label: Text(
+              'Learn words',
+              style: buttonTextStyle,
+            ),
             onPressed: () {
               Navigator.push(
                 context,
@@ -38,15 +44,15 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          ElevatedButton(
+          ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(88, 36),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              minimumSize: const Size(200, 36),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
             ),
-            child: const Text('Settings'),
+            icon: const Icon(Icons.settings),
+            label: Text('Settings', style: buttonTextStyle),
             onPressed: () {
               Navigator.push(
                 context,
