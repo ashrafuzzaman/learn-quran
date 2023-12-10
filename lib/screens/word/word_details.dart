@@ -75,17 +75,23 @@ class ExamplesWidget extends StatelessWidget {
     return Column(
         children: examples!
             .map((example) => Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: ArabicText(
                         example.arabic,
+                        textAlign: TextAlign.center,
                         fontSize: 32,
                       ),
                     ),
-                    Text(
-                      example.meaning,
-                      style: const TextStyle(fontSize: 18),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Text(
+                        example.meaning,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 18),
+                      ),
                     )
                   ],
                 ))
