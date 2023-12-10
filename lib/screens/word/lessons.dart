@@ -63,7 +63,8 @@ class WordListWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return WordListPage(lesson.words);
+                                return WordListPage(
+                                    title: lesson.name, words: lesson.words);
                               }),
                             );
                           },

@@ -5,9 +5,10 @@ import 'package:learnquran/widgets/word_pageview_widget.dart';
 import 'package:learnquran/dto/word.dart';
 
 class WordListPage extends StatefulWidget {
+  final String title;
   final List<Word> words;
 
-  const WordListPage(this.words, {super.key});
+  const WordListPage({super.key, required this.title, required this.words});
 
   @override
   State<WordListPage> createState() => _WordListPageState();
@@ -41,17 +42,17 @@ class _WordListPageState extends State<WordListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Learn Quranic words',
-              style: TextStyle(
+              widget.title,
+              style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 24,
                   fontWeight: FontWeight.bold),
             ),
-            QuickFontSelector()
+            const QuickFontSelector()
           ],
         ),
         centerTitle: true,
