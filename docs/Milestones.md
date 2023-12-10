@@ -4,6 +4,7 @@
 - Quran verses are needed to be referenced, so that,
   - The arabic can be downloaded from a trusted source
   - Different translations can be used by the learner
+- Add ability to play recorded audio for the arabic words
 - To enable learning the words can be tested as,
   - Flip card view
   - Can be tested with multiple choice answers
@@ -13,3 +14,4 @@
 - Create a logo
 - Allow user to customize fonts family and font size
 - The widgets should be responsive to support landscape view and different DPI
+- Add support for data validation on file change (like, word-lesson-en.yaml), to make sure the format is correct
