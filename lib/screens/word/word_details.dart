@@ -38,6 +38,18 @@ class WordDetails extends StatelessWidget {
             children: [
               Hero(
                 tag: 'meaning:${word.id}',
+                flightShuttleBuilder: (
+                  BuildContext flightContext,
+                  Animation<double> animation,
+                  HeroFlightDirection flightDirection,
+                  BuildContext fromHeroContext,
+                  BuildContext toHeroContext,
+                ) {
+                  return DefaultTextStyle(
+                    style: DefaultTextStyle.of(toHeroContext).style,
+                    child: toHeroContext.widget,
+                  );
+                },
                 child: Text(
                   word.meaning,
                   textAlign: TextAlign.center,
