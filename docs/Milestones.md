@@ -1,6 +1,7 @@
 # Milestone 1
 
 - Build the app so that the lessons data and the business logic is segregated
+- Add support for highlighting the words on the sentence from the quran
 - Quran verses are needed to be referenced, so that,
   - The arabic can be downloaded from a trusted source
   - Different translations can be used by the learner
