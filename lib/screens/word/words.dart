@@ -1,41 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/screens/word/words_flipcard_screen.dart';
 import 'package:learnquran/widgets/quick_font_selector.dart';
 import 'package:learnquran/widgets/word_list_widget.dart';
-import 'package:learnquran/widgets/word_pageview_widget.dart';
 import 'package:learnquran/dto/word.dart';
 
-class WordListPage extends StatefulWidget {
+class WordListPage extends StatelessWidget {
   final String title;
   final List<Word> words;
 
   const WordListPage({super.key, required this.title, required this.words});
 
-  @override
-  State<WordListPage> createState() => _WordListPageState();
-}
+  void _switchToFlipCardView(BuildContext context, int wordId) {
+    final wordIndex = words.indexWhere((word) => word.id == wordId);
 
-class _WordListPageState extends State<WordListPage> {
-  static const int listViewIndex = 0;
-  static const int flipCardViewIndex = 1;
-  int _selectedIndex = listViewIndex;
-  int _selectedWordIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  bool _isListView() {
-    return _selectedIndex == listViewIndex;
-  }
-
-  void _switchToFlipCardView(int wordId) {
-    final wordIndex = widget.words.indexWhere((word) => word.id == wordId);
-    setState(() {
-      _selectedIndex = flipCardViewIndex;
-      _selectedWordIndex = wordIndex;
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => WordsFlipcardScreen(
+                words: words,
+                wordIndex: wordIndex,
+              )),
+    );
   }
 
   @override
@@ -46,7 +31,7 @@ class _WordListPageState extends State<WordListPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              widget.title,
+              title,
               style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 24,
@@ -59,24 +44,9 @@ class _WordListPageState extends State<WordListPage> {
         backgroundColor: Colors.white,
         elevation: 3,
       ),
-      body: _isListView()
-          ? WordListWidget(widget.words, (int wordId) {
-              _switchToFlipCardView(wordId);
-            })
-          : WordPageviewWidget(widget.words, _selectedWordIndex),
-      bottomNavigationBar: NavigationBar(
-          selectedIndex: _selectedIndex,
-          onDestinationSelected: _onItemTapped,
-          destinations: const <Widget>[
-            NavigationDestination(
-              icon: Icon(Icons.list),
-              label: "List View",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.view_carousel),
-              label: "Flipcard view",
-            ),
-          ]),
+      body: WordListWidget(words, (int wordId) {
+        _switchToFlipCardView(context, wordId);
+      }),
     );
   }
 }

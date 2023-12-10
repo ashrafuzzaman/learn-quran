@@ -6,10 +6,10 @@ import 'package:learnquran/widgets/word/word_icon.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/theme/theme_helper.dart';
 
-class WordFlipCard extends StatelessWidget {
+class WordFlipCardWidget extends StatelessWidget {
   final Word word;
 
-  const WordFlipCard({super.key, required this.word});
+  const WordFlipCardWidget({super.key, required this.word});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class WordFlipCard extends StatelessWidget {
           .fillBack, // Fill the back side of the card to make in the same size as the front.
       direction: FlipDirection.HORIZONTAL, // default
       side: CardSide.FRONT, // The side to initially display.
-      front: FlipCardWord(text: word.arabic),
+      front: FlipCardWord(word: word),
       back: FlipCardMeaning(word: word),
     ));
   }
@@ -28,10 +28,10 @@ class WordFlipCard extends StatelessWidget {
 class FlipCardWord extends StatelessWidget {
   const FlipCardWord({
     super.key,
-    required this.text,
+    required this.word,
   });
 
-  final String text;
+  final Word word;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,10 @@ class FlipCardWord extends StatelessWidget {
         width: double.infinity,
         child: Align(
           alignment: Alignment.center,
-          child: ArabicText(text, textAlign: TextAlign.center, fontSize: 48),
+          child: Hero(
+              tag: 'arabicText:${word.id}',
+              child: ArabicText(word.arabic,
+                  textAlign: TextAlign.center, fontSize: 48)),
         ),
       )),
     );
@@ -73,10 +76,13 @@ class FlipCardMeaning extends StatelessWidget {
                 Expanded(
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      word.meaning,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 48),
+                    child: Hero(
+                      tag: 'meaning:${word.id}',
+                      child: Text(
+                        word.meaning,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 48),
+                      ),
                     ),
                   ),
                 ),

@@ -12,8 +12,10 @@ class WordDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bgColor = getWordBackgroundColor(context, word);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: bgColor,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -21,7 +23,7 @@ class WordDetails extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: getWordBackgroundColor(context, word),
+      backgroundColor: bgColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -34,10 +36,13 @@ class WordDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                word.meaning,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 32),
+              Hero(
+                tag: 'meaning:${word.id}',
+                child: Text(
+                  word.meaning,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 32),
+                ),
               ),
               SizedBox(child: WordIcon(word: word))
             ],

@@ -24,9 +24,12 @@ class WordListWidget extends StatelessWidget {
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ArabicText(
-                            word.arabic,
-                            fontSize: 32,
+                          Hero(
+                            tag: 'arabicText:${word.id}',
+                            child: ArabicText(
+                              word.arabic,
+                              fontSize: 32,
+                            ),
                           ),
                           Row(
                             children: [
