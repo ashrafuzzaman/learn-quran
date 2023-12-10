@@ -5,29 +5,49 @@ import 'package:learnquran/dto/word.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
-  final Function(int selectedIndex) hanleTap;
+  final Function(int selectedIndex) handleTap;
 
-  const WordListWidget(this.words, this.hanleTap, {super.key});
+  const WordListWidget(this.words, this.handleTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: ListTile.divideTiles(
-          context: context,
-          tiles: words.map((word) => ListTile(
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                title: ArabicText(word.arabic),
-                onTap: () {
-                  hanleTap(word.id);
-                },
-                subtitle: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(word.meaning, style: const TextStyle(fontSize: 24)),
-                      WordIcon(word: word)
-                    ]),
-              ))).toList(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: ListView(
+        children: words
+            .map((word) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Card(
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ArabicText(
+                            word.arabic,
+                            fontSize: 32,
+                          ),
+                          Row(
+                            children: [
+                              Text(word.meaning,
+                                  style: const TextStyle(fontSize: 20)),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: WordIcon(word: word),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      onTap: () {
+                        handleTap(word.id);
+                      },
+                    ),
+                  ),
+                ))
+            .toList(),
+      ),
     );
   }
 }
