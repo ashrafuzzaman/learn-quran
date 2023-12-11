@@ -20,7 +20,8 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
 
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
         builder: (context, lessons) {
-      final List<Word> words = lessons.isNotEmpty ? lessons[0].words : [];
+      final List<Word> words =
+          lessons.isNotEmpty ? List.from(lessons[0].words) : [];
       var quizGenerator = RandomMultiChoiceQuizGenerator();
       words.shuffle();
 
