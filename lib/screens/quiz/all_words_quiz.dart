@@ -22,6 +22,7 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
         builder: (context, lessons) {
       final List<Word> words = lessons.isNotEmpty ? lessons[0].words : [];
       var quizGenerator = RandomMultiChoiceQuizGenerator();
+      words.shuffle();
 
       return Scaffold(
         appBar: AppBar(

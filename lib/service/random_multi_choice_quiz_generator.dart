@@ -26,6 +26,7 @@ class RandomMultiChoiceQuizGenerator {
       options.add(QuizOption(
           title: TextData(text: words[index].meaning), isCorrect: false));
     }
+    options.shuffle();
 
     return MultiChoiceQuiz(
         title: TextData(text: word.arabic, isArabic: true), options: options);
