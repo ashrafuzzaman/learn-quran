@@ -1,5 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:learnquran/screens/quiz/word_quiz.dart';
 import 'package:learnquran/screens/word/word_details.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
@@ -39,18 +40,91 @@ class FlipCardWord extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Card(
           child: SizedBox(
-        height: 250,
+        height: 200,
         width: double.infinity,
-        child: Align(
-          alignment: Alignment.center,
-          child: Hero(
-              tag: 'arabicText:${word.id}',
-              child: ArabicText(word.arabic,
-                  textAlign: TextAlign.center, fontSize: 48)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Hero(
+                  tag: 'arabicText:${word.id}',
+                  child: ArabicText(
+                    word.arabic,
+                    textAlign: TextAlign.center,
+                    fontSize: 48,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    child: const Text("Quiz"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WordQuiz(
+                                  word: word,
+                                )),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       )),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(10),
+  //     child: Card(
+  //         child: Column(
+  //       children: [
+  //         SizedBox(
+  //           height: 200,
+  //           width: double.infinity,
+  //           child: Align(
+  //             alignment: Alignment.center,
+  //             child: Hero(
+  //                 tag: 'arabicText:${word.id}',
+  //                 child: ArabicText(word.arabic,
+  //                     textAlign: TextAlign.center, fontSize: 48)),
+  //           ),
+  //         ),
+  //         Padding(
+  //           padding: const EdgeInsets.only(right: 5),
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.end,
+  //             children: [
+  //               TextButton(
+  //                 child: const Text("Examples"),
+  //                 onPressed: () {
+  //                   Navigator.push(
+  //                     context,
+  //                     MaterialPageRoute(
+  //                         builder: (context) => WordDetails(word: word)),
+  //                   );
+  //                 },
+  //               ),
+  //               WordIcon(word: word),
+  //             ],
+  //           ),
+  //         )
+  //       ],
+  //     )),
+  //   );
+  // }
 }
 
 class FlipCardMeaning extends StatelessWidget {
