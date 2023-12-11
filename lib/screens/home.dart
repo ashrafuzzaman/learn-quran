@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
 import 'package:learnquran/screens/word/lessons.dart';
 
@@ -26,6 +27,11 @@ class HomePage extends StatelessWidget {
             widget: WordLessonListPage(),
             label: 'Learn words',
             icon: Icons.chrome_reader_mode,
+          ),
+          HomePageButton(
+            widget: AllWordsQuiz(),
+            label: 'Quiz',
+            icon: Icons.quiz,
           ),
           HomePageButton(
             widget: SettingsPage(),

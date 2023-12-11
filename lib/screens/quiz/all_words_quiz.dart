@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
+import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/service/random_multi_choice_quiz_generator.dart';
 import 'package:learnquran/widgets/quiz/multi_choice.dart';
@@ -19,7 +20,7 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
 
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
         builder: (context, lessons) {
-      final words = lessons[0].words;
+      final List<Word> words = lessons.isNotEmpty ? lessons[0].words : [];
       var quizGenerator = RandomMultiChoiceQuizGenerator();
 
       return Scaffold(

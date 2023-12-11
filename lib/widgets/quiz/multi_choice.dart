@@ -57,7 +57,6 @@ class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
             onPressed: selectedOption == null || submitted == true
                 ? null
                 : () {
-                    print(selectedOption!.isCorrect);
                     setState(() {
                       submitted = true;
                     });
