@@ -83,48 +83,6 @@ class FlipCardWord extends StatelessWidget {
       )),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(10),
-  //     child: Card(
-  //         child: Column(
-  //       children: [
-  //         SizedBox(
-  //           height: 200,
-  //           width: double.infinity,
-  //           child: Align(
-  //             alignment: Alignment.center,
-  //             child: Hero(
-  //                 tag: 'arabicText:${word.id}',
-  //                 child: ArabicText(word.arabic,
-  //                     textAlign: TextAlign.center, fontSize: 48)),
-  //           ),
-  //         ),
-  //         Padding(
-  //           padding: const EdgeInsets.only(right: 5),
-  //           child: Row(
-  //             mainAxisAlignment: MainAxisAlignment.end,
-  //             children: [
-  //               TextButton(
-  //                 child: const Text("Examples"),
-  //                 onPressed: () {
-  //                   Navigator.push(
-  //                     context,
-  //                     MaterialPageRoute(
-  //                         builder: (context) => WordDetails(word: word)),
-  //                   );
-  //                 },
-  //               ),
-  //               WordIcon(word: word),
-  //             ],
-  //           ),
-  //         )
-  //       ],
-  //     )),
-  //   );
-  // }
 }
 
 class FlipCardMeaning extends StatelessWidget {
@@ -142,7 +100,6 @@ class FlipCardMeaning extends StatelessWidget {
       child: Card(
           color: getWordBackgroundColor(context, word),
           child: SizedBox(
-            height: 200,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -155,7 +112,7 @@ class FlipCardMeaning extends StatelessWidget {
                       child: Text(
                         word.meaning,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 48),
+                        style: const TextStyle(fontSize: 32),
                       ),
                     ),
                   ),

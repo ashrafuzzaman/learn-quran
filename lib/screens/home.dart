@@ -12,11 +12,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Learn Quranic words',
-          style: TextStyle(
-              color: Colors.black87, fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
         elevation: 3,
       ),
       body: const Center(

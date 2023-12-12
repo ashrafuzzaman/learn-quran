@@ -32,16 +32,12 @@ class WordListPage extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                  color: Colors.black87,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const QuickFontSelector()
           ],
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
         elevation: 3,
       ),
       body: WordListWidget(words, (int wordId) {

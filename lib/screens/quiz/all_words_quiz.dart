@@ -29,14 +29,10 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
         appBar: AppBar(
           title: const Text(
             'Quiz',
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 3,
+          elevation: 2,
         ),
         body: PageView(
           controller: controller,
