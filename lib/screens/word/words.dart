@@ -10,7 +10,7 @@ class WordListPage extends StatelessWidget {
 
   const WordListPage({super.key, required this.title, required this.words});
 
-  void _switchToFlipCardView(BuildContext context, int wordId) {
+  void _switchToFlipCardView(BuildContext context, String wordId) {
     final wordIndex = words.indexWhere((word) => word.id == wordId);
 
     Navigator.push(
@@ -40,7 +40,7 @@ class WordListPage extends StatelessWidget {
         centerTitle: true,
         elevation: 3,
       ),
-      body: WordListWidget(words, (int wordId) {
+      body: WordListWidget(words, (String wordId) {
         _switchToFlipCardView(context, wordId);
       }),
     );

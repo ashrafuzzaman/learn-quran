@@ -5,7 +5,7 @@ import 'package:learnquran/dto/word.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
-  final Function(int selectedIndex) handleTap;
+  final Function(String wordId) handleTap;
 
   const WordListWidget(this.words, this.handleTap, {super.key});
 

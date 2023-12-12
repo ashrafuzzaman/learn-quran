@@ -15,8 +15,6 @@ class WordLesson {
   WordLesson.fromMap(MapBase data, this.id)
       : name = data['name'],
         description = data['description'],
-        words = List<Word>.from(data['words']
-            .asMap()
-            .entries
-            .map((entry) => Word.fromMap(entry.value, entry.key)));
+        words =
+            List<Word>.from(data['words'].map((entry) => Word.fromMap(entry)));
 }
