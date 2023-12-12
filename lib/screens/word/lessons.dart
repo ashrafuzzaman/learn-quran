@@ -44,7 +44,7 @@ class WordListWidget extends StatelessWidget {
         return ListView(
             children: lessons
                 .map((lesson) => Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(20),
                       child: Card(
                         child: ListTile(
                           title: Text(

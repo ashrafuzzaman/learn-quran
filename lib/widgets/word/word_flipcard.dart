@@ -45,6 +45,9 @@ class FlipCardWord extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(
+              height: 48,
+            ),
             Expanded(
               child: Align(
                 alignment: Alignment.center,
@@ -104,6 +107,9 @@ class FlipCardMeaning extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                const SizedBox(
+                  height: 48,
+                ),
                 Expanded(
                   child: Align(
                     alignment: Alignment.center,
