@@ -1,9 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-@freezed
 class QuizAttempt {
-  final String text;
-  final bool isArabic;
+  final String wordId;
+  final DateTime attemptAt;
+  final bool isCorrect;
 
-  QuizAttempt({required this.text, this.isArabic = false});
+  QuizAttempt(
+      {required this.wordId, required this.attemptAt, required this.isCorrect});
 }
