@@ -42,6 +42,7 @@ ThemeData getLightTheme() {
     ),
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
+        success: const Color(0xFF9ADE7B),
         defaultWordBackground: Colors.amber.shade100,
         maleWordBackground: Colors.blue.shade50,
         femaleWordBackground: Colors.pink.shade50,
@@ -90,6 +91,7 @@ ThemeData getDarkTheme() {
     ),
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
+        success: const Color(0xFF006D39),
         defaultWordBackground: Colors.amber.shade900,
         maleWordBackground: Colors.blue.shade700,
         femaleWordBackground: Colors.pink.shade900,
