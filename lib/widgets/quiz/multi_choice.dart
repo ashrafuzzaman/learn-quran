@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/multi_Choice_quiz.dart';
 import 'package:learnquran/dto/quiz_option.dart';
+import 'package:learnquran/repository/quiz_attempt_repo.dart';
 import 'package:learnquran/theme/theme_extension_colors.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 
@@ -16,6 +17,14 @@ class MultiChoiceQuizWidget extends StatefulWidget {
 class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
   QuizOption? selectedOption;
   bool submitted = false;
+
+  submit(QuizOption option) async {
+    await QuizAttemptRepo()
+        .recordAttempt(widget.quiz.word.id, option.isCorrect);
+    setState(() {
+      submitted = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +68,7 @@ class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
             ),
             onPressed: selectedOption == null || submitted == true
                 ? null
-                : () {
-                    setState(() {
-                      submitted = true;
-                    });
-                  },
+                : () async => {await submit(selectedOption!)},
             child: const Text('Submit'),
           ),
         ],

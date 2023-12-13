@@ -29,6 +29,8 @@ class RandomMultiChoiceQuizGenerator {
     options.shuffle();
 
     return MultiChoiceQuiz(
-        title: TextData(text: word.arabic, isArabic: true), options: options);
+        word: word,
+        title: TextData(text: word.arabic, isArabic: true),
+        options: options);
   }
 }

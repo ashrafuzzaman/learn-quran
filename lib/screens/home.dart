@@ -26,10 +26,16 @@ class HomePage extends StatelessWidget {
             label: 'Learn words',
             icon: Icons.chrome_reader_mode,
           ),
+          SizedBox(
+            height: 16,
+          ),
           HomePageButton(
             widget: AllWordsQuiz(),
             label: 'Quiz',
             icon: Icons.quiz,
+          ),
+          SizedBox(
+            height: 16,
           ),
           HomePageButton(
             widget: SettingsPage(),
@@ -60,7 +66,7 @@ class HomePageButton extends StatelessWidget {
 
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size(200, 36),
+        minimumSize: const Size(200, 48),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
