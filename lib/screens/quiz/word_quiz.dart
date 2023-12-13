@@ -30,7 +30,11 @@ class WordQuiz extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 3,
         ),
-        body: Center(child: MultiChoiceQuizWidget(quiz: quiz)),
+        body: Center(
+            child: MultiChoiceQuizWidget(
+          quiz: quiz,
+          onComplete: () => {},
+        )),
       );
     });
   }

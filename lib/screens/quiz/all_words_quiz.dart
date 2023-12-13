@@ -14,10 +14,10 @@ class AllWordsQuiz extends StatefulWidget {
 }
 
 class _AllWordsQuizState extends State<AllWordsQuiz> {
+  final PageController controller = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 0);
-
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
         builder: (context, lessons) {
       final List<Word> words =
@@ -36,11 +36,19 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
         ),
         body: PageView(
           controller: controller,
+          physics: const NeverScrollableScrollPhysics(),
           children: words
               .map(
                 (word) => Center(
                     child: MultiChoiceQuizWidget(
-                        quiz: quizGenerator.getQuiz(word: word, words: words))),
+                  quiz: quizGenerator.getQuiz(word: word, words: words),
+                  showNext: true,
+                  onComplete: () => {
+                    controller.nextPage(
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.ease)
+                  },
+                )),
               )
               .toList(),
         ),

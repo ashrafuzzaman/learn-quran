@@ -7,8 +7,14 @@ import 'package:learnquran/widgets/text/arabic_text.dart';
 
 class MultiChoiceQuizWidget extends StatefulWidget {
   final MultiChoiceQuiz quiz;
+  final Function onComplete;
+  final bool showNext;
 
-  const MultiChoiceQuizWidget({super.key, required this.quiz});
+  const MultiChoiceQuizWidget(
+      {super.key,
+      this.showNext = false,
+      required this.quiz,
+      required this.onComplete});
 
   @override
   State<MultiChoiceQuizWidget> createState() => _MultiChoiceQuizWidgetState();
@@ -18,12 +24,19 @@ class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
   QuizOption? selectedOption;
   bool submitted = false;
 
-  submit(QuizOption option) async {
+  onSubmit(QuizOption option) async {
     await QuizAttemptRepo()
         .recordAttempt(widget.quiz.word.id, option.isCorrect);
     setState(() {
       submitted = true;
     });
+    if (!widget.showNext) {
+      widget.onComplete();
+    }
+  }
+
+  onNext() async {
+    widget.onComplete();
   }
 
   @override
@@ -60,19 +73,54 @@ class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
                   },
                 ),
               )),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomButton(
+                text: 'Submit',
+                onPressed: selectedOption == null || submitted == true
+                    ? null
+                    : () async => {await onSubmit(selectedOption!)},
               ),
-            ),
-            onPressed: selectedOption == null || submitted == true
-                ? null
-                : () async => {await submit(selectedOption!)},
-            child: const Text('Submit'),
+              ...(widget.showNext
+                  ? [
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomButton(
+                        text: 'Next',
+                        onPressed: submitted != true
+                            ? null
+                            : () async => {await onNext()},
+                      )
+                    ]
+                  : []),
+            ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final Function? onPressed;
+  final String text;
+  const CustomButton({super.key, this.onPressed, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+      ),
+      onPressed: onPressed != null ? () => {onPressed!()} : null,
+      child: Text(text),
     );
   }
 }
