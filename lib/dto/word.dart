@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart' as crypto;
 
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:learnquran/dto/example.dart';
 

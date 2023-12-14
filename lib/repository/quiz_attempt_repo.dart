@@ -1,12 +1,5 @@
-import 'dart:ui';
-
-import 'package:flutter/services.dart';
-import 'package:learnquran/dto/quiz_attempt.dart';
-import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/service/database.dart';
 import 'package:logging/logging.dart';
-import 'package:yaml/yaml.dart';
 
 const String tableQuizAttempt = 'quiz_attempt';
 const String columnWordId = 'wordId';
