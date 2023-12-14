@@ -21,6 +21,15 @@ class DbService {
     await db.close();
   }
 
+  Future<int> insert(String table, Map<String, Object?> values,
+      {String? nullColumnHack, ConflictAlgorithm? conflictAlgorithm}) async {
+    late int result;
+    await withDb((db) async {
+      result = await db.insert(table, values);
+    });
+    return result;
+  }
+
   query(String table,
       {bool? distinct,
       List<String>? columns,

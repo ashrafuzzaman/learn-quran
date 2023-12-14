@@ -11,11 +11,9 @@ class QuizAttemptRepo extends DbService {
   recordAttempt(String wordId, isCorrect) async {
     log.info('recordAttempt: $wordId $isCorrect');
 
-    await withDb((db) async {
-      await db.insert(tableQuizAttempt, {
-        'wordId': wordId,
-        'isCorrect': isCorrect ? 1 : 0,
-      });
+    await insert(tableQuizAttempt, {
+      'wordId': wordId,
+      'isCorrect': isCorrect ? 1 : 0,
     });
   }
 
