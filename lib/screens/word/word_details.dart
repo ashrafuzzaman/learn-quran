@@ -3,8 +3,11 @@ import 'package:learnquran/dto/example.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/theme/theme_helper.dart';
 import 'package:learnquran/widgets/quick_font_selector.dart';
+import 'package:learnquran/widgets/text/arabic_highlighted_text.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
+import 'package:dartarabic/dartarabic.dart';
+import 'package:highlight_text/highlight_text.dart';
 
 class WordDetails extends StatelessWidget {
   final Word word;
@@ -70,7 +73,8 @@ class WordDetails extends StatelessWidget {
             padding: const EdgeInsets.all(40),
             child: Column(
               children: [
-                ExamplesWidget(examples: word.examples),
+                ExamplesWidget(
+                    originalWord: word.arabic, examples: word.examples),
               ],
             ),
           ),
@@ -82,8 +86,9 @@ class WordDetails extends StatelessWidget {
 
 class ExamplesWidget extends StatelessWidget {
   final List<Example>? examples;
+  final String originalWord;
 
-  const ExamplesWidget({super.key, this.examples});
+  const ExamplesWidget({super.key, required this.originalWord, this.examples});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +101,8 @@ class ExamplesWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: ArabicText(
+                      child: ArabicHighlightedText(
+                        originalWord,
                         example.arabic,
                         textAlign: TextAlign.center,
                         fontSize: 32,
