@@ -34,7 +34,7 @@ class WordMCQ extends StatelessWidget {
         body: Center(
             child: MCQWidget(
           question: question,
-          onComplete: () => {},
+          onComplete: (isCorrect) => {},
         )),
       );
     });

@@ -50,9 +50,10 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
                   child: MCQWidget(
                 question: mcq,
                 showNext: true,
-                onComplete: () => {
+                onComplete: (bool isCorrect) {
+                  quiz!.recordAttempt(isCorrect);
                   controller.nextPage(
-                      duration: const Duration(seconds: 1), curve: Curves.ease)
+                      duration: const Duration(seconds: 1), curve: Curves.ease);
                 },
               )),
             )

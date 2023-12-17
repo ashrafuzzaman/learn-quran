@@ -4,10 +4,9 @@ import 'package:sqflite/sqflite.dart';
 class DbService {
   withDb(Function(Database db) callback) async {
     var path = 'learn_quran.db';
-    // Database db = await openDatabase('learn_quran.db');
     Database db = await openDatabase(
       path,
-      version: 3,
+      version: 1,
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute("""
@@ -17,8 +16,6 @@ class DbService {
             isCorrect BOOL
           );
         """);
-      },
-      onUpgrade: (db, oldVersion, newVersion) async {
         await db.execute("""
           CREATE TABLE IF NOT EXISTS bookmark_word (
             wordId varchar(36) UNIQUE

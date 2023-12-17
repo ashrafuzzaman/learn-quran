@@ -7,7 +7,7 @@ import 'package:learnquran/widgets/text/arabic_text.dart';
 
 class MCQWidget extends StatefulWidget {
   final MultiChoiceQuestion question;
-  final Function onComplete;
+  final Function(bool) onComplete;
   final bool showNext;
 
   const MCQWidget(
@@ -24,19 +24,22 @@ class _MCQWidgetState extends State<MCQWidget> {
   MCQOption? selectedOption;
   bool submitted = false;
 
-  onSubmit(MCQOption option) async {
+  onSubmit() async {
+    if (selectedOption == null) {
+      return;
+    }
     await QuizAttemptRepo()
-        .recordAttempt(widget.question.word.id, option.isCorrect);
+        .recordAttempt(widget.question.word.id, selectedOption!.isCorrect);
     setState(() {
       submitted = true;
     });
     if (!widget.showNext) {
-      widget.onComplete();
+      widget.onComplete(selectedOption!.isCorrect);
     }
   }
 
   onNext() async {
-    widget.onComplete();
+    widget.onComplete(selectedOption!.isCorrect);
   }
 
   @override
@@ -83,7 +86,7 @@ class _MCQWidgetState extends State<MCQWidget> {
                 text: 'Submit',
                 onPressed: selectedOption == null || submitted == true
                     ? null
-                    : () async => {await onSubmit(selectedOption!)},
+                    : () async => {await onSubmit()},
               ),
               ...(widget.showNext
                   ? [

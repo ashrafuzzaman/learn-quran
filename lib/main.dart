@@ -10,14 +10,15 @@ import 'package:logging/logging.dart';
 
 void main() async {
   Logger.root.level = Level.ALL;
+  // TODO: move this to a loading screen, as this might take time.
+  WidgetsFlutterBinding.ensureInitialized();
+  await DbService().initiate();
+
   // final log = Logger('main');
   // Logger.root.onRecord.listen((record) {
   //   print('${record.level.name}: ${record.message}');
   // });
 
-  WidgetsFlutterBinding.ensureInitialized();
-  // TODO: move this to a loading screen, as this might take time.
-  await DbService().initiate();
   // var result = await QuizAttemptRepo().getWordAttemptsWithCount();
   // log.info(result);
 
