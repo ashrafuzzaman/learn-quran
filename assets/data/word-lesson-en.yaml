@@ -46,7 +46,7 @@ lessons:
         gender: female
         examples:
           -
-            arabic: تِلۡكَ أُمَّةٞ قَدۡ خَلَتۡۖ
+            arabic: تِلْكَ أُمَّةٞ قَدۡ خَلَتۡۖ
             meaning: That was a nation that has passed on;
       -
         arabic: هَٰٓؤُلَآء
@@ -102,7 +102,7 @@ lessons:
         plurality: p
         examples:
           -
-            arabic: تِلۡكَ أَمَانِيُّهُمۡۗ
+            arabic: تِلْكَ أَمَانِيُّهُمۡۗ
             meaning: Those are their wishes.
       -
         arabic: نَعَمۡ
