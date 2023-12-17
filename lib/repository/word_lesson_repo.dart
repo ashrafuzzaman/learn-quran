@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
+import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/dto/word_lesson.dart';
 import 'package:yaml/yaml.dart';
 
@@ -20,5 +21,14 @@ class WordLessonRepo {
         .asMap()
         .entries
         .map((entry) => WordLesson.fromMap(entry.value, entry.key)));
+  }
+
+  Word? getWordFromLesson(String wordId, List<WordLesson> lessons) {
+    for (var lesson in lessons) {
+      for (var word in lesson.words) {
+        if (word.id == wordId) return word;
+      }
+    }
+    return null;
   }
 }

@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/dto/multi_Choice_quiz.dart';
-import 'package:learnquran/dto/quiz_option.dart';
+import 'package:learnquran/dto/multi_Choice_question.dart';
+import 'package:learnquran/dto/mcq_option.dart';
 import 'package:learnquran/repository/quiz_attempt_repo.dart';
 import 'package:learnquran/theme/theme_extension_colors.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 
-class MultiChoiceQuizWidget extends StatefulWidget {
-  final MultiChoiceQuiz quiz;
+class MCQWidget extends StatefulWidget {
+  final MultiChoiceQuestion question;
   final Function onComplete;
   final bool showNext;
 
-  const MultiChoiceQuizWidget(
+  const MCQWidget(
       {super.key,
       this.showNext = false,
-      required this.quiz,
+      required this.question,
       required this.onComplete});
 
   @override
-  State<MultiChoiceQuizWidget> createState() => _MultiChoiceQuizWidgetState();
+  State<MCQWidget> createState() => _MCQWidgetState();
 }
 
-class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
-  QuizOption? selectedOption;
+class _MCQWidgetState extends State<MCQWidget> {
+  MCQOption? selectedOption;
   bool submitted = false;
 
-  onSubmit(QuizOption option) async {
+  onSubmit(MCQOption option) async {
     await QuizAttemptRepo()
-        .recordAttempt(widget.quiz.word.id, option.isCorrect);
+        .recordAttempt(widget.question.word.id, option.isCorrect);
     setState(() {
       submitted = true;
     });
@@ -50,11 +50,11 @@ class _MultiChoiceQuizWidgetState extends State<MultiChoiceQuizWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: ArabicText(
-              widget.quiz.title.text,
+              widget.question.title.text,
               fontSize: 48,
             ),
           ),
-          ...widget.quiz.options.map((option) => ListTile(
+          ...widget.question.options.map((option) => ListTile(
                 title: Text(
                   option.title.text,
                   style: const TextStyle(fontSize: 24),

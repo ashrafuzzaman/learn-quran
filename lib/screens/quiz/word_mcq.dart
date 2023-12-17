@@ -3,19 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/dto/word_lesson.dart';
-import 'package:learnquran/service/random_multi_choice_quiz_generator.dart';
-import 'package:learnquran/widgets/quiz/multi_choice.dart';
+import 'package:learnquran/service/random_mcq_generator.dart';
+import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 
-class WordQuiz extends StatelessWidget {
+class WordMCQ extends StatelessWidget {
   final Word word;
-  const WordQuiz({super.key, required this.word});
+  const WordMCQ({super.key, required this.word});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
         builder: (context, lessons) {
-      var quizGenerator = RandomMultiChoiceQuizGenerator();
-      var quiz = quizGenerator.getQuiz(word: word, words: lessons[0].words);
+      var questionGenerator = RandomMCQGenerator();
+      var question =
+          questionGenerator.getQuestion(word: word, words: lessons[0].words);
 
       return Scaffold(
         appBar: AppBar(
@@ -31,8 +32,8 @@ class WordQuiz extends StatelessWidget {
           elevation: 3,
         ),
         body: Center(
-            child: MultiChoiceQuizWidget(
-          quiz: quiz,
+            child: MCQWidget(
+          question: question,
           onComplete: () => {},
         )),
       );

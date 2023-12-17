@@ -1,7 +1,7 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:learnquran/repository/bookmark_repo.dart';
-import 'package:learnquran/screens/quiz/word_quiz.dart';
+import 'package:learnquran/screens/quiz/word_mcq.dart';
 import 'package:learnquran/screens/word/word_details.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';
@@ -74,7 +74,7 @@ class FlipCardWord extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => WordQuiz(
+                            builder: (context) => WordMCQ(
                                   word: word,
                                 )),
                       );
@@ -106,9 +106,9 @@ class _BookmarkButtonState extends State<BookmarkButton> {
   bool isMarked = false;
 
   @override
-  // ignore: must_call_super
   initState() {
-    // ignore: avoid_print
+    super.initState();
+
     BookmarkRepo().isMarked(widget.wordId).then((marked) => setState(() {
           isMarked = marked;
         }));

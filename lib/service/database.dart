@@ -49,7 +49,7 @@ class DbService {
     return result;
   }
 
-  query(String table,
+  Future<List<Map<String, Object?>>> query(String table,
       {bool? distinct,
       List<String>? columns,
       String? where,

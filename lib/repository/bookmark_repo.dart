@@ -8,6 +8,11 @@ const String columnWordId = 'wordId';
 class BookmarkRepo extends DbService {
   final log = Logger('BookmarkRepo');
 
+  Future<List<String>> getBookmarkedWordIds() async {
+    var result = await query(tableBookmark, columns: [columnWordId]);
+    return result.map((row) => row[columnWordId].toString()).toList();
+  }
+
   Future<bool> isMarked(String wordId) async {
     final result = await query(tableBookmark,
         columns: ['count(*) as total'],

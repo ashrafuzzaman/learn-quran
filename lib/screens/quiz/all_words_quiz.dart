@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learnquran/cubit/lessons_cubit.dart';
-import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
-import 'package:learnquran/service/random_multi_choice_quiz_generator.dart';
-import 'package:learnquran/widgets/quiz/multi_choice.dart';
+import 'package:learnquran/dto/quiz.dart';
+import 'package:learnquran/service/quiz_factory.dart';
+import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 
 class AllWordsQuiz extends StatefulWidget {
   const AllWordsQuiz({super.key});
@@ -15,44 +12,52 @@ class AllWordsQuiz extends StatefulWidget {
 
 class _AllWordsQuizState extends State<AllWordsQuiz> {
   final PageController controller = PageController(initialPage: 0);
+  Quiz? quiz;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    QuizFactory().generateQuiz(const Locale("en")).then((generatedQuiz) {
+      setState(() {
+        quiz = generatedQuiz;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LessonsCubit, List<WordLesson>>(
-        builder: (context, lessons) {
-      final List<Word> words =
-          lessons.isNotEmpty ? List.from(lessons[0].words) : [];
-      var quizGenerator = RandomMultiChoiceQuizGenerator();
-      words.shuffle();
+    if (quiz == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Quiz',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-          elevation: 2,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Quiz',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        body: PageView(
-          controller: controller,
-          physics: const NeverScrollableScrollPhysics(),
-          children: words
-              .map(
-                (word) => Center(
-                    child: MultiChoiceQuizWidget(
-                  quiz: quizGenerator.getQuiz(word: word, words: words),
-                  showNext: true,
-                  onComplete: () => {
-                    controller.nextPage(
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.ease)
-                  },
-                )),
-              )
-              .toList(),
-        ),
-      );
-    });
+        centerTitle: true,
+        elevation: 2,
+      ),
+      body: PageView(
+        controller: controller,
+        physics: const NeverScrollableScrollPhysics(),
+        children: quiz!.mcqList
+            .map(
+              (mcq) => Center(
+                  child: MCQWidget(
+                question: mcq,
+                showNext: true,
+                onComplete: () => {
+                  controller.nextPage(
+                      duration: const Duration(seconds: 1), curve: Curves.ease)
+                },
+              )),
+            )
+            .toList(),
+      ),
+    );
   }
 }
