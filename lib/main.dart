@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learnquran/cubit/arabic_font_cubit.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
+import 'package:learnquran/repository/bookmark_repo.dart';
 import 'package:learnquran/repository/quiz_attempt_repo.dart';
 import 'package:learnquran/screens/home.dart';
 import 'package:learnquran/service/database.dart';
@@ -19,8 +20,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // TODO: move this to a loading screen, as this might take time.
   await DbService().initiate();
-  var result = await QuizAttemptRepo().getWordAttemptsWithCount();
-  log.info(result);
+  // var result = await QuizAttemptRepo().getWordAttemptsWithCount();
+  // log.info(result);
+
   runApp(const MyApp());
 }
 

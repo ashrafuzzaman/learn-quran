@@ -1,5 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:learnquran/repository/bookmark_repo.dart';
 import 'package:learnquran/screens/quiz/word_quiz.dart';
 import 'package:learnquran/screens/word/word_details.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
@@ -64,8 +65,9 @@ class FlipCardWord extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  BookmarkButton(wordId: word.id),
                   TextButton(
                     child: const Text("Quiz"),
                     onPressed: () {
@@ -84,6 +86,46 @@ class FlipCardWord extends StatelessWidget {
           ],
         ),
       )),
+    );
+  }
+}
+
+class BookmarkButton extends StatefulWidget {
+  const BookmarkButton({
+    super.key,
+    required this.wordId,
+  });
+
+  final String wordId;
+
+  @override
+  State<BookmarkButton> createState() => _BookmarkButtonState();
+}
+
+class _BookmarkButtonState extends State<BookmarkButton> {
+  bool isMarked = false;
+
+  @override
+  // ignore: must_call_super
+  initState() {
+    // ignore: avoid_print
+    BookmarkRepo().isMarked(widget.wordId).then((marked) => setState(() {
+          isMarked = marked;
+        }));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      child: isMarked
+          ? const Icon(Icons.bookmark)
+          : const Icon(Icons.bookmark_add_outlined),
+      onPressed: () async {
+        var bookmark = await BookmarkRepo().toggleMarked(widget.wordId);
+        setState(() {
+          isMarked = bookmark.isMarked;
+        });
+      },
     );
   }
 }
