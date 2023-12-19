@@ -19,7 +19,9 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
     // TODO: implement initState
     super.initState();
 
-    QuizFactory().generateQuiz(const Locale("en"), 10).then((generatedQuiz) {
+    QuizFactory()
+        .generateRandomQuiz(const Locale("en"), 10)
+        .then((generatedQuiz) {
       setState(() {
         quiz = generatedQuiz;
       });

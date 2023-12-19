@@ -14,13 +14,7 @@ class QuizFactory {
     return await BookmarkRepo().getBookmarkedWordIds();
   }
 
-  // _getMCQAttempts() async {
-  //   List<WordAttempt> wordAttepmts =
-  //       await MCQAttemptRepo().getWordAttemptsWithCount();
-  //   return wordAttepmts;
-  // }
-
-  Future<Quiz> generateQuiz(Locale local, int totalQuestions) async {
+  Future<Quiz> generateRandomQuiz(Locale local, int totalQuestions) async {
     var wordLessonRepo = WordLessonRepo();
     List<WordLesson> lessons = await wordLessonRepo.getLessons(local);
 
