@@ -62,26 +62,11 @@ class FlipCardWord extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BookmarkButton(wordId: word.id),
-                  TextButton(
-                    child: const Text("Quiz"),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => WordMCQ(
-                                  word: word,
-                                )),
-                      );
-                    },
-                  ),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                BookmarkButton(wordId: word.id),
+              ],
             )
           ],
         ),
