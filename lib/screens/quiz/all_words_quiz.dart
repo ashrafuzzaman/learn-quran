@@ -19,7 +19,7 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
     // TODO: implement initState
     super.initState();
 
-    QuizFactory().generateQuiz(const Locale("en")).then((generatedQuiz) {
+    QuizFactory().generateQuiz(const Locale("en"), 10).then((generatedQuiz) {
       setState(() {
         quiz = generatedQuiz;
       });
@@ -53,7 +53,8 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
                 onComplete: (bool isCorrect) {
                   quiz!.recordAttempt(isCorrect);
                   controller.nextPage(
-                      duration: const Duration(seconds: 1), curve: Curves.ease);
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease);
                 },
               )),
             )

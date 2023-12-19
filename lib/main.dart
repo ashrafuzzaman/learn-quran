@@ -44,6 +44,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Learn Quran",
         theme: getLightTheme(),
+        // darkTheme: getDarkFlexTheme(FlexScheme.amber),
+        // theme: getLightTheme(),
         // darkTheme: getDarkTheme(),
         // themeMode: ThemeMode.system,
         localizationsDelegates: const [

@@ -23,12 +23,12 @@ class WordLessonRepo {
         .map((entry) => WordLesson.fromMap(entry.value, entry.key)));
   }
 
-  Word? getWordFromLesson(String wordId, List<WordLesson> lessons) {
+  Word getWordFromLesson(String wordId, List<WordLesson> lessons) {
     for (var lesson in lessons) {
       for (var word in lesson.words) {
         if (word.id == wordId) return word;
       }
     }
-    return null;
+    throw "Word not found";
   }
 }

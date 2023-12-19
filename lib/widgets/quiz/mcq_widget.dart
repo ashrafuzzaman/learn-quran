@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/multi_Choice_question.dart';
 import 'package:learnquran/dto/mcq_option.dart';
-import 'package:learnquran/repository/quiz_attempt_repo.dart';
+import 'package:learnquran/repository/mcq_attempt_repo.dart';
 import 'package:learnquran/theme/theme_extension_colors.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 
@@ -28,7 +28,7 @@ class _MCQWidgetState extends State<MCQWidget> {
     if (selectedOption == null) {
       return;
     }
-    await QuizAttemptRepo()
+    await MCQAttemptRepo()
         .recordAttempt(widget.question.word.id, selectedOption!.isCorrect);
     setState(() {
       submitted = true;

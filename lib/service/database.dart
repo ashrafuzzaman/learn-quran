@@ -10,7 +10,7 @@ class DbService {
       onCreate: (Database db, int version) async {
         // When creating the db, create the table
         await db.execute("""
-          CREATE TABLE IF NOT EXISTS quiz_attempt (
+          CREATE TABLE IF NOT EXISTS mcq_attempt (
             wordId varchar(36),
             attemptAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             isCorrect BOOL

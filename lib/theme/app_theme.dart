@@ -1,57 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/theme/theme_extension_colors.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 ThemeExtensionColors colors(context) =>
     Theme.of(context).extension<ThemeExtensionColors>()!;
 
 ThemeData getLightTheme() {
+  const lightColorScheme = ColorScheme(
+    brightness: Brightness.light,
+    primary: Color(0xFF694FA3),
+    onPrimary: Color(0xFFFFFFFF),
+    primaryContainer: Color(0xFFEADDFF),
+    onPrimaryContainer: Color(0xFF24005B),
+    secondary: Color(0xFF95416D),
+    onSecondary: Color(0xFFFFFFFF),
+    secondaryContainer: Color(0xFFFFD8E7),
+    onSecondaryContainer: Color(0xFF3D0026),
+    tertiary: Color(0xFF744B9E),
+    onTertiary: Color(0xFFFFFFFF),
+    tertiaryContainer: Color(0xFFEFDBFF),
+    onTertiaryContainer: Color(0xFF2B0052),
+    error: Color(0xFFBA1A1A),
+    errorContainer: Color(0xFFFFDAD6),
+    onError: Color(0xFFFFFFFF),
+    onErrorContainer: Color(0xFF410002),
+    background: Color(0xFFFFFBFF),
+    onBackground: Color(0xFF341100),
+    surface: Color(0xFFFFFBFF),
+    onSurface: Color(0xFF341100),
+    surfaceVariant: Color(0xFFE7E0EB),
+    onSurfaceVariant: Color(0xFF49454E),
+    outline: Color(0xFF7A757F),
+    onInverseSurface: Color(0xFFFFEDE6),
+    inverseSurface: Color(0xFF552000),
+    inversePrimary: Color(0xFFD1BCFF),
+    shadow: Color(0xFF1E1E1E),
+    surfaceTint: Color(0xFF694FA3),
+    outlineVariant: Color(0xFFCAC4CF),
+    scrim: Color(0xFF000000),
+  );
+
   return ThemeData(
     primaryColor: const Color(0xffF9EDD4),
-    colorScheme: const ColorScheme(
-      brightness: Brightness.light,
-      primary: Color(0xFF7C5800),
-      onPrimary: Color(0xFFFFFFFF),
-      primaryContainer: Color(0xFFFFDEA8),
-      onPrimaryContainer: Color(0xFF271900),
-      secondary: Color(0xFF006879),
-      onSecondary: Color(0xFFFFFFFF),
-      secondaryContainer: Color(0xFFABEDFF),
-      onSecondaryContainer: Color(0xFF001F26),
-      tertiary: Color(0xFF006D39),
-      onTertiary: Color(0xFFFFFFFF),
-      tertiaryContainer: Color(0xFF9AF6B3),
-      onTertiaryContainer: Color(0xFF00210D),
-      error: Color(0xFFBA1A1A),
-      errorContainer: Color(0xFFFFDAD6),
-      onError: Color(0xFFFFFFFF),
-      onErrorContainer: Color(0xFF410002),
-      background: Color(0xFFFFFBFF),
-      onBackground: Color(0xFF231A00),
-      surface: Color(0xFFFFFBFF),
-      onSurface: Color(0xFF231A00),
-      surfaceVariant: Color(0xFFEEE1CF),
-      onSurfaceVariant: Color(0xFF4E4639),
-      outline: Color(0xFF807667),
-      onInverseSurface: Color(0xFFFFF0CB),
-      inverseSurface: Color(0xFF3C2F00),
-      inversePrimary: Color(0xFFF8BD49),
-      shadow: Color(0xFF000000),
-      surfaceTint: Color(0xFF7C5800),
-      outlineVariant: Color(0xFFD1C5B4),
-      scrim: Color(0xFF000000),
-    ),
+    colorScheme: lightColorScheme,
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         success: const Color(0xFF9ADE7B),
-        defaultWordBackground: Colors.amber.shade100,
+        defaultWordBackground: Colors.amber[50],
         maleWordBackground: Colors.blue.shade50,
         femaleWordBackground: Colors.pink.shade50,
-        defaultWordIcon: Colors.amber.shade900,
-        maleWordIcon: Colors.blue.shade400,
-        femaleWordIcon: Colors.pink.shade400,
+        defaultWordIcon: Colors.amber.shade700,
+        maleWordIcon: Colors.blue.shade300,
+        femaleWordIcon: Colors.pink.shade300,
       )
     ],
   );
+}
+
+ThemeData getLightFlexTheme(FlexScheme scheme) {
+  return FlexThemeData.light(
+      scheme: scheme,
+      appBarElevation: 2,
+      extensions: <ThemeExtension<ThemeExtensionColors>>[
+        ThemeExtensionColors(
+          success: const Color(0xFF9ADE7B),
+          defaultWordBackground: Colors.amber[50],
+          maleWordBackground: Colors.blue.shade50,
+          femaleWordBackground: Colors.pink.shade50,
+          defaultWordIcon: Colors.amber.shade700,
+          maleWordIcon: Colors.blue.shade300,
+          femaleWordIcon: Colors.pink.shade300,
+        )
+      ]);
 }
 
 ThemeData getDarkTheme() {
@@ -101,4 +121,20 @@ ThemeData getDarkTheme() {
       )
     ],
   );
+}
+
+ThemeData getDarkFlexTheme(FlexScheme scheme) {
+  return FlexThemeData.dark(
+      scheme: scheme,
+      extensions: <ThemeExtension<ThemeExtensionColors>>[
+        ThemeExtensionColors(
+          success: const Color(0xFF006D39),
+          defaultWordBackground: Colors.amber.shade900,
+          maleWordBackground: Colors.blue.shade700,
+          femaleWordBackground: Colors.pink.shade900,
+          defaultWordIcon: Colors.amber.shade700,
+          maleWordIcon: Colors.blue.shade200,
+          femaleWordIcon: Colors.pink.shade200,
+        )
+      ]);
 }

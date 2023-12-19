@@ -2,20 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
 import 'package:learnquran/screens/word/lessons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var titleTextColor = Theme.of(context).colorScheme.surface;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Learn Quranic words',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        toolbarHeight: 250,
+        backgroundColor: Theme.of(context).colorScheme.shadow,
+        title: Center(
+          child: Column(
+            children: [
+              Text(
+                'Road to understanding',
+                style: TextStyle(fontSize: 32, color: titleTextColor),
+              ),
+              Text(
+                '85%',
+                style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: titleTextColor),
+              ),
+              Text(
+                'of The Quran',
+                style: TextStyle(fontSize: 32, color: titleTextColor),
+              ),
+            ],
+          ),
         ),
-        centerTitle: true,
-        elevation: 3,
       ),
       body: const Center(
           child: Column(
@@ -24,7 +43,7 @@ class HomePage extends StatelessWidget {
           HomePageButton(
             widget: WordLessonListPage(),
             label: 'Learn words',
-            icon: Icons.chrome_reader_mode,
+            icon: FaIcon(FontAwesomeIcons.graduationCap),
           ),
           SizedBox(
             height: 16,
@@ -32,7 +51,7 @@ class HomePage extends StatelessWidget {
           HomePageButton(
             widget: AllWordsQuiz(),
             label: 'Quiz',
-            icon: Icons.quiz,
+            icon: FaIcon(FontAwesomeIcons.chartSimple),
           ),
           SizedBox(
             height: 16,
@@ -40,7 +59,7 @@ class HomePage extends StatelessWidget {
           HomePageButton(
             widget: SettingsPage(),
             label: 'Settings',
-            icon: Icons.settings,
+            icon: FaIcon(FontAwesomeIcons.gear),
           ),
         ],
       )),
@@ -57,7 +76,7 @@ class HomePageButton extends StatelessWidget {
   });
 
   final String label;
-  final IconData icon;
+  final FaIcon icon;
   final Widget widget;
 
   @override
@@ -71,7 +90,7 @@ class HomePageButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5)),
         ),
       ),
-      icon: Icon(icon),
+      icon: icon,
       label: Text(
         label,
         style: buttonTextStyle,
