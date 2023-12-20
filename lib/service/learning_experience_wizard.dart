@@ -6,46 +6,43 @@ import 'package:learnquran/repository/word_lesson_repo.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 
 class LearningExperienceWizard implements Iterator<LearnExperience> {
-  late List<Word> allWords;
-  late Word _currentWord;
-  bool _quizeMode = false;
-  int index = 0;
-  final List<Word> _wordsRead = [];
   late LessonWordIterator wordIterator;
+
+  late LearningExperienceWordIterator learningExperienceWordIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
     var lessons = await WordLessonRepo().getLessons(local);
     wordIterator = LessonWordIterator(lessons);
-    allWords = lessons.first.words;
-    _currentWord = allWords.first;
+
+    learningExperienceWordIterator =
+        LearningExperienceWordIterator(lessons.first.words.take(3).toList());
     return this;
   }
 
   @override
-  bool moveNext() => index < allWords.length;
+  bool moveNext() => learningExperienceWordIterator.moveNext();
   @override
   LearnExperience get current => _getNextExperience();
 
   LearnExperience _getNextExperience() {
-    index++;
-    if (_wordsRead.length % 3 == 0) {
-      _quizeMode = true;
-    } else {
-      _selectNextWord();
-    }
-
-    if (_quizeMode) {
-      var mcqWordExperience = MCQWordExperience(word: _currentWord);
-      mcqWordExperience.initialize(allWords);
-      return mcqWordExperience;
-    } else {
-      return LearnWordExperience(word: _currentWord);
-    }
+    return learningExperienceWordIterator.current;
   }
+}
 
-  _selectNextWord() {
-    _wordsRead.add(_currentWord);
-    _currentWord = wordIterator.current;
+class LearningExperienceWordIterator implements Iterator<LearnExperience> {
+  late List<Word> words;
+  int _index = 0;
+
+  LearningExperienceWordIterator(this.words);
+
+  @override
+  bool moveNext() => _index < words.length;
+
+  @override
+  LearnExperience get current => _getNextExperience();
+
+  LearnExperience _getNextExperience() {
+    return LearnWordExperience(word: words[_index++]);
   }
 }
 
