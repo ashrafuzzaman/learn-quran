@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/service/learning_experience.dart';
+import 'package:learnquran/screens/learning_exp/MCQWordExperience.dart';
+import 'package:learnquran/screens/learning_exp/learn_word_experience_widget.dart';
+import 'package:learnquran/service/learning_experience_wizard.dart';
 import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 import 'package:learnquran/widgets/word/word_flipcard.dart';
 
-class LearningExpPage extends StatefulWidget {
-  const LearningExpPage({super.key});
+class LearningExpScreen extends StatefulWidget {
+  const LearningExpScreen({super.key});
 
   @override
-  State<LearningExpPage> createState() => _LearningExpPageState();
+  State<LearningExpScreen> createState() => _LearningExpScreenState();
 }
 
-class _LearningExpPageState extends State<LearningExpPage> {
+class _LearningExpScreenState extends State<LearningExpScreen> {
   final PageController controller = PageController(initialPage: 0);
   int currentPageIndex = 0;
-  int pageCount = 10;
+  int pageCount = 1;
   late LearnExperience currentExperience;
   late LearningExperienceWizard wizard = LearningExperienceWizard();
 
@@ -24,7 +26,7 @@ class _LearningExpPageState extends State<LearningExpPage> {
   }
 
   navigateToNextPage() {
-    wizard.moveNext();
+    addPageView();
     controller.nextPage(
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
@@ -36,33 +38,22 @@ class _LearningExpPageState extends State<LearningExpPage> {
   }
 
   createPage() {
-    LearnExperience? exp = wizard.getCurrentExperience();
+    if (!wizard.moveNext()) return null;
+
+    LearnExperience? exp = wizard.current;
 
     switch (exp.runtimeType) {
       case const (Null):
         return null;
       case const (LearnWordExperience):
-        return Center(
-          child: SizedBox(
-            height: 300,
-            child: Column(
-              children: [
-                WordFlipCardWidget(word: exp!.word),
-                ElevatedButton(
-                    onPressed: () => navigateToNextPage(),
-                    child: const Text('Next'))
-              ],
-            ),
-          ),
+        return LearnWordExperienceWidget(
+          experience: (exp as LearnWordExperience),
+          onComplete: () => navigateToNextPage(),
         );
       case const (MCQWordExperience):
-        return MCQWidget(
-          question: (exp as MCQWordExperience).mcq,
-          showNext: true,
-          onComplete: (bool isCorrect) {
-            // quiz!.recordAttempt(isCorrect);
-            navigateToNextPage();
-          },
+        return MCQWordExperienceWidget(
+          experience: (exp as MCQWordExperience),
+          onComplete: () => navigateToNextPage(),
         );
     }
   }
@@ -85,8 +76,6 @@ class _LearningExpPageState extends State<LearningExpPage> {
               body: PageView.builder(
                 controller: controller,
                 physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: getCurrentPage,
-                itemCount: pageCount,
                 itemBuilder: (context, position) {
                   return createPage();
                 },

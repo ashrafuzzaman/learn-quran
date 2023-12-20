@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/screens/learning_exp/learning_exp_page.dart';
+import 'package:learnquran/screens/learning_exp/learning_exp_screen.dart';
 import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           HomePageButton(
-            widget: LearningExpPage(),
+            widget: LearningExpScreen(),
             // widget: WordLessonListPage(),
             label: 'Learn words',
             icon: FaIcon(FontAwesomeIcons.graduationCap),

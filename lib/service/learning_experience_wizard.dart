@@ -5,7 +5,7 @@ import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 
-class LearningExperienceWizard {
+class LearningExperienceWizard implements Iterator<LearnExperience> {
   late List<Word> allWords;
   late Word _currentWord;
   bool _quizeMode = false;
@@ -21,9 +21,17 @@ class LearningExperienceWizard {
     return this;
   }
 
-  LearnExperience? getCurrentExperience() {
-    if (index > 10) {
-      return null;
+  @override
+  bool moveNext() => index < allWords.length;
+  @override
+  LearnExperience get current => _getNextExperience();
+
+  LearnExperience _getNextExperience() {
+    index++;
+    if (_wordsRead.length % 3 == 0) {
+      _quizeMode = true;
+    } else {
+      _selectNextWord();
     }
 
     if (_quizeMode) {
@@ -35,22 +43,13 @@ class LearningExperienceWizard {
     }
   }
 
-  moveNext() {
-    index++;
-    if (_wordsRead.length % 3 == 0) {
-      _quizeMode = true;
-    } else {
-      _selectNextWord();
-    }
-  }
-
   _selectNextWord() {
     _wordsRead.add(_currentWord);
     _currentWord = wordIterator.current;
   }
 }
 
-class LessonWordIterator implements Iterator {
+class LessonWordIterator implements Iterator<Word> {
   final List<Word> _words = [];
 
   LessonWordIterator(List<WordLesson> lessons) {
