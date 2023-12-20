@@ -43,6 +43,12 @@ ThemeData getLightTheme() {
   return ThemeData(
     primaryColor: const Color(0xffF9EDD4),
     colorScheme: lightColorScheme,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
+    )),
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         success: const Color(0xFF9ADE7B),

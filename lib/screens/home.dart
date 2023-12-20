@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:learnquran/screens/learning_exp/learning_exp_page.dart';
 import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
-import 'package:learnquran/screens/word/lessons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
@@ -88,9 +87,6 @@ class HomePageButton extends StatelessWidget {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(200, 48),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-        ),
       ),
       icon: icon,
       label: Text(
