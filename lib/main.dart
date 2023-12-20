@@ -1,3 +1,4 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -43,10 +44,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Learn Quran",
-        theme: getLightTheme(),
-        // darkTheme: getDarkFlexTheme(FlexScheme.amber),
-        // theme: getLightTheme(),
-        // darkTheme: getDarkTheme(),
+        theme: getLightFlexTheme(FlexScheme.bahamaBlue),
+        // darkTheme: getDarkFlexTheme(FlexScheme.bahamaBlue),
         // themeMode: ThemeMode.system,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

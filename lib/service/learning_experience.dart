@@ -10,7 +10,7 @@ class LearningExperienceWizard {
   late Word _currentWord;
   bool _quizeMode = false;
   int index = 0;
-  List<Word> _wordsRead = [];
+  final List<Word> _wordsRead = [];
   late LessonWordIterator wordIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {

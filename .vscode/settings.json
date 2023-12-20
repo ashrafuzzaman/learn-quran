@@ -16,5 +16,6 @@
   },
   "cSpell.words": [
     "learnquran"
-  ]
+  ],
+  "java.compile.nullAnalysis.mode": "disabled"
 }

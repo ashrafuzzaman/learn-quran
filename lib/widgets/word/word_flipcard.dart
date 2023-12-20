@@ -1,7 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:learnquran/repository/bookmark_repo.dart';
-import 'package:learnquran/screens/quiz/word_mcq.dart';
 import 'package:learnquran/screens/word/word_details.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/widgets/word/word_icon.dart';

@@ -40,15 +40,34 @@ ThemeData getLightTheme() {
     scrim: Color(0xFF000000),
   );
 
+  final ColorScheme schemeLight = SeedColorScheme.fromSeeds(
+    brightness: Brightness.light,
+    // Primary key color is required, like seed color ColorScheme.fromSeed.
+    primaryKey: Colors.blue,
+    // You can add optional own seeds for secondary and tertiary key colors.
+    secondaryKey: Colors.purple,
+    tertiaryKey: Colors.amber,
+    // Tone chroma config and tone mapping is optional, if you do not add it
+    // you get the config matching Flutter's Material 3 ColorScheme.fromSeed.
+    tones: FlexTones.vivid(Brightness.light),
+  );
+
   return ThemeData(
     primaryColor: const Color(0xffF9EDD4),
-    colorScheme: lightColorScheme,
+    colorScheme: schemeLight,
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+      elevation: 3,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
     )),
+    cardTheme: CardTheme(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         success: const Color(0xFF9ADE7B),
@@ -67,6 +86,7 @@ ThemeData getLightFlexTheme(FlexScheme scheme) {
   return FlexThemeData.light(
       scheme: scheme,
       appBarElevation: 2,
+      useMaterial3: true,
       extensions: <ThemeExtension<ThemeExtensionColors>>[
         ThemeExtensionColors(
           success: const Color(0xFF9ADE7B),
@@ -77,7 +97,21 @@ ThemeData getLightFlexTheme(FlexScheme scheme) {
           maleWordIcon: Colors.blue.shade300,
           femaleWordIcon: Colors.pink.shade300,
         )
-      ]);
+      ]).copyWith(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      elevation: 3,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
+    )),
+    cardTheme: CardTheme(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+  );
 }
 
 ThemeData getDarkTheme() {
@@ -142,5 +176,19 @@ ThemeData getDarkFlexTheme(FlexScheme scheme) {
           maleWordIcon: Colors.blue.shade200,
           femaleWordIcon: Colors.pink.shade200,
         )
-      ]);
+      ]).copyWith(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      elevation: 3,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
+    )),
+    cardTheme: CardTheme(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+  );
 }

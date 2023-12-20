@@ -9,11 +9,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var titleTextColor = Theme.of(context).colorScheme.surface;
+    var titleTextColor = Colors.white;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 250,
-        backgroundColor: Theme.of(context).colorScheme.shadow,
+        backgroundColor: Colors.black,
         title: Center(
           child: Column(
             children: [
