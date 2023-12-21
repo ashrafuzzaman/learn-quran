@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/dto/multi_Choice_question.dart';
 import 'package:learnquran/dto/word.dart';
+import 'package:learnquran/repository/mcq_attempt_repo.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
+import 'package:learnquran/service/learn_exp_mcq_iterator.dart';
+import 'package:learnquran/service/learn_exp_word_iterator.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 import 'package:learnquran/service/word_iterator.dart';
 
-class LearningExperienceWizard implements Iterator<LearnExperience> {
+class LearningExperienceWizard {
   late WordIterator wordIterator;
   late List<Word> answerBankWords;
 
@@ -38,62 +42,25 @@ class LearningExperienceWizard implements Iterator<LearnExperience> {
         LearnExpMCQIterator(words: nextWords, answerBankWords: answerBankWords);
   }
 
-  @override
-  bool moveNext() =>
+  bool hasNextExperience() =>
       learnExpWordIterator.moveNext() ||
       learnExpMCQIterator.moveNext() ||
       wordIterator.moveNext();
-  @override
-  LearnExperience get current => _getNextExperience();
 
-  LearnExperience _getNextExperience() {
+  Future<LearnExperience> getNextExperience() async {
     if (learnExpWordIterator.moveNext()) {
       return learnExpWordIterator.current;
     }
     if (learnExpMCQIterator.moveNext()) {
       return learnExpMCQIterator.current;
+    } else {
+      learnExpMCQIterator.mcqWordExperiences.forEach((mcqWordExperience) {
+        print(
+            "${mcqWordExperience.word.arabic}: ${mcqWordExperience.isCorrect}");
+      });
     }
     _generateExperiences();
-    return _getNextExperience();
-  }
-}
-
-class LearnExpMCQIterator implements Iterator<LearnExperience> {
-  final List<Word> _words;
-  final List<Word> _answerBankWords;
-  int _index = 0;
-
-  LearnExpMCQIterator(
-      {required List<Word> words, required List<Word> answerBankWords})
-      : _words = words,
-        _answerBankWords = answerBankWords;
-
-  @override
-  bool moveNext() => _index < _words.length;
-
-  @override
-  LearnExperience get current => _getNextExperience();
-
-  LearnExperience _getNextExperience() {
-    return MCQWordExperience(
-        word: _words[_index++], answerBankWords: _answerBankWords);
-  }
-}
-
-class LearnExpWordIterator implements Iterator<LearnExperience> {
-  late List<Word> words;
-  int _index = 0;
-
-  LearnExpWordIterator(this.words);
-
-  @override
-  bool moveNext() => _index < words.length;
-
-  @override
-  LearnExperience get current => _getNextExperience();
-
-  LearnExperience _getNextExperience() {
-    return LearnWordExperience(word: words[_index++]);
+    return getNextExperience();
   }
 }
 
@@ -109,11 +76,19 @@ class LearnWordExperience extends LearnExperience {
 
 class MCQWordExperience extends LearnExperience {
   List<Word> answerBankWords;
+  late MultiChoiceQuestion question;
+  bool? isCorrect;
   MCQWordExperience({required super.word, required this.answerBankWords});
 
   getMCQ() {
     var questionGenerator = RandomMCQGenerator();
-    return questionGenerator.getQuestion(
+    question = questionGenerator.getQuestion(
         word: word, answerBankWords: answerBankWords);
+    return question;
+  }
+
+  recordAttempt(bool isCorrect) async {
+    await MCQAttemptRepo().recordAttempt(word.id, isCorrect);
+    this.isCorrect = isCorrect;
   }
 }

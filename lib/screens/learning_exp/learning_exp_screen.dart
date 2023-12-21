@@ -19,14 +19,10 @@ class _LearningExpScreenState extends State<LearningExpScreen> {
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
 
-  createPage() {
-    if (!wizard.moveNext()) return null;
-
-    LearnExperience? exp = wizard.current;
+  Future<Widget> createExperience() async {
+    LearnExperience? exp = await wizard.getNextExperience();
 
     switch (exp.runtimeType) {
-      case const (Null):
-        return null;
       case const (LearnWordExperience):
         return LearnWordExperienceWidget(
           experience: (exp as LearnWordExperience),
@@ -38,6 +34,7 @@ class _LearningExpScreenState extends State<LearningExpScreen> {
           onComplete: () => navigateToNextPage(),
         );
     }
+    return const CircularProgressIndicator();
   }
 
   @override
@@ -59,7 +56,16 @@ class _LearningExpScreenState extends State<LearningExpScreen> {
                 controller: controller,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, position) {
-                  return createPage();
+                  if (!wizard.hasNextExperience()) return null;
+                  return FutureBuilder<Widget>(
+                    future: createExperience(),
+                    builder: (context, AsyncSnapshot<Widget> expSnapshot) {
+                      if (expSnapshot.data != null) {
+                        return expSnapshot.data!;
+                      }
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  );
                 },
               ),
             );

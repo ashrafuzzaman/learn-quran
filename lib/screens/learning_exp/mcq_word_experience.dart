@@ -15,7 +15,7 @@ class MCQWordExperienceWidget extends StatelessWidget {
       question: experience.getMCQ(),
       showNext: true,
       onComplete: (bool isCorrect) {
-        MCQAttemptRepo().recordAttempt(experience.word.id, isCorrect).then((_) {
+        experience.recordAttempt(isCorrect).then((_) {
           onComplete();
         });
       },
