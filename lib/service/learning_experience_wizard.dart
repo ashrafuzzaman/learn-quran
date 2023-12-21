@@ -1,59 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
+import 'package:learnquran/service/word_iterator.dart';
 
 class LearningExperienceWizard implements Iterator<LearnExperience> {
   late WordIterator wordIterator;
+  late List<Word> answerBankWords;
 
-  late LearningExperienceMCQIterator learningExperienceWordIterator;
+  late LearnExpMCQIterator learnExpMCQIterator;
+  late LearnExpWordIterator learnExpWordIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
     var lessons = await WordLessonRepo().getLessons(local);
     wordIterator = WordIterator(lessons);
-    var answerBankWords = lessons.first.words;
+    answerBankWords = List<Word>.of(wordIterator.words);
 
-    learningExperienceWordIterator = LearningExperienceMCQIterator(
-        words: answerBankWords.take(3).toList(),
-        answerBankWords: answerBankWords);
+    _generateExperiences();
     return this;
   }
 
+  List<Word> _getNextWords(int numberOfWords) {
+    var words = <Word>[];
+    for (var i = 0; i < numberOfWords; i++) {
+      if (wordIterator.moveNext()) {
+        words.add(wordIterator.current);
+      }
+    }
+    return words;
+  }
+
+  void _generateExperiences() {
+    var nextWords = _getNextWords(3);
+    learnExpWordIterator = LearnExpWordIterator(nextWords);
+
+    learnExpMCQIterator =
+        LearnExpMCQIterator(words: nextWords, answerBankWords: answerBankWords);
+  }
+
   @override
-  bool moveNext() => learningExperienceWordIterator.moveNext();
+  bool moveNext() =>
+      learnExpWordIterator.moveNext() ||
+      learnExpMCQIterator.moveNext() ||
+      wordIterator.moveNext();
   @override
   LearnExperience get current => _getNextExperience();
 
   LearnExperience _getNextExperience() {
-    return learningExperienceWordIterator.current;
+    if (learnExpWordIterator.moveNext()) {
+      return learnExpWordIterator.current;
+    }
+    if (learnExpMCQIterator.moveNext()) {
+      return learnExpMCQIterator.current;
+    }
+    _generateExperiences();
+    return _getNextExperience();
   }
 }
 
-class LearningExperienceWordIterator implements Iterator<LearnExperience> {
-  late List<Word> words;
-  int _index = 0;
-
-  LearningExperienceWordIterator(this.words);
-
-  @override
-  bool moveNext() => _index < words.length;
-
-  @override
-  LearnExperience get current => _getNextExperience();
-
-  LearnExperience _getNextExperience() {
-    return LearnWordExperience(word: words[_index++]);
-  }
-}
-
-class LearningExperienceMCQIterator implements Iterator<LearnExperience> {
+class LearnExpMCQIterator implements Iterator<LearnExperience> {
   final List<Word> _words;
   final List<Word> _answerBankWords;
   int _index = 0;
 
-  LearningExperienceMCQIterator(
+  LearnExpMCQIterator(
       {required List<Word> words, required List<Word> answerBankWords})
       : _words = words,
         _answerBankWords = answerBankWords;
@@ -70,20 +80,21 @@ class LearningExperienceMCQIterator implements Iterator<LearnExperience> {
   }
 }
 
-class WordIterator implements Iterator<Word> {
-  final List<Word> _words = [];
+class LearnExpWordIterator implements Iterator<LearnExperience> {
+  late List<Word> words;
+  int _index = 0;
 
-  WordIterator(List<WordLesson> lessons) {
-    for (var lesson in lessons) {
-      _words.addAll(lesson.words);
-    }
+  LearnExpWordIterator(this.words);
+
+  @override
+  bool moveNext() => _index < words.length;
+
+  @override
+  LearnExperience get current => _getNextExperience();
+
+  LearnExperience _getNextExperience() {
+    return LearnWordExperience(word: words[_index++]);
   }
-
-  var _index = 0;
-  @override
-  Word get current => _words[_index++];
-  @override
-  bool moveNext() => _index < _words.length;
 }
 
 class LearnExperience {

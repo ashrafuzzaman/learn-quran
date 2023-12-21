@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/screens/learning_exp/MCQWordExperience.dart';
+import 'package:learnquran/screens/learning_exp/mcq_word_experience.dart';
 import 'package:learnquran/screens/learning_exp/learn_word_experience_widget.dart';
 import 'package:learnquran/service/learning_experience_wizard.dart';
 
