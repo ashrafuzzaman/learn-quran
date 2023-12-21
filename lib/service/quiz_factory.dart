@@ -34,8 +34,8 @@ class QuizFactory {
     }
 
     words.shuffle();
-    var mcqList = words.map((word) =>
-        questionGenerator.getQuestion(word: word, words: lessons[0].words));
+    var mcqList = words.map((word) => questionGenerator.getQuestion(
+        word: word, answerBankWords: lessons[0].words));
     return Quiz(mcqList: mcqList);
   }
 }

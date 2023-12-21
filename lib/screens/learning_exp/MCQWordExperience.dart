@@ -11,7 +11,7 @@ class MCQWordExperienceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MCQWidget(
-      question: experience.mcq,
+      question: experience.getMCQ(),
       showNext: true,
       onComplete: (bool isCorrect) {
         // quiz!.recordAttempt(isCorrect);

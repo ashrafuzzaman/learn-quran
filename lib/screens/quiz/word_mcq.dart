@@ -15,8 +15,8 @@ class WordMCQ extends StatelessWidget {
     return BlocBuilder<LessonsCubit, List<WordLesson>>(
         builder: (context, lessons) {
       var questionGenerator = RandomMCQGenerator();
-      var question =
-          questionGenerator.getQuestion(word: word, words: lessons[0].words);
+      var question = questionGenerator.getQuestion(
+          word: word, answerBankWords: lessons[0].words);
 
       return Scaffold(
         appBar: AppBar(

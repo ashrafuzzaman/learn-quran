@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/dto/multi_Choice_question.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/dto/word_lesson.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 
 class LearningExperienceWizard implements Iterator<LearnExperience> {
-  late LessonWordIterator wordIterator;
+  late WordIterator wordIterator;
 
-  late LearningExperienceWordIterator learningExperienceWordIterator;
+  late LearningExperienceMCQIterator learningExperienceWordIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
     var lessons = await WordLessonRepo().getLessons(local);
-    wordIterator = LessonWordIterator(lessons);
+    wordIterator = WordIterator(lessons);
+    var answerBankWords = lessons.first.words;
 
-    learningExperienceWordIterator =
-        LearningExperienceWordIterator(lessons.first.words.take(3).toList());
+    learningExperienceWordIterator = LearningExperienceMCQIterator(
+        words: answerBankWords.take(3).toList(),
+        answerBankWords: answerBankWords);
     return this;
   }
 
@@ -46,10 +48,32 @@ class LearningExperienceWordIterator implements Iterator<LearnExperience> {
   }
 }
 
-class LessonWordIterator implements Iterator<Word> {
+class LearningExperienceMCQIterator implements Iterator<LearnExperience> {
+  final List<Word> _words;
+  final List<Word> _answerBankWords;
+  int _index = 0;
+
+  LearningExperienceMCQIterator(
+      {required List<Word> words, required List<Word> answerBankWords})
+      : _words = words,
+        _answerBankWords = answerBankWords;
+
+  @override
+  bool moveNext() => _index < _words.length;
+
+  @override
+  LearnExperience get current => _getNextExperience();
+
+  LearnExperience _getNextExperience() {
+    return MCQWordExperience(
+        word: _words[_index++], answerBankWords: _answerBankWords);
+  }
+}
+
+class WordIterator implements Iterator<Word> {
   final List<Word> _words = [];
 
-  LessonWordIterator(List<WordLesson> lessons) {
+  WordIterator(List<WordLesson> lessons) {
     for (var lesson in lessons) {
       _words.addAll(lesson.words);
     }
@@ -73,11 +97,12 @@ class LearnWordExperience extends LearnExperience {
 }
 
 class MCQWordExperience extends LearnExperience {
-  late MultiChoiceQuestion mcq;
-  MCQWordExperience({required super.word});
+  List<Word> answerBankWords;
+  MCQWordExperience({required super.word, required this.answerBankWords});
 
-  initialize(List<Word> words) {
+  getMCQ() {
     var questionGenerator = RandomMCQGenerator();
-    mcq = questionGenerator.getQuestion(word: word, words: words);
+    return questionGenerator.getQuestion(
+        word: word, answerBankWords: answerBankWords);
   }
 }
