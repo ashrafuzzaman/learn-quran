@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/repository/mcq_attempt_repo.dart';
-import 'package:learnquran/service/learning_experience_wizard.dart';
+import 'package:learnquran/service/learn_exp_mcq.dart';
 import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 
 class MCQWordExperienceWidget extends StatelessWidget {

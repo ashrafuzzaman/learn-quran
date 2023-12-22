@@ -17,3 +17,7 @@ class LearnExpWordIterator implements Iterator<LearnExperience> {
     return LearnWordExperience(word: words[_index++]);
   }
 }
+
+class LearnWordExperience extends LearnExperience {
+  LearnWordExperience({required super.word});
+}

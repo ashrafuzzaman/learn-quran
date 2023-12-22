@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/dto/multi_Choice_question.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/repository/mcq_attempt_repo.dart';
+import 'package:learnquran/repository/progression_repo.dart';
 import 'package:learnquran/repository/word_lesson_repo.dart';
-import 'package:learnquran/service/learn_exp_mcq_iterator.dart';
-import 'package:learnquran/service/learn_exp_word_iterator.dart';
-import 'package:learnquran/service/random_mcq_generator.dart';
+import 'package:learnquran/service/learn_exp_mcq.dart';
+import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/service/word_iterator.dart';
 
 class LearningExperienceWizard {
@@ -16,8 +14,9 @@ class LearningExperienceWizard {
   late LearnExpWordIterator learnExpWordIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
+    var latestReadWordId = await ProgressionRepo().getLatestReadWordId();
     var lessons = await WordLessonRepo().getLessons(local);
-    wordIterator = WordIterator(lessons);
+    wordIterator = WordIterator(lessons, latestReadWordId);
     answerBankWords = List<Word>.of(wordIterator.words);
 
     _generateExperiences();
@@ -34,12 +33,13 @@ class LearningExperienceWizard {
     return words;
   }
 
-  void _generateExperiences() {
+  List<Word> _generateExperiences() {
     var nextWords = _getNextWords(3);
     learnExpWordIterator = LearnExpWordIterator(nextWords);
 
     learnExpMCQIterator =
         LearnExpMCQIterator(words: nextWords, answerBankWords: answerBankWords);
+    return nextWords;
   }
 
   bool hasNextExperience() =>
@@ -53,13 +53,14 @@ class LearningExperienceWizard {
     }
     if (learnExpMCQIterator.moveNext()) {
       return learnExpMCQIterator.current;
-    } else {
-      learnExpMCQIterator.mcqWordExperiences.forEach((mcqWordExperience) {
-        print(
-            "${mcqWordExperience.word.arabic}: ${mcqWordExperience.isCorrect}");
-      });
     }
-    _generateExperiences();
+
+    var isAllCorrect =
+        learnExpMCQIterator.mcqWordExperiences.every((mcq) => mcq.isCorrect!);
+    var nextWords = _generateExperiences();
+    if (isAllCorrect) {
+      ProgressionRepo().recordProgression(nextWords.first.id);
+    }
     return getNextExperience();
   }
 }
@@ -68,27 +69,4 @@ class LearnExperience {
   final Word word;
 
   LearnExperience({required this.word});
-}
-
-class LearnWordExperience extends LearnExperience {
-  LearnWordExperience({required super.word});
-}
-
-class MCQWordExperience extends LearnExperience {
-  List<Word> answerBankWords;
-  late MultiChoiceQuestion question;
-  bool? isCorrect;
-  MCQWordExperience({required super.word, required this.answerBankWords});
-
-  getMCQ() {
-    var questionGenerator = RandomMCQGenerator();
-    question = questionGenerator.getQuestion(
-        word: word, answerBankWords: answerBankWords);
-    return question;
-  }
-
-  recordAttempt(bool isCorrect) async {
-    await MCQAttemptRepo().recordAttempt(word.id, isCorrect);
-    this.isCorrect = isCorrect;
-  }
 }

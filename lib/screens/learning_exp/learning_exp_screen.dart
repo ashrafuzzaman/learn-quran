@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/screens/learning_exp/mcq_word_experience.dart';
 import 'package:learnquran/screens/learning_exp/learn_word_experience_widget.dart';
+import 'package:learnquran/service/learn_exp_mcq.dart';
+import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/service/learning_experience_wizard.dart';
 
 class LearningExpScreen extends StatefulWidget {

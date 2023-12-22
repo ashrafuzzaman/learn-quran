@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/service/learning_experience_wizard.dart';
+import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/widgets/word/word_flipcard.dart';
 
 class LearnWordExperienceWidget extends StatelessWidget {

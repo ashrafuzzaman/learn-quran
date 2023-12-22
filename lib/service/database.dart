@@ -23,9 +23,8 @@ class DbService {
         """);
         await db.execute("""
           CREATE TABLE IF NOT EXISTS progression (
-            wordId varchar(36) UNIQUE
-            lessonId INTEGER
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            wordId varchar(36) UNIQUE,
+            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           );
         """);
       },
