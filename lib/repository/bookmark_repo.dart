@@ -2,7 +2,7 @@ import 'package:learnquran/dto/bookmark.dart';
 import 'package:learnquran/service/database.dart';
 import 'package:logging/logging.dart';
 
-const String tableBookmark = 'bookmark_word';
+const String tableBookmark = 'bookmark_words';
 const String columnWordId = 'wordId';
 
 class BookmarkRepo extends DbService {

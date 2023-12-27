@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/dto/lesson.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 
@@ -12,7 +12,7 @@ class WordMCQ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LessonsCubit, List<WordLesson>>(
+    return BlocBuilder<LessonsCubit, List<LessonWithWords>>(
         builder: (context, lessons) {
       var questionGenerator = RandomMCQGenerator();
       var question = questionGenerator.getQuestion(

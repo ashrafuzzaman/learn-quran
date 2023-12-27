@@ -2,11 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/dto/lesson.dart';
 import 'package:yaml/yaml.dart';
 
-class WordLessonRepo {
-  Future<List<WordLesson>> getLessons(Locale local) async {
+class WordLessonFileRepo {
+  Future<List<LessonWithWords>> getLessons(Locale local) async {
     String yamlString;
     List<String> splits;
     try {
@@ -17,13 +17,13 @@ class WordLessonRepo {
       throw Exception("Language not supported");
     }
     final data = loadYaml(splits[splits.length - 1]);
-    return List<WordLesson>.from(data['lessons']
+    return List<LessonWithWords>.from(data['lessons']
         .asMap()
         .entries
-        .map((entry) => WordLesson.fromMap(entry.value, entry.key)));
+        .map((entry) => LessonWithWords.fromMap(entry.value, entry.key)));
   }
 
-  Word getWordFromLesson(String wordId, List<WordLesson> lessons) {
+  Word getWordFromLesson(String wordId, List<LessonWithWords> lessons) {
     for (var lesson in lessons) {
       for (var word in lesson.words) {
         if (word.id == wordId) return word;

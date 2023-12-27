@@ -1,7 +1,7 @@
 import 'package:learnquran/service/database.dart';
 import 'package:logging/logging.dart';
 
-const String tableQuizAttempt = 'mcq_attempt';
+const String tableQuizAttempt = 'mcq_attempts';
 const String columnWordId = 'wordId';
 const String columnIsCorrect = 'isCorrect';
 

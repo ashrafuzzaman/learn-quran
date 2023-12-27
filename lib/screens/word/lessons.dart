@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnquran/cubit/lessons_cubit.dart';
-import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/dto/lesson.dart';
 import 'package:learnquran/screens/word/words.dart';
-import 'package:learnquran/repository/word_lesson_repo.dart';
+import 'package:learnquran/repository/word_lesson_file_repo.dart';
 
 class WordLessonListPage extends StatelessWidget {
   const WordLessonListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var wordLessonRepo = WordLessonRepo();
+    var wordLessonRepo = WordLessonFileRepo();
 
     return FutureBuilder(
         future: wordLessonRepo.getLessons(const Locale("en")),
-        builder: (context, AsyncSnapshot<List<WordLesson>> snapshot) {
+        builder: (context, AsyncSnapshot<List<LessonWithWords>> snapshot) {
           return Scaffold(
             appBar: AppBar(
               title: const Text(
@@ -35,7 +35,7 @@ class WordListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LessonsCubit, List<WordLesson>>(
+    return BlocBuilder<LessonsCubit, List<LessonWithWords>>(
       builder: (context, lessons) {
         if (lessons.isEmpty) {
           return const CircularProgressIndicator();

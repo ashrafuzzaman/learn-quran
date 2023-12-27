@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/repository/progression_repo.dart';
-import 'package:learnquran/repository/word_lesson_repo.dart';
+import 'package:learnquran/repository/word_lesson_file_repo.dart';
 import 'package:learnquran/service/learn_exp_mcq.dart';
 import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/service/word_iterator.dart';
@@ -10,12 +10,12 @@ class LearningExperienceWizard {
   late WordIterator wordIterator;
   late List<Word> answerBankWords;
 
-  late LearnExpMCQIterator learnExpMCQIterator;
   late LearnExpWordIterator learnExpWordIterator;
+  late LearnExpMCQIterator learnExpMCQIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
     var latestReadWordId = await ProgressionRepo().getLatestReadWordId();
-    var lessons = await WordLessonRepo().getLessons(local);
+    var lessons = await WordLessonFileRepo().getLessons(local);
     wordIterator = WordIterator(lessons, latestReadWordId);
     answerBankWords = List<Word>.of(wordIterator.words);
 

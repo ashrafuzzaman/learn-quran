@@ -1,16 +1,16 @@
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
-import 'package:learnquran/dto/word_lesson.dart';
-import 'package:learnquran/repository/word_lesson_repo.dart';
+import 'package:learnquran/dto/lesson.dart';
+import 'package:learnquran/repository/word_lesson_file_repo.dart';
 
-class LessonsCubit extends Cubit<List<WordLesson>> {
+class LessonsCubit extends Cubit<List<LessonWithWords>> {
   LessonsCubit() : super([]) {
     initialize();
   }
 
   initialize() {
-    var wordLessonRepo = WordLessonRepo();
+    var wordLessonRepo = WordLessonFileRepo();
     wordLessonRepo
         .getLessons(const Locale("en"))
         .then((lessons) => emit(lessons));

@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:learnquran/dto/quiz.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/dto/lesson.dart';
 import 'package:learnquran/repository/bookmark_repo.dart';
-import 'package:learnquran/repository/word_lesson_repo.dart';
+import 'package:learnquran/repository/word_lesson_file_repo.dart';
 import 'package:learnquran/service/random_mcq_generator.dart';
 
 class QuizFactory {
@@ -15,8 +15,8 @@ class QuizFactory {
   }
 
   Future<Quiz> generateRandomQuiz(Locale local, int totalQuestions) async {
-    var wordLessonRepo = WordLessonRepo();
-    List<WordLesson> lessons = await wordLessonRepo.getLessons(local);
+    var wordLessonRepo = WordLessonFileRepo();
+    List<LessonWithWords> lessons = await wordLessonRepo.getLessons(local);
 
     var questionGenerator = RandomMCQGenerator();
     var bookmarkedWordIds = await _getBookmarkedWordIds();

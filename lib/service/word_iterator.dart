@@ -1,11 +1,11 @@
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/dto/word_lesson.dart';
+import 'package:learnquran/dto/lesson.dart';
 
 class WordIterator implements Iterator<Word> {
   final List<Word> _words = [];
   var _index = 0;
 
-  WordIterator(List<WordLesson> lessons, String? startWordId) {
+  WordIterator(List<LessonWithWords> lessons, String? startWordId) {
     for (var lesson in lessons) {
       _words.addAll(lesson.words);
     }
