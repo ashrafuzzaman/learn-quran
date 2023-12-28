@@ -1,3 +1,4 @@
+import 'package:learnquran/repository/words_repo.dart';
 import 'package:learnquran/service/database.dart';
 import 'package:logging/logging.dart';
 
@@ -16,13 +17,19 @@ class WordAttempt {
 class MCQAttemptRepo extends DbService {
   final log = Logger('MCQAttemptRepo');
 
-  recordAttempt(String wordId, isCorrect) async {
+  recordAttempt(int wordId, isCorrect) async {
     log.info('recordAttempt: $wordId $isCorrect');
 
     await insert(tableQuizAttempt, {
       'wordId': wordId,
       'isCorrect': isCorrect ? 1 : 0,
     });
+
+    // Mark word as learned if corrected once
+    // Later need to check if the last 2 attempts were correct
+    if (isCorrect) {
+      await WordRepo().markLearned(wordId);
+    }
   }
 
   getTotalWordIdsAttempted() async {

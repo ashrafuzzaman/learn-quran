@@ -35,27 +35,17 @@ class DbService {
         """);
         await db.execute("""
           CREATE TABLE IF NOT EXISTS mcq_attempts (
-            wordId varchar(36),
+            wordId INTEGER,
             attemptAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             isCorrect BOOL
           );
         """);
         await db.execute("""
           CREATE TABLE IF NOT EXISTS bookmark_words (
-            wordId varchar(36) UNIQUE
+            wordId INTEGER UNIQUE
           );
         """);
-        await db.execute("""
-          CREATE TABLE IF NOT EXISTS progression (
-            wordId varchar(36) UNIQUE,
-            createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-          );
-        """);
-        // await initializeWordsDatabase(const Locale('en'));
       },
-      // onUpgrade: (db, oldVersion, newVersion) async {
-      //   await initializeWordsDatabase(const Locale('en'));
-      // },
     );
 
     await callback(db);
@@ -76,6 +66,16 @@ class DbService {
     late int result;
     await withDb((db) async {
       result = await db.delete(table, where: where, whereArgs: whereArgs);
+    });
+    return result;
+  }
+
+  Future<int> update(String table, Map<String, Object?> values,
+      {String? where, List<Object?>? whereArgs}) async {
+    late int result;
+    await withDb((db) async {
+      result =
+          await db.update(table, values, where: where, whereArgs: whereArgs);
     });
     return result;
   }

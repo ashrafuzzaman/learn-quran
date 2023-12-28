@@ -64,7 +64,7 @@ class FlipCardWord extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                BookmarkButton(wordId: word.id),
+                BookmarkButton(wordId: word.id!),
               ],
             )
           ],
@@ -80,7 +80,7 @@ class BookmarkButton extends StatefulWidget {
     required this.wordId,
   });
 
-  final String wordId;
+  final int wordId;
 
   @override
   State<BookmarkButton> createState() => _BookmarkButtonState();
@@ -150,20 +150,23 @@ class FlipCardMeaning extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 5),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      TextButton(
-                        child: const Text("Examples"),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => WordDetails(word: word)),
-                          );
-                        },
-                      ),
+                      word.examples == null || word.examples!.isEmpty
+                          ? const SizedBox.shrink()
+                          : TextButton(
+                              child: const Text("Examples"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          WordDetails(word: word)),
+                                );
+                              },
+                            ),
                       WordIcon(word: word),
                     ],
                   ),

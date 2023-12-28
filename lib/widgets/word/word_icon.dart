@@ -39,7 +39,8 @@ class WordIcon extends StatelessWidget {
           )),
     };
 
-    final Widget pluralityIcon = icons[word.plurality];
+    final Widget pluralityIcon =
+        icons[word.plurality] ?? const SizedBox.shrink();
 
     return pluralityIcon;
   }

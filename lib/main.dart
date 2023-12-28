@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learnquran/cubit/arabic_font_cubit.dart';
-import 'package:learnquran/cubit/lessons_cubit.dart';
 import 'package:learnquran/screens/home.dart';
 import 'package:learnquran/service/database.dart';
 import 'package:learnquran/service/database_initializer.dart';
@@ -35,9 +34,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => LessonsCubit(),
-        ),
         BlocProvider(
           create: (context) => ArabicFontCubit(),
         ),

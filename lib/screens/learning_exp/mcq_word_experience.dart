@@ -3,9 +3,9 @@ import 'package:learnquran/service/learn_exp_mcq.dart';
 import 'package:learnquran/widgets/quiz/mcq_widget.dart';
 
 class MCQWordExperienceWidget extends StatelessWidget {
-  MCQWordExperience experience;
-  Function onComplete;
-  MCQWordExperienceWidget(
+  final MCQWordExperience experience;
+  final Function onComplete;
+  const MCQWordExperienceWidget(
       {super.key, required this.experience, required this.onComplete});
 
   @override

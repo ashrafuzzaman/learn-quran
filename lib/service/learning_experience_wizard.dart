@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/repository/progression_repo.dart';
-import 'package:learnquran/repository/word_lesson_file_repo.dart';
+import 'package:learnquran/repository/words_repo.dart';
 import 'package:learnquran/service/learn_exp_mcq.dart';
 import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/service/word_iterator.dart';
+import 'package:logging/logging.dart';
 
 class LearningExperienceWizard {
+  final log = Logger('LearningExperienceWizard');
+
   late WordIterator wordIterator;
   late List<Word> answerBankWords;
 
@@ -14,10 +16,10 @@ class LearningExperienceWizard {
   late LearnExpMCQIterator learnExpMCQIterator;
 
   Future<LearningExperienceWizard> initialize(Locale local) async {
-    var latestReadWordId = await ProgressionRepo().getLatestReadWordId();
-    var lessons = await WordLessonFileRepo().getLessons(local);
-    wordIterator = WordIterator(lessons, latestReadWordId);
-    answerBankWords = List<Word>.of(wordIterator.words);
+    var wordRepo = WordRepo();
+    List<Word> words = await wordRepo.getWordsToLearn(10);
+    answerBankWords = await wordRepo.getWordsToLearn(30);
+    wordIterator = WordIterator(words);
 
     _generateExperiences();
     return this;
@@ -53,13 +55,6 @@ class LearningExperienceWizard {
     }
     if (learnExpMCQIterator.moveNext()) {
       return learnExpMCQIterator.current;
-    }
-
-    var isAllCorrect =
-        learnExpMCQIterator.mcqWordExperiences.every((mcq) => mcq.isCorrect!);
-    var nextWords = _generateExperiences();
-    if (isAllCorrect) {
-      ProgressionRepo().recordProgression(nextWords.first.id);
     }
     return getNextExperience();
   }

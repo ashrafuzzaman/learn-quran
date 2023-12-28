@@ -5,7 +5,7 @@ import 'package:learnquran/dto/word.dart';
 
 class WordListWidget extends StatelessWidget {
   final List<Word> words;
-  final Function(String wordId) handleTap;
+  final Function(int wordId) handleTap;
 
   const WordListWidget(this.words, this.handleTap, {super.key});
 
@@ -18,6 +18,7 @@ class WordListWidget extends StatelessWidget {
             .map((word) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Card(
+                    elevation: 2,
                     child: ListTile(
                       contentPadding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -56,7 +57,7 @@ class WordListWidget extends StatelessWidget {
                         ],
                       ),
                       onTap: () {
-                        handleTap(word.id);
+                        handleTap(word.id!);
                       },
                     ),
                   ),

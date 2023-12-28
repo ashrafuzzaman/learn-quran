@@ -15,14 +15,10 @@ initializeWordsDatabase(Locale local) async {
   var wordRepo = WordRepo();
   var lessons = await WordLessonFileRepo().getLessons(local);
   for (var lesson in lessons) {
-    log.info("Syncing lesson: ${lesson.name}");
-
     await lessonRepo.sync(lesson.name, lesson.description, lesson.words.length);
     Lesson? savedLesson = await lessonRepo.getByName(lesson.name);
-    log.info("Saved lesson: ${savedLesson!.id}");
     for (Word word in lesson.words) {
-      log.info("Syncing words: ${word.arabic}");
-      await wordRepo.sync(savedLesson.id, word);
+      await wordRepo.sync(savedLesson!.id, word);
     }
   }
 }

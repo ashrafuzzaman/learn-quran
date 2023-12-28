@@ -6,11 +6,16 @@ import 'package:learnquran/dto/word.dart';
 
 class WordListPage extends StatelessWidget {
   final String title;
+  final String emptyTitle;
   final List<Word> words;
 
-  const WordListPage({super.key, required this.title, required this.words});
+  const WordListPage(
+      {super.key,
+      required this.title,
+      required this.emptyTitle,
+      required this.words});
 
-  void _switchToFlipCardView(BuildContext context, String wordId) {
+  void _switchToFlipCardView(BuildContext context, int wordId) {
     final wordIndex = words.indexWhere((word) => word.id == wordId);
 
     Navigator.push(
@@ -40,9 +45,15 @@ class WordListPage extends StatelessWidget {
         centerTitle: true,
         elevation: 3,
       ),
-      body: WordListWidget(words, (String wordId) {
-        _switchToFlipCardView(context, wordId);
-      }),
+      body: words.isEmpty
+          ? Center(
+              child: Text(
+              emptyTitle,
+              style: const TextStyle(fontSize: 48),
+            ))
+          : WordListWidget(words, (int wordId) {
+              _switchToFlipCardView(context, wordId);
+            }),
     );
   }
 }

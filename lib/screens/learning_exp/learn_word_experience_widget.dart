@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:learnquran/repository/words_repo.dart';
 import 'package:learnquran/service/learn_exp_word.dart';
 import 'package:learnquran/widgets/word/word_flipcard.dart';
 
 class LearnWordExperienceWidget extends StatelessWidget {
-  LearnWordExperience experience;
-  Function onComplete;
-  LearnWordExperienceWidget(
+  final LearnWordExperience experience;
+  final Function onComplete;
+  const LearnWordExperienceWidget(
       {super.key, required this.experience, required this.onComplete});
 
   @override
@@ -17,7 +18,12 @@ class LearnWordExperienceWidget extends StatelessWidget {
           children: [
             WordFlipCardWidget(word: experience.word),
             ElevatedButton(
-                onPressed: () => onComplete(), child: const Text('Next'))
+                onPressed: () {
+                  WordRepo()
+                      .markRead(experience.word.id!)
+                      .then((_) => onComplete());
+                },
+                child: const Text('Next'))
           ],
         ),
       ),

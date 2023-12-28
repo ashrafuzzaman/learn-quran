@@ -13,7 +13,7 @@ class BookmarkRepo extends DbService {
     return result.map((row) => row[columnWordId].toString()).toList();
   }
 
-  Future<bool> isMarked(String wordId) async {
+  Future<bool> isMarked(int wordId) async {
     final result = await query(tableBookmark,
         columns: ['count(*) as total'],
         where: '$columnWordId=?',
@@ -21,7 +21,7 @@ class BookmarkRepo extends DbService {
     return result.first['total'] == 1;
   }
 
-  Future<Bookmark> toggleMarked(String wordId) async {
+  Future<Bookmark> toggleMarked(int wordId) async {
     var marked = await isMarked(wordId);
     if (marked) {
       await unMark(wordId);
@@ -32,7 +32,7 @@ class BookmarkRepo extends DbService {
     return Bookmark(wordId: wordId, isMarked: marked);
   }
 
-  mark(String wordId) async {
+  mark(int wordId) async {
     var marked = await isMarked(wordId);
     if (marked) {
       return;
@@ -42,7 +42,7 @@ class BookmarkRepo extends DbService {
     });
   }
 
-  unMark(String wordId) async {
+  unMark(int wordId) async {
     return await delete(tableBookmark,
         where: '$columnWordId = ?', whereArgs: [wordId]);
   }

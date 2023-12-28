@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 @freezed
 class Bookmark {
-  final String wordId;
+  final int wordId;
   final bool isMarked;
 
   Bookmark({required this.wordId, required this.isMarked});
