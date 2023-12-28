@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/repository/words_repo.dart';
 import 'package:learnquran/service/learn_exp_mcq.dart';
@@ -10,15 +9,19 @@ class LearningExperienceWizard {
   final log = Logger('LearningExperienceWizard');
 
   late WordIterator wordIterator;
-  late List<Word> answerBankWords;
+  List<Word> answerBankWords = [];
 
+  int batchSize = 3;
   late LearnExpWordIterator learnExpWordIterator;
   late LearnExpMCQIterator learnExpMCQIterator;
 
-  Future<LearningExperienceWizard> initialize(Locale local) async {
+  Future<LearningExperienceWizard> initialize() async {
     var wordRepo = WordRepo();
-    List<Word> words = await wordRepo.getWordsToLearn(10);
-    answerBankWords = await wordRepo.getWordsToLearn(30);
+    List<Word> words = await wordRepo.getWordsToLearn(batchSize);
+
+    if (answerBankWords.isEmpty) {
+      answerBankWords = await wordRepo.getAllWords(30);
+    }
     wordIterator = WordIterator(words);
 
     _generateExperiences();
@@ -36,7 +39,7 @@ class LearningExperienceWizard {
   }
 
   List<Word> _generateExperiences() {
-    var nextWords = _getNextWords(3);
+    var nextWords = _getNextWords(batchSize);
     learnExpWordIterator = LearnExpWordIterator(nextWords);
 
     learnExpMCQIterator =
@@ -56,6 +59,7 @@ class LearningExperienceWizard {
     if (learnExpMCQIterator.moveNext()) {
       return learnExpMCQIterator.current;
     }
+    await initialize();
     return getNextExperience();
   }
 }

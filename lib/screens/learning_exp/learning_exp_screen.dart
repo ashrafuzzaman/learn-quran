@@ -42,7 +42,7 @@ class _LearningExpScreenState extends State<LearningExpScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<LearningExperienceWizard>(
-        future: wizard.initialize(const Locale("en")),
+        future: wizard.initialize(),
         builder: (context, AsyncSnapshot<LearningExperienceWizard> snapshot) {
           if (snapshot.hasData) {
             return Scaffold(

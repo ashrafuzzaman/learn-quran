@@ -71,6 +71,12 @@ class WordRepo extends DbService {
         whereArgs: [wordId]);
   }
 
+  Future<List<Word>> getAllWords(int limit) async {
+    var records =
+        await query(tableWords, orderBy: '$columnId ASC', limit: limit);
+    return records.map((record) => _recordToWord(record)).toList();
+  }
+
   Future<List<Word>> getWordsToLearn(int limit) async {
     var records = await query(tableWords,
         where: '$columnLearned = ?',
