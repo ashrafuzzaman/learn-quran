@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:learnquran/service/database_initializer.dart';
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DbService {
+  final log = Logger('DbService');
+
   withDb(Function(Database db) callback) async {
     var path = 'learn_quran.db';
     Database db = await openDatabase(
@@ -13,7 +13,7 @@ class DbService {
         // When creating the db, create the table
         await db.execute("""
           CREATE TABLE IF NOT EXISTS lessons (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY,
             name varchar(64) UNIQUE,
             description TEXT,
             totalWords INTEGER,
@@ -22,7 +22,7 @@ class DbService {
         """);
         await db.execute("""
           CREATE TABLE IF NOT EXISTS words (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY,
             lessonId INTEGER,
             arabic varchar(64),
             meaning varchar(64),
@@ -110,8 +110,15 @@ class DbService {
 
   initiate() async {
     await withDb((db) async {
-      final log = Logger('DbService');
       log.info("Database Initialized...");
+    });
+  }
+
+  drop() async {
+    await withDb((db) async {
+      ["lessons", "words", "mcq_attempts", "bookmark_words"]
+          .map((table) async => await db.delete(table));
+      log.info("Database Cleared!!!");
     });
   }
 }

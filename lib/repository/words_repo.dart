@@ -37,12 +37,21 @@ class WordRepo extends DbService {
         whereArgs: [arabic, pluralityMap[plurality], genderMap[gender]]);
   }
 
-  sync(int lessonId, Word word) async {
-    var dbWord = await findWord(
-        arabic: word.arabic, plurality: word.plurality, gender: word.gender);
+  Future<Word?> findWordById(int wordId) async {
+    var result =
+        await query(tableWords, where: '$columnId = ?', whereArgs: [wordId]);
+    if (result.isNotEmpty) {
+      return _recordToWord(result.first);
+    }
+    return null;
+  }
+
+  sync(Word word) async {
+    var dbWord = await findWordById(word.id);
     if (dbWord == null) {
       await insert(tableWords, {
-        columnLessonId: lessonId,
+        columnId: word.id,
+        columnLessonId: word.lessonId,
         columnArabic: word.arabic,
         columnMeaning: word.meaning,
         columnPlurality: pluralityMap[word.plurality],
@@ -101,6 +110,7 @@ class WordRepo extends DbService {
   Word _recordToWord(Map<String, Object?> record) {
     return Word.fromMap({
       'id': record[columnId],
+      'lessonId': record[columnLessonId],
       'arabic': record[columnArabic],
       'meaning': record[columnMeaning],
       'plurality': record[columnPlurality],

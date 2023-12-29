@@ -46,6 +46,7 @@ dependencies:
   logging: ^1.2.0
   font_awesome_flutter: ^10.6.0
   flex_color_scheme: ^7.3.1
+  csv: ^5.1.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/data/word-lesson-en.yaml
+    - assets/data/words.csv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

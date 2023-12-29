@@ -23,9 +23,10 @@ const Map<String, Gender> genderMap = {
 
 @freezed
 class Word {
-  int? id;
+  int id;
   final String arabic;
   final String meaning;
+  int lessonId;
   final Gender? gender;
   final Plurality? plurality;
   final List<Example>? examples;
@@ -36,12 +37,14 @@ class Word {
       required this.plurality,
       required this.arabic,
       required this.meaning,
-      this.id});
+      required this.lessonId,
+      required this.id});
 
   Word.fromMap(MapBase data)
       : arabic = data['arabic'],
         meaning = data['meaning'],
         id = data['id'],
+        lessonId = data['lessonId'],
         plurality = pluralityMap[data['plurality']],
         gender = genderMap[data['gender']],
         examples = List<Example>.from((data['examples'] ?? [])

@@ -17,7 +17,8 @@ void main() async {
   Logger.root.onRecord.listen((record) {
     print('${record.level.name}: ${record.message}');
   });
-  await initializeWordsDatabase(const Locale("en"));
+  // await initializeWordsDatabaseFromYaml(const Locale("en"));
+  await initializeWordsDatabaseFromCsv();
 
   // final log = Logger('main');
   // var result = await QuizAttemptRepo().getWordAttemptsWithCount();
