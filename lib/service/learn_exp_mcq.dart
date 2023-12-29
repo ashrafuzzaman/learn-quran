@@ -55,7 +55,7 @@ class MCQWordExperience extends LearnExperience {
   }
 
   recordAttempt(bool isCorrect) async {
-    await MCQAttemptRepo().recordAttempt(word.id!, isCorrect);
+    await MCQAttemptRepo().recordAttempt(word.id, isCorrect);
     this.isCorrect = isCorrect;
   }
 }

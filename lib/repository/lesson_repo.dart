@@ -10,21 +10,30 @@ const String columnTotalWords = 'totalWords';
 const String columnWordsLearned = 'wordsLearned';
 
 class LessonRepo extends DbService {
+  @override
   final log = Logger('LessonRepo');
 
   Future<Lesson?> getByName(String name) async {
-    var record = await query(tableLesson, where: 'name = ?', whereArgs: [name]);
-    if (record.isNotEmpty) {
-      return Lesson(
-          int.parse(record.first[columnId].toString()),
-          record.first[columnName].toString(),
-          record.first[columnDescription].toString());
-    }
-    return null;
+    var record =
+        await query(tableLesson, where: '$columnName = ?', whereArgs: [name]);
+    return record.isNotEmpty ? _recordToLesson(record) : null;
   }
 
-  sync(String name, String description, int totalWords) async {
-    var lesson = await getByName(name);
+  Future<Lesson?> getById(int id) async {
+    var record =
+        await query(tableLesson, where: '$columnId = ?', whereArgs: [id]);
+    return record.isNotEmpty ? _recordToLesson(record) : null;
+  }
+
+  Lesson _recordToLesson(List<Map<String, Object?>> record) {
+    return Lesson(
+        int.parse(record.first[columnId].toString()),
+        record.first[columnName].toString(),
+        record.first[columnDescription].toString());
+  }
+
+  sync(int id, String name, String description, int totalWords) async {
+    var lesson = await getById(id);
     if (lesson == null) {
       await insert(tableLesson, {
         columnName: name,

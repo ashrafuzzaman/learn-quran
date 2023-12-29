@@ -20,7 +20,7 @@ class LearnWordExperienceWidget extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   WordRepo()
-                      .markRead(experience.word.id!)
+                      .markRead(experience.word.id)
                       .then((_) => onComplete());
                 },
                 child: const Text('Next'))

@@ -16,7 +16,8 @@ initializeWordsDatabaseFromYaml(Locale local) async {
   var wordRepo = WordRepo();
   var lessons = await WordLessonFileRepo().getLessons(local);
   for (var lesson in lessons) {
-    await lessonRepo.sync(lesson.name, lesson.description, lesson.words.length);
+    await lessonRepo.sync(
+        lesson.id, lesson.name, lesson.description, lesson.words.length);
     Lesson? savedLesson = await lessonRepo.getByName(lesson.name);
     for (Word word in lesson.words) {
       word.lessonId = savedLesson!.id;
@@ -31,15 +32,14 @@ initializeWordsDatabaseFromCsv() async {
   var wordRepo = WordRepo();
   var words = await WordLessonCSVRepo().getWords();
   // clean database
-  await lessonRepo.drop();
-  // for (var lesson in words) {
-  // await lessonRepo.sync(lesson.name, lesson.description, lesson.words.length);
-  // Lesson? savedLesson = await lessonRepo.getByName(lesson.name);
+  // await lessonRepo.drop();
+  int lessonId = 0;
   for (Word word in words) {
-    // log.info("${word.id}/${word.lessonId}::${word.arabic}: ${word.meaning}");
+    if (lessonId != word.lessonId) {
+      lessonId = word.lessonId;
+      await lessonRepo.sync(
+          lessonId, 'Lesson: $lessonId', 'Lesson: $lessonId', 1);
+    }
     await wordRepo.sync(word);
-    var savedWord = await wordRepo.findWordById(word.id);
-    log.info("savedWord:: ${word.id}: $savedWord");
   }
-  // }
 }

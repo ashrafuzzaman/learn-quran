@@ -15,6 +15,7 @@ class WordAttempt {
 }
 
 class MCQAttemptRepo extends DbService {
+  @override
   final log = Logger('MCQAttemptRepo');
 
   recordAttempt(int wordId, isCorrect) async {

@@ -6,6 +6,7 @@ const String tableBookmark = 'bookmark_words';
 const String columnWordId = 'wordId';
 
 class BookmarkRepo extends DbService {
+  @override
   final log = Logger('BookmarkRepo');
 
   Future<List<String>> getBookmarkedWordIds() async {

@@ -29,7 +29,7 @@ class _MCQWidgetState extends State<MCQWidget> {
       return;
     }
     await MCQAttemptRepo()
-        .recordAttempt(widget.question.word.id!, selectedOption!.isCorrect);
+        .recordAttempt(widget.question.word.id, selectedOption!.isCorrect);
     setState(() {
       submitted = true;
     });

@@ -27,6 +27,7 @@ const Map<Gender, String> genderMap = {
 };
 
 class WordRepo extends DbService {
+  @override
   final log = Logger('WordRepo');
 
   findWord(

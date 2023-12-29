@@ -3,7 +3,6 @@ import 'package:learnquran/screens/learning_exp/learning_exp_screen.dart';
 import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:learnquran/screens/word/lessons.dart';
 import 'package:learnquran/screens/word/words_read.dart';
 
 class HomePage extends StatelessWidget {

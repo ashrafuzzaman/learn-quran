@@ -8,15 +8,15 @@ import 'package:logging/logging.dart';
 class LearningExperienceWizard {
   final log = Logger('LearningExperienceWizard');
 
-  late WordIterator wordIterator;
+  WordIterator? wordIterator;
   List<Word> answerBankWords = [];
 
   int batchSize = 3;
   late LearnExpWordIterator learnExpWordIterator;
   late LearnExpMCQIterator learnExpMCQIterator;
+  var wordRepo = WordRepo();
 
   Future<LearningExperienceWizard> initialize() async {
-    var wordRepo = WordRepo();
     List<Word> words = await wordRepo.getWordsToLearn(batchSize);
 
     if (answerBankWords.isEmpty) {
@@ -31,8 +31,8 @@ class LearningExperienceWizard {
   List<Word> _getNextWords(int numberOfWords) {
     var words = <Word>[];
     for (var i = 0; i < numberOfWords; i++) {
-      if (wordIterator.moveNext()) {
-        words.add(wordIterator.current);
+      if (wordIterator != null && wordIterator!.moveNext()) {
+        words.add(wordIterator!.current);
       }
     }
     return words;
@@ -50,7 +50,7 @@ class LearningExperienceWizard {
   bool hasNextExperience() =>
       learnExpWordIterator.moveNext() ||
       learnExpMCQIterator.moveNext() ||
-      wordIterator.moveNext();
+      (wordIterator != null && wordIterator!.moveNext());
 
   Future<LearnExperience> getNextExperience() async {
     if (learnExpWordIterator.moveNext()) {

@@ -64,7 +64,7 @@ class FlipCardWord extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                BookmarkButton(wordId: word.id!),
+                BookmarkButton(wordId: word.id),
               ],
             )
           ],

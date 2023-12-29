@@ -57,7 +57,7 @@ class WordListWidget extends StatelessWidget {
                         ],
                       ),
                       onTap: () {
-                        handleTap(word.id!);
+                        handleTap(word.id);
                       },
                     ),
                   ),
