@@ -25,9 +25,9 @@ class LearnExpMCQIterator implements Iterator<LearnExperience> {
   bool moveNext() => _index < _words.length;
 
   @override
-  LearnExperience get current => _getNextExperience();
+  MCQWordExperience get current => _getNextExperience();
 
-  LearnExperience _getNextExperience() {
+  MCQWordExperience _getNextExperience() {
     var mcqWordExperience = MCQWordExperience(
         word: _words[_index++], answerBankWords: _answerBankWords);
     mcqWordExperiences.add(mcqWordExperience);

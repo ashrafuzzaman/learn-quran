@@ -11,13 +11,14 @@ class LearningExperienceWizard {
   WordIterator? wordIterator;
   List<Word> answerBankWords = [];
 
+  int totalWordsToLearn = 9;
   int batchSize = 3;
   late LearnExpWordIterator learnExpWordIterator;
   late LearnExpMCQIterator learnExpMCQIterator;
   var wordRepo = WordRepo();
 
   Future<LearningExperienceWizard> initialize() async {
-    List<Word> words = await wordRepo.getWordsToLearn(batchSize);
+    List<Word> words = await wordRepo.getWordsToLearn(totalWordsToLearn);
 
     if (answerBankWords.isEmpty) {
       answerBankWords = await wordRepo.getAllWords(30);
