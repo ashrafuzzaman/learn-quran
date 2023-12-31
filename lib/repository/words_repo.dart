@@ -115,6 +115,7 @@ class WordRepo extends DbService {
       'arabic': record[columnArabic],
       'meaning': record[columnMeaning],
       'plurality': record[columnPlurality],
+      'learned': record[columnLearned] == 1,
       'gender': record[columnGender],
     } as MapBase);
   }

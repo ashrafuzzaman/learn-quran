@@ -30,10 +30,12 @@ class Word {
   final Gender? gender;
   final Plurality? plurality;
   final List<Example>? examples;
+  final bool? learned;
 
   Word(
       {this.gender,
       this.examples,
+      this.learned,
       required this.plurality,
       required this.arabic,
       required this.meaning,
@@ -43,6 +45,7 @@ class Word {
   Word.fromMap(MapBase data)
       : arabic = data['arabic'],
         meaning = data['meaning'],
+        learned = data['learned'] ?? false,
         id = data['id'],
         lessonId = data['lessonId'],
         plurality = pluralityMap[data['plurality']],

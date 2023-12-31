@@ -30,30 +30,52 @@ class WordListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const QuickFontSelector()
+              ],
             ),
-            const QuickFontSelector()
-          ],
-        ),
-        centerTitle: true,
-        elevation: 3,
-      ),
-      body: words.isEmpty
-          ? Center(
-              child: Text(
-              emptyTitle,
-              style: const TextStyle(fontSize: 48),
-            ))
-          : WordListWidget(words, (int wordId) {
-              _switchToFlipCardView(context, wordId);
-            }),
+            centerTitle: true,
+            elevation: 3,
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.mark_email_read_outlined),
+                  text: "Read",
+                ),
+                Tab(icon: Icon(Icons.remove_red_eye), text: "Need focus"),
+              ],
+            ),
+          ),
+          body: words.isEmpty
+              ? Center(
+                  child: Text(
+                  emptyTitle,
+                  style: const TextStyle(fontSize: 48),
+                ))
+              : TabBarView(
+                  children: [
+                    WordListWidget(words, (int wordId) {
+                      _switchToFlipCardView(context, wordId);
+                    }),
+                    WordListWidget(
+                        words
+                            .where((word) => !(word.learned ?? false))
+                            .toList(), (int wordId) {
+                      _switchToFlipCardView(context, wordId);
+                    }),
+                  ],
+                )),
     );
   }
 }
