@@ -3,6 +3,7 @@ import 'package:learnquran/screens/learning_exp/learning_exp_screen.dart';
 import 'package:learnquran/screens/quiz/all_words_quiz.dart';
 import 'package:learnquran/screens/settings.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:learnquran/screens/word/words_bookmarked.dart';
 import 'package:learnquran/screens/word/words_read.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,6 +62,14 @@ class HomePage extends StatelessWidget {
             widget: AllWordsQuiz(),
             label: 'Quiz',
             icon: FaIcon(FontAwesomeIcons.chartSimple),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          HomePageButton(
+            widget: WordsBookmarkedPage(),
+            label: 'Bookmarks',
+            icon: FaIcon(FontAwesomeIcons.solidBookmark),
           ),
           SizedBox(
             height: 16,

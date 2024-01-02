@@ -30,12 +30,11 @@ class WordRepo extends DbService {
   @override
   final log = Logger('WordRepo');
 
-  findWord(
-      {required String arabic, Plurality? plurality, Gender? gender}) async {
-    query(tableWords,
-        where:
-            '$columnArabic = ? AND $columnPlurality = ? AND $columnGender = ?',
-        whereArgs: [arabic, pluralityMap[plurality], genderMap[gender]]);
+  Future<List<Word>> findWordsByIds(List<int> wordIds) async {
+    var records = await query(tableWords,
+        where: '$columnId IN (?)',
+        whereArgs: [wordIds.map((id) => id.toString()).toList().join(',')]);
+    return records.map((record) => _recordToWord(record)).toList();
   }
 
   Future<Word?> findWordById(int wordId) async {

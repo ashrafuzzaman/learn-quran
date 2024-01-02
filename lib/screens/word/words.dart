@@ -9,11 +9,13 @@ class WordListPage extends StatelessWidget {
   final String title;
   final String emptyTitle;
   final List<Word> words;
+  final Tab mainTab;
 
   const WordListPage(
       {super.key,
       required this.title,
       required this.emptyTitle,
+      required this.mainTab,
       required this.words});
 
   void _switchToFlipCardView(BuildContext context, int wordId) {
@@ -54,14 +56,12 @@ class WordListPage extends StatelessWidget {
             ),
             centerTitle: true,
             elevation: 3,
-            bottom: const TabBar(
+            bottom: TabBar(
               tabs: [
-                Tab(
-                  icon: FaIcon(FontAwesomeIcons.bookOpenReader),
-                  text: "Read",
-                ),
-                Tab(icon: FaIcon(FontAwesomeIcons.glasses), text: "Need focus"),
-                Tab(
+                mainTab,
+                const Tab(
+                    icon: FaIcon(FontAwesomeIcons.glasses), text: "Need focus"),
+                const Tab(
                     icon: FaIcon(FontAwesomeIcons.graduationCap),
                     text: "Learned"),
               ],
@@ -71,7 +71,7 @@ class WordListPage extends StatelessWidget {
               ? Center(
                   child: Text(
                   emptyTitle,
-                  style: const TextStyle(fontSize: 48),
+                  style: const TextStyle(fontSize: 32),
                 ))
               : TabBarView(
                   children: [
