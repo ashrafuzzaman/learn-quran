@@ -1,130 +1,389 @@
-ID-Audio,lessonId,id,arabic,meaning
-1-1,1,1,هَٰذَا,This
-1-2,1,2,ذَٰلِكَ,That
-1-3,1,3,هَٰذِهِ,This
-1-4,1,4,تِلۡكَ (تِلۡكَ ٱلۡجَنَّةُ),That
-1-5,1,5,هَٰٓؤُلَآء,These
-1-6,1,6,أُوْلَٰٓئِكَ,Those
-1-7,1,7,ٱلَّذِي,He who
-1-8,1,8,ٱلَّتِي,She who
-1-9,1,9,ٱلَّذِينَ,Those who
-1-10,1,10,تِلۡكَ (تِلۡكَ ٱلرُّسُلُ),Those
-1-11,1,11,ٱلَّتِي,Those who
-2-1 ,2,12,نَعَمۡ,Yes
-2-2,2,13,بَلَي,"Yes, indeed"
-2-3,2,14,كَلَّا,Certainly not
-2-4,2,15,إِلَّا,Except
-2-5,2,16,إِنۡ .. إِلَّا,Nothing but
-2-6,2,17,مَا .. إِلَّا,Nothing but
-2-7,2,18,أَلَّا,So as not to/ that not
-2-8,2,19,لَا,Do(es) not
-2-9,2,20,مَا,Not (continuous)
-2-10,2,21,لَنۡ,Will not
-2-11,2,22,لَمۡ,Did not
-2-12,2,23,لَيۡسَ ، لَيۡسَت,(There is) no
-2-13,2,24,غَيۡر (مَنۡ إِلَٰهٌ غَيۡرُ ٱللَّهِ),Other than
-2-13,2,25,غَيۡر (غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ),not
-2-14,2,26,مِن دُون,Apart from
-3-1,3,27,أَ / هَلۡ,Yes/ no Questions
-3-2,3,28,مَا/ مَاذا,What ...?
-3-3,3,29,لِمَ,Why…?
-3-4,3,30,مَنۡ,Who...?
-3-5,3,31,مَتَى,When ...?
-3-6,3,32,أَيۡنَ,Where...?
-3-7,3,33,كَيۡفَ,How...?
-3-8,3,34,كَمۡ,How many/ much?
-3-9,3,35,أَيُّ,Which?
-3-10,3,36,أنَّى (أَنَّىٰ يَكُونُ لِي غُلَٰمٞ),How...?
-3-11,3,37,أنَّى (أَنَّىٰ لَكِ هَٰذَاۖ),From Where..?
-4-1,4,38,فَوۡق,Above/ on/ over
-4-2,4,39,تَحۡت,Under(neath)/ beneath
-4-3,4,40,يَمِين,Right (hand)
-4-4,4,41,شِمَال,Left (hand)
-4-5,4,42,بَيۡن,Between/ Among
-4-6,4,43,بَيۡن يَدَي,Before (place/ time)
-4-7,4,44,بَيۡنَ أَيۡدِي,Before (place/ time)
-4-8,4,45,خَلۡف (مَا بَيۡنَ أَيۡدِيهِمۡ وَمَا خَلۡفَهُمۡۖ),Behind
-4-9,4,46,خَلۡف (لِمَنۡ خَلۡفَكَ ءَايَةٗۚ),Successor
-4-10,4,47,وَرَاء (مِن وَرَآءِ حِجَابٖۚ),Behind
-4-11,4,48,وَرَاء (فَمَنِ ٱبۡتَغَىٰ وَرَآءَ ذَٰلِكَ),Beyond (after)
-4-12,4,49,حَوۡل,(A)round
-4-13,4,50,حَيۡثُ,Wherever
-4-14,4,51,أَيۡنَمَا,Wherever
-5-1,5,52,بـِـ,In
-5-2,5,53,عَنۡ,(away) From/ about
-5-3,5,54,فِي,In/ during
-5-4,5,55,كَــ,As/ like
-5-5,5,56,لـ,For (belongs to)
-5-6,5,57,مِنۡ,from
-5-7,5,58,إِلَى,(to)wards
-5-8,5,59,حَتَّى,Until
-5-9,5,60,عَلَى,On/ upon/ over
-5-10,5,61,مَعَ,With
-5-11,5,62,وَ,And/ by (swear by)
-6-1,6,63,إِنَّ,Verily/ truly
-6-2,6,64,أَنَّ,That (+nouns)
-6-3,6,65,إِنۡ (لَئِن),If
-6-4,6,66,أَنۡ,to in order to (+ Verbs)
-6-5,6,67,كأَنَّ,As if
-6-6,6,68,لَكِن,But
-6-7,6,69,لَمَّا,When
-6-8,6,70,لَوۡ,If
-6-9,6,71,لَوۡلَا (وَلَوۡلَا دَفۡعُ ٱللَّهِ),But for
-6-10,6,72,لَوۡلَا (لَوۡلَا نُزِّلَتۡ سُورَةٞ),why .. not
-6-11,6,73,(مِنۡ) قَبۡل,Before
-6-12,6,74,(مِنۡ) بَعۡد,After
-6-13,6,75,إِذۡ,When (for past)
-6-14,6,76,إِذَا,When
-6-15,6,77,ثُمَّ,(for present/future)
-6-16,6,78,فَــ,Then (directly after)/so
-7-1,7,79,ذُو ,Of (belonging to)
-7-2,7,80,ذَا,Of (belonging to)
-7-3,7,81, ذِي,Of (belonging to)
-7-4,7,82,ذَات,Of (belonging to)
-7-5,7,83,أُولُواْ,Of (belonging to)
-7-6,7,84,أُولِي,Of (belonging to)
-7-3,7,85,أَهۡل,Family/ People of
-7-4,7,86,ءَالِ,Family/ people of
-7-5,7,87,أَلَا (أَلَا بِذِكۡرِ ٱللَّهِ),Lo!
-7-6,7,88,أَلَا (أَلَا تُحِبُّونَ),Will/ do .. not ?
-7-7,7,89,نِعۡمَ,What a good … !
-7-8,7,90,بِئۡسَ,What a foul/ bad ..!
-7-9,7,91, مِثۡل (مِثۡلُ ذَٰلِكَۗ),Like
-7-10,7,92,مَثَل (مَّثَلُ ٱلۡجَنَّةِ),Example
-7-11,7,93,أو,Or
-7-12,7,94,أم,Or ?
-7-13,7,95,بَعۡض,Some/ part (of)
-7-14,7,96,كُل,Every/ each
-7-15,7,97,لَعَلّ,Perhaps/ may
-7-16,7,98,عَسَى,Possibly/ may
-7-17,7,99,يا (أَيُّهَا),O!
-7-18,7,100,عِنۡد ,At/ with/ from
-7-19,7,101,لَدى,At/ with/ from
-7-20,7,102,لَدُن,At/ with/ from
-8-1,8,103,مَا (وَمَا كَانَ أَكۡثَرُهُم),Not (negation)
-8-2,8,104,مَا (مَا تَعۡبُدُونَ),What (question word)
-8-3,8,105,مَا ,Which/ that (Relative pronoun)
-8-4,8,106,بِـمَا ,With which ..
-8-5,8,107,بِـمَ,With what?
-8-6,8,108,عَمَّا ,About which..
-8-7,8,109,عَمَّ,About what?
-8-8,8,110,فِيمَا  ,In which ..
-8-9,8,111,فِيمَا  ,In what?
-8-10,8,112, مِمَّا  ,From which ..
-8-11,8,113, مِمَّ,From what?
-8-12,8,114,لِمَا,To/ For which ..
-8-13,8,115,لِمَ,For what? Why?
-8-14,8,116,كَـمَا ,Like that
-8-15,8,117,إنَّمَا,Verily is
-8-16,8,118,أَنَّما,That
-8-17,8,119,كَأَنَّمَا,As if
-8-18,8,120,كُلَّمَا  ,Every time Whenever
-8-19,8,121,أَيۡنَ مَا ,Wherever
-8-20,8,122,أَيۡنَمَا,Wherever
-8-21,8,123,نِعِمَّا,What good that
-8-22,8,124,بِئسَمَا,What bad that
-8-23,8,125,فَـمَا (فَمَا خَطۡبُكَ),then … not
-8-24,8,126,فَـمَا (فَمَا وَهَنُواْ),So what ?
-8-25,8,127,أَمَّا,As for
-8-26,8,128,إِمَّا (فَإِمَّا يَأۡتِيَنَّكُم مِّنِّي هُدٗى),If
-8-27,8,129,إِمَّا (إِمَّا شَاكِرٗا وَإِمَّا كَفُورًا),Either .. or
+Id,LessonId,Gender,Number,Word,Meaning
+1,1,Male,Singular,هَٰذَا,This
+2,1,Male,Singular,ذَٰلِكَ,That
+3,1,Female,Singular,هَٰذِهِ,This
+4,1,Female,Singular,تِلۡكَ (تِلۡكَ ٱلۡجَنَّةُ),That
+5,1,,Plural,هَٰٓؤُلَآء,These
+6,1,,Plural,أُوْلَٰٓئِكَ,Those
+7,1,Male,Singular,ٱلَّذِي, who
+8,1,Female,Singular,ٱلَّتِي, who
+9,1,,Plural,ٱلَّذِينَ,Those who
+10,1,,Plural,تِلۡكَ (تِلۡكَ ٱلرُّسُلُ),Those
+11,1,,,نَعَمۡ,Yes
+12,1,,,بَلَي,"Yes, indeed"
+13,1,,,كَلَّا,Certainly not
+14,1,,,إِلَّا,Except
+15,1,,,إِنۡ .. إِلَّا,Nothing but
+16,1,,,مَا .. إِلَّا,Nothing but
+17,1,,,أَلَّا,So as not to/ that not
+18,1,,,لَا,Do(es) not
+19,1,,,مَا,Not (continuous)
+20,1,,,لَنۡ,Will not
+21,1,,,لَمۡ,Did not
+22,1,Male,Singular ,لَيۡسَ,(There is) no
+23,1,Female,Singular ,لَيۡسَت,(There is) no
+24,1,,,غَيۡر (مَنۡ إِلَٰهٌ غَيۡرُ ٱللَّهِ),Other than
+25,1,,,غَيۡر (غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ),not
+26,1,,,مِن دُون,Apart from
+27,1,,,أَ,Yes/ no Questions
+28,1,,,هَلۡ,Yes/ no Questions
+29,1,,,مَا (مَا لَوۡنُهَا),What ...?
+30,1,,,مَاذا,What ...?
+31,1,,,لِمَ,Why…?
+32,1,,,مَنۡ,Who...?
+33,1,,,مَتَى,When ...?
+34,1,,,أَيۡنَ,Where...?
+35,1,,,كَيۡفَ,How...?
+36,1,,,كَمۡ,How many/ much?
+37,1,,,أَيُّ,Which?
+38,1,,,أنَّى (أَنَّىٰ يَكُونُ لِي غُلَٰمٞ),How...?
+39,1,,,أنَّى (أَنَّىٰ لَكِ هَٰذَاۖ),From Where..?
+40,1,,,فَوۡق,Above/ on/ over
+41,1,,,تَحۡت,Under(neath)/ beneath
+42,1,,,يَمِين,Right (hand)
+43,1,,,شِمَال,Left (hand)
+44,1,,,بَيۡن,Between/ Among
+45,1,,,بَيۡن يَدَي,Before (place/ time)
+46,1,,,بَيۡنَ أَيۡدِي,Before (place/ time)
+47,1,,,خَلۡف (مَا بَيۡنَ أَيۡدِيهِمۡ وَمَا خَلۡفَهُمۡۖ),Behind
+48,1,,,خَلۡف (لِمَنۡ خَلۡفَكَ ءَايَةٗۚ),Successor
+49,1,,,وَرَاء (مِن وَرَآءِ حِجَابٖۚ),Behind
+50,1,,,وَرَاء (فَمَنِ ٱبۡتَغَىٰ وَرَآءَ ذَٰلِكَ),Beyond (after)
+51,1,,,حَوۡل,(A)round
+52,1,,,حَيۡثُ,Wherever
+53,1,,,أَيۡنَمَا,Wherever
+54,1,,,بـِـ,In
+55,1,,,عَنۡ,(away) From/ about
+56,1,,,فِي,In/ during
+57,1,,,كَــ,As/ like
+58,1,,,لـ,For (belongs to)
+59,1,,,مِنۡ,from
+60,1,,,إِلَى,(to)wards
+61,1,,,حَتَّى,Until
+62,1,,,عَلَى,On/ upon/ over
+63,1,,,مَعَ,With
+64,1,,,وَ,And/ by (swear by)
+65,1,,,إِنَّ,Verily/ truly
+66,1,,,أَنَّ,That (+nouns)
+67,1,,,إِنۡ,If
+68,1,,,لَئِن,If
+69,1,,,أَنۡ,to in order to (+ Verbs)
+70,1,,,كأَنَّ,As if
+71,1,,,لَكِن,But
+72,1,,,لَمَّا,When
+73,1,,,لَوۡ,If
+74,1,,,لَوۡلَا (وَلَوۡلَا دَفۡعُ ٱللَّهِ),But for
+75,1,,,لَوۡلَا (لَوۡلَا نُزِّلَتۡ سُورَةٞ),why .. not
+76,1,,,(مِنۡ)قَبۡل,Before
+77,1,,,(مِنۡ) بَعۡد,After
+78,1,,,إِذۡ,When (for past)
+79,1,,,إِذَا,When
+80,1,,,ثُمَّ,(for present/future)
+81,1,,,فَــ,Then (directly after)/so
+82,1,,,ذُو ,Of (belonging to)
+83,1,,,ذَا,Of (belonging to)
+84,1,,, ذِي,Of (belonging to)
+85,1,,,ذَات,Of (belonging to)
+86,1,,,أُولُواْ,Of (belonging to)
+87,1,,,أُولِي,Of (belonging to)
+88,1,,,أَهۡل,Family/ People of
+89,1,,,ءَالِ,Family/ people of
+90,1,,,أَلَا (أَلَا بِذِكۡرِ ٱللَّهِ),Lo!
+91,1,,,أَلَا (أَلَا تُحِبُّونَ),Will/ do .. not ?
+92,1,,,نِعۡمَ,What a good … !
+93,1,,,بِئۡسَ,What a foul/ bad ..!
+94,1,,, مِثۡل (مِثۡلُ ذَٰلِكَۗ),Like
+95,1,,,مَثَل (مَّثَلُ ٱلۡجَنَّةِ),Example
+96,1,,,أَو,Or
+97,1,,,أَم,Or ?
+98,1,,,بَعۡض,Some/ part (of)
+99,1,,,كُل,Every/ each
+100,1,,,لَعَلَّ,Perhaps/ may
+101,1,,,عَسَى,Possibly/ may
+102,1,,,يا (أَيُّهَا),O!
+103,1,,,عِنۡد ,At/ with/ from
+104,1,,,لَدى,At/ with/ from
+105,1,,,لَدُن,At/ with/ from
+106,1,,,مَا (وَمَا كَانَ أَكۡثَرُهُم),Not (negation)
+107,1,,,مَا (مَا تَعۡبُدُونَ),What (question word)
+108,1,,,مَا ,Which/ that (Relative pronoun)
+109,1,,,بِـمَا ,With which ..
+110,1,,,بِـمَ,With what?
+111,1,,,عَمَّا ,About which..
+112,1,,,عَمَّ,About what?
+113,1,,,فِيمَا  ,In which ..
+114,1,,,فِيمَ,In what?
+115,1,,, مِمَّا  ,From which ..
+116,1,,, مِمَّ,From what?
+117,1,,,لِمَا,To/ For which ..
+118,1,,,لِمَ,For what? Why?
+119,1,,,كَـمَا ,Like that
+120,1,,,إنَّمَا,Verily is
+121,1,,,أَنَّما,That
+122,1,,,كَأَنَّمَا,As if
+123,1,,,كُلَّمَا  ,Every time Whenever
+124,1,,,أَيۡنَ مَا ,Wherever
+125,1,,,أَيۡنَمَا,Wherever
+126,1,,,نِعِمَّا,What good that
+127,1,,,بِئسَمَا,What bad that
+128,1,,,فَـمَا (فَمَا خَطۡبُكَ),then … not
+129,1,,,فَـمَا (فَمَا وَهَنُواْ),So what ?
+130,1,,,أَمَّا,As for
+131,1,,,إِمَّا (فَإِمَّا يَأۡتِيَنَّكُم مِّنِّي هُدٗى),If
+132,1,,,إِمَّا (إِمَّا شَاكِرٗا وَإِمَّا كَفُورًا),Either .. or
+133,1,,,,
+134,2,,,رَبّ,Lord/ O Lord
+135,2,,,ٱلرَّحۡمَٰنِ ,Entirely Merciful
+136,2,,,ٱلرَّحِيم,Especially Merciful
+137,2,,,عَزِيز,(All-)Mighty
+138,2,,,حَكِيم,(All-)Wise
+139,2,,,غَفُور,Most forgiving
+140,2,,,حَلِيم,Forbearing
+141,2,,,ٱلعَظِيم,Great
+142,2,,,ٱلعَلِيّ,Exalted (high)
+143,2,,,عَلِيم ,(All-knowing) Knower
+144,2,,,خَبِير,Acquainted
+145,2,,,سَمِيع,The one who hears everything (all-hearing)
+146,2,,,بَصِير,All-seeing
+147,2,,,شَكُور ,Appreciative/ Grateful
+148,2,,,قَدِير,Competent
+149,2,,,وَكِيل,Disposer (of all affairs)
+150,2,,,نَصِير,(Strong) helper
+151,2,,,حَمِيد,Praiseworthy
+152,2,,,تَوَّاب,Acceptor of repentance 
+153,2,,,أَوَّل,First
+154,2,,,ءَاخِر,Last
+155,2,,,قَرِيب,Near
+156,2,,,أَقۡرَب,Nearer
+157,2,,,بَعِيد,Far
+158,2,,, شَدِيد ,Severe / Strong
+159,2,,,أَشَدّ ,Stronger / Severer
+160,2,,,كَبِير ,Great / Large
+161,2,,,أَكۡبَر , Greater / Larger
+162,2,,,كَثِير  ,Many 
+163,2,,,أَكۡثَر  , Most
+164,2,,, سَرِيع ,Swift
+165,2,,, أَسۡرَع ,swiftest 
+166,2,,,قَلِيل,Little/ few
+167,2,,,كَرِيم,Noble
+168,2,,,حَفِيظ,Guardian/ Protector
+169,2,,,أَحۡسَن,Better
+170,2,,,أَظۡلَم,More unjust
+171,2,,,أَحَق,More worthy
+172,2,,,أَدۡنَى,Nearer/ More likely
+173,2,Male,Singular,رَسُول ,Messenger
+174,2,,Plural,رُسُل,Messengers
+175,2,,Singular,نَبِي,Prophet
+176,2,,Plural,أَنۢبِيَآء,Prophets
+177,2,,Plural,نَّبِيُّونَ,Prophets
+178,2,,Plural,نَّبِيِّـۧنَ,Prophets
+179,2,,,أَمِين,Trustworthy/ Honest
+180,2,,,نَذِير,Warner
+181,2,,,مُوسَىٰ ,Moses
+182,2,,, هَٰرُون, Aaron
+183,2,,,إِبۡرَٰهِـۧم (إِبۡرَٰهِيم),Abraham
+184,2,,, إِسۡمَٰعِيل,Ishmael
+185,2,,,نُوح,Noah
+186,2,,,يُوسُف,Joseph
+187,2,,,لُوط,Lot
+188,2,,,عِيسَى ٱبۡنِ مَرۡيَم,"Jesus, son of Mary"
+189,2,,,ءَادَم,Adam
+190,2,,,سُلَيۡمَٰن,Solomon
+191,2,,,إِسۡحَٰق,Isaac
+192,2,,, يَعۡقُوب , Jacob 
+193,2,,,إِسۡرَٰٓءِيل,Israel
+194,2,,,دَاوُۥد,David
+195,2,,,زَكَرِيا,Zachariah
+196,2,,,يَحۡيَىٰ,John
+197,2,,,أَيُّوب,Job
+198,2,,,يُونُس (ذَا ٱلنُّون),Jonah
+199,2,,,شُعَيۡب (مَدۡيَن),Shu’ayb (Madian)
+200,2,,,صَٰلِح (ثَمُود),Salih (Thamud)
+201,2,,,هُود (عَاد),Hud (‘Aad)
+202,2,,Singular,ءَاية ,Sign/ verse
+203,2,,Plural,ءَايات,Signs/ verses
+204,2,,,ٱلۡقُرۡءَان,The Quran
+205,2,,,ٱلۡإِنجِيل,The Gospel
+206,2,,,ٱلتَّوۡرَىٰة,The Torah
+207,2,,,أَنۡعَام,Livestock
+208,2,,Singular,جَبَل,Mountain
+209,2,,Plural,جِبَال,Mountains
+210,2,,,بَـحۡر,Sea/ River
+211,2,,Singular,نَهَر,River
+212,2,,Plural,أَنۡهَٰر,Rivers
+213,2,,,شَمۡس,Sun
+214,2,,,قَمَر,Moon
+215,2,,,لَيۡل,Night
+216,2,,,نَهَار,Daytime
+217,2,,,أَرۡض,Earth
+218,2,,,سَمَآء,Heaven/ Sky
+219,2,,,سَمَٰوَٰت,Heavens/ Sky
+220,2,,,ءَالَآء,Favors
+221,2,,,نِعۡمَة,Favor/ Bounty
+222,2,,,فَضۡل,Favor/ Grace
+223,2,,,مَآء,Water
+224,2,,,دِين,Religion
+225,2,,Singular,أَمۡر,Matter/ Command
+226,2,,Plural,أُمُور,Matters/ Affairs
+227,2,,,صَلَوٰة /صَلَاة,Prayer
+228,2,,,زَّكَوٰة,(Zakah) Charity
+229,2,,,حَقّ,Truth/ Right
+230,2,,,بَٰطِل,Falsehood
+231,2,,,حَمۡد,Praise
+232,2,,,حِكۡمَة,Wisdom
+233,2,,,تَقۡوى,Piety/ Fear of Allah
+234,2,,Singular,شَهِيد,Witness
+235,2,,Plural,شُهَدَاء (أَمۡ كُنتُمۡ شُهَدَآءَ ),Witnesses
+236,2,,Plural,شُهَدَاء (وَيَتَّخِذَ مِنكُمۡ شُهَدَآءَۗ ), Martyrs
+237,2,,,مُبِين,Clear
+238,2,,,نُور,Light
+239,2,,,سَلَٰم,Peace
+240,2,,,مُلۡك,Dominion/ Reign
+241,2,,,سُلۡطَٰن,Authority/ Warrant/ Proof
+242,2,,Singular,إِلَٰه ,god/ deity
+243,2,,Plural,ءَالِهَة,deities
+244,2,,,وَاحِد,One
+245,2,,,أَحَد,One
+246,2,,,أَحَد, Anyone
+247,2,,Singular,شَرِيك ,Associate/ partner
+248,2,,Plural,شُرَكَآء,Associates/ partners
+249,2,,,غَيۡب,Unseen
+250,2,,,شَهَٰدَة,Witnessed (visible)
+251,2,,,عَرَش,Throne
+252,2,,Singular,كِتَاب ,Book
+253,2,,Plural,كُتُب,Books
+254,2,,Singular,كَلِمَة ,Word
+255,2,,Plural,كَلِمَٰت,Words
+256,2,,Singular,مَلَك ,Angel
+257,2,,Plural,مَلَٰٓئِكَة,Angels
+258,2,,,عَهۡد,Covenant/ Pledge
+259,2,,,مِيثَٰق,Covenant
+260,2,,,إِذۡن,Permission
+261,2,,Singular,شَيۡطَٰن ,Satan/ evil (Devil)
+262,2,,Plural,شَيَٰطِين,Devils
+263,2,,Singular,عَمَل ,Deed/ action
+264,2,,Plural,أَعۡمَٰل,Deeds/ actions
+265,2,,Singular,حَسَنَة ,Good
+266,2,,Plural,حَسَنَٰت,Good deeds
+267,2,,Singular,سَيِّئَة ,Bad/ misdeed/ sin
+268,2,,Plural,سَيِّئَات,misdeeds/ sins
+269,2,,,خَيۡر,Good
+270,2,,,شَرّ,Evil/ Worst
+271,2,,,إِثۡم,Sin
+272,2,,Singular,ذَنۢب ,Sin
+273,2,,Plural,ذُنُوب,Sins
+274,2,,,جُنَاح,Blame
+275,2,,,حَرَام,Unlawful (forbidden)
+276,2,,,حَلَٰل,Permissible (halal)
+277,2,,,حَدِيث,Conversation/ Discourse
+278,2,,Singular,طَيِّب,Good (thing)
+279,2,,Plural,طَيِّبَٰت,Good things
+280,2,,Singular,أَجۡر ,Reward/ Compensation
+281,2,,Plural,أُجُور,Rewards/ Compensations
+282,2,,Singular,يَوۡم ,Day
+283,2,,Plural,أَيَّام,Days
+284,2,,,يَوۡمَئِذٍ,"That day, then"
+285,2,,,ٱلۡقِيَٰمَة,Resurrection
+286,2,,,ٱلسَّاعَة,An hour (The Hour)
+287,2,,,أَجَل,Term
+288,2,,,مُسَمَّى,Specific
+289,2,,,حِسَاب,Account
+290,2,,,ٱلۡأٓخِرَة,The Hereafter
+291,2,,,أَبَدًا,"Forever, ever"
+292,2,,,عَٰقِبَة,End
+293,2,,,جَهَنَّم ,"Hell Fire, hell"
+294,2,,,نَار, Fire
+295,2,,,وَيۡل,Woe to
+296,2,,,عِقَاب,Penalty
+297,2,,,عَذَاب,Punishment
+298,2,,,أَلِيم,Painful
+299,2,,,جَزَاء,Reward/ Recompense
+300,2,,,ثَواب,Reward
+301,2,,Singular,جَنَّة ,Paradise/ garden
+302,2,,Plural,جَنَّٰت,Paradise/ gardens
+303,2,,,ٱلدُّنۡيَا,This world (present life)
+304,2,,,عَٰلَمِين,Worlds
+305,2,,,أَمۡوَٰل,Wealth
+306,2,,,بَيۡت,House
+307,2,,,ٱلۡبَيۡت,The Ka’ba
+308,2,,Singular,دَار ,Home
+309,2,,Plural,دِيَٰر,Homes
+310,2,,,مَتَٰع,Provision/ enjoyment
+311,2,,,مَكَان (شَرّٞ مَّكَانٗاۖ),Place/ position
+312,2,,,مَكَان (ءَايَةٗ مَّكَانَ ءَايَةٖ),in place of
+313,2,,Singular,قَرۡيَة ,City/ Town
+314,2,,Plural,قُرَىٰ,Cities/ Towns
+315,2,,,مَدِينَة,City
+316,2,,,ٱلۡمَدِينَة,Madinah/ the city
+317,2,,Singular,سَبِيل ,Way
+318,2,,Plural,سُبُل,Ways
+319,2,,,صِرَٰط,Path
+320,2,,Singular,مَسۡجِد ,Mosque
+321,2,,Plural,مَسَٰجِد,Mosques
+322,2,,,فِتۡنَة,Trial
+323,2,,,لِقَآء,Meeting
+324,2,,,ذِي ٱلۡقُرۡبَى,Relatives
+325,2,,,ٱلۡوَٰلِدَيۡن,Parents
+326,2,,,أُمّ,Mother
+327,2,,Singular,أَبّ,Father
+328,2,,,أَبَتِ,O father
+329,2,,Plural,ءَابَآء,Forefathers/ Ancestors
+330,2,,,زَوۡج,(Spouse) Husband/ Wife
+331,2,,,رَجُل,Man
+332,2,,,ٱمۡرَأة,Woman
+333,2,,,ٱمۡرَأة / ٱمۡرَأت, Wife
+334,2,,,ذُرِّيَّة,Offspring
+335,2,,Singular,وَلَد ,Son (child)
+336,2,,Plural,أَوۡلَٰد,Sons (children)
+337,2,,Singular,ٱبۡن ,Son
+338,2,,Plural,أَبۡنَآء,Sons
+339,2,,,إِخۡوَٰن,Brothers
+340,2,,Singular,وَلِيّ ,Guardian/ Supporter
+341,2,,Plural,أَوۡلِيَآء,Guardians/ Supporters
+342,2,,,ذَكَر,Male
+343,2,,,أُنثَى,Female
+344,2,,Singular,وَجۡه,Face/ Countenance
+345,2,,Plural,وُجُوه,Faces
+346,2,,,أَبۡصَٰر,Vision
+347,2,,Singular,صَدۡر,Breast/chest
+348,2,,Plural, صُدُور,Breasts/ chests
+349,2,,Singular,قَلۡب ,Heart
+350,2,,Plural,قُلُوب,Hearts
+351,2,,Singular,نَفۡس ,Soul
+352,2,,Plural,أَنفُس,Souls
+353,2,,,رُوح,Spirit/ Soul
+354,2,,,قُوة,Power (strength)
+355,2,,,نَاس,People
+356,2,,,قَوۡم,People
+357,2,,Singular,أُمَّة ,Nation
+358,2,,Plural,أُمَم,Nations
+359,2,,,إِنسَٰن,Man (mankind)
+360,2,,,مَلَأ,Eminent (chiefs)
+361,2,,Singular,عَبۡد ,Servant
+362,2,,Plural,عِبَاد,Servants
+363,2,,Singular,عَدُو ,Enemy
+364,2,,Plural,أَعۡدَآء,Enemies
+365,2,,Plural,مُجۡرِمِين,Criminals
+366,2,,,فَرِيق,Party 
+367,2,,,فِئَة ,Party / Group
+368,2,,,طَآئِفَة ,Party / Group
+369,2,,, أَجۡمَعِينَ,All/ Everybody /Everyone
+370,2,,, أَجۡمَعِينَ,All/ Everybody /Everyone
+371,2,,,جَمِيع,All/ Everybody /Everyone
+372,2,,,سَوَآء,Same/ Equal/ Straight
+373,2,,,ٱسۡم,Name
+374,2,,Singular,صَاحِب ,Companion Inmate
+375,2,,Plural,أَصۡحَٰب,Companion (Inmates)
+376,2,,,فِرۡعَوۡن,Pharaoh
+377,2,,Plural,نَصَٰرَىٰ,Christians
+378,2,,Plural,نِسَآء,Women/ wives
+379,2,,Plural,رِجَال,Men
+380,2,,Plural,عِظَٰم,Bones
+381,2,,Plural,مَوۡتَىٰ,The dead
+382,2,,Plural,أَيۡدِي,Hands
+383,2,,Plural,أَعۡيُن,Eyes
+384,2,,Plural,أَزۡوَٰج,Spouses
+385,2,,Plural,أَهۡوَآء,Inclinations/ Desires
+386,2,,Plural,أَلۡبَٰب,Minds/ Understanding
+387,2,,Plural,أَبۡوَٰب,Doors/ Gates
+388,2,,Plural,أَيۡمَٰن,Oaths
