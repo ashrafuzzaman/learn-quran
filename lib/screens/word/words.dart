@@ -57,10 +57,10 @@ class WordListPage extends StatelessWidget {
             bottom: const TabBar(
               tabs: [
                 Tab(
-                  icon: Icon(Icons.mark_email_read_outlined),
+                  icon: FaIcon(FontAwesomeIcons.bookOpenReader),
                   text: "Read",
                 ),
-                Tab(icon: Icon(Icons.remove_red_eye), text: "Need focus"),
+                Tab(icon: FaIcon(FontAwesomeIcons.glasses), text: "Need focus"),
                 Tab(
                     icon: FaIcon(FontAwesomeIcons.graduationCap),
                     text: "Learned"),
