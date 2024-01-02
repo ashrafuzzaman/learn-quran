@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:learnquran/screens/word/words_flipcard_screen.dart';
 import 'package:learnquran/widgets/quick_font_selector.dart';
 import 'package:learnquran/widgets/word_list_widget.dart';
@@ -30,8 +31,14 @@ class WordListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WordListWidget getWordListWidget(Iterable<Word> words) {
+      return WordListWidget(words.toList(), (int wordId) {
+        _switchToFlipCardView(context, wordId);
+      });
+    }
+
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
           appBar: AppBar(
             title: Row(
@@ -54,6 +61,9 @@ class WordListPage extends StatelessWidget {
                   text: "Read",
                 ),
                 Tab(icon: Icon(Icons.remove_red_eye), text: "Need focus"),
+                Tab(
+                    icon: FaIcon(FontAwesomeIcons.graduationCap),
+                    text: "Learned"),
               ],
             ),
           ),
@@ -65,15 +75,11 @@ class WordListPage extends StatelessWidget {
                 ))
               : TabBarView(
                   children: [
-                    WordListWidget(words, (int wordId) {
-                      _switchToFlipCardView(context, wordId);
-                    }),
-                    WordListWidget(
-                        words
-                            .where((word) => !(word.learned ?? false))
-                            .toList(), (int wordId) {
-                      _switchToFlipCardView(context, wordId);
-                    }),
+                    getWordListWidget(words),
+                    getWordListWidget(
+                        words.where((word) => !(word.learned ?? false))),
+                    getWordListWidget(
+                        words.where((word) => word.learned ?? false)),
                   ],
                 )),
     );
