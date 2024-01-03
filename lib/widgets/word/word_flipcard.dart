@@ -154,19 +154,16 @@ class FlipCardMeaning extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      word.examples == null || word.examples!.isEmpty
-                          ? const SizedBox.shrink()
-                          : TextButton(
-                              child: const Text("Examples"),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          WordDetails(word: word)),
-                                );
-                              },
-                            ),
+                      TextButton(
+                        child: const Text("Examples"),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WordDetails(word: word)),
+                          );
+                        },
+                      ),
                       WordIcon(word: word),
                     ],
                   ),

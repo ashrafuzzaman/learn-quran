@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learnquran/cubit/arabic_font_cubit.dart';
 import 'package:learnquran/screens/home.dart';
-import 'package:learnquran/service/database.dart';
+import 'package:learnquran/repository/repo_base.dart';
 import 'package:learnquran/service/database_initializer.dart';
 import 'package:learnquran/theme/app_theme.dart';
 import 'package:logging/logging.dart';
@@ -16,7 +16,7 @@ void main() async {
 initializeApp() async {
   Logger.root.level = Level.ALL;
   WidgetsFlutterBinding.ensureInitialized();
-  await DbService().initiate();
+  await RepoBase().initiate();
   Logger.root.onRecord.listen((record) {
     print('${record.level.name}: ${record.message}');
   });

@@ -1,13 +1,13 @@
 import 'package:learnquran/dto/bookmark.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/repository/words_repo.dart';
-import 'package:learnquran/service/database.dart';
+import 'package:learnquran/repository/repo_base.dart';
 import 'package:logging/logging.dart';
 
 const String tableBookmark = 'bookmark_words';
 const String columnWordId = 'wordId';
 
-class BookmarkRepo extends DbService {
+class BookmarkRepo extends RepoBase {
   @override
   final log = Logger('BookmarkRepo');
 

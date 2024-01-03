@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:learnquran/dto/word.dart';
-import 'package:learnquran/service/database.dart';
+import 'package:learnquran/repository/repo_base.dart';
 import 'package:logging/logging.dart';
 
 const String tableWords = 'words';
@@ -26,7 +26,7 @@ const Map<Gender, String> genderMap = {
   Gender.female: 'female',
 };
 
-class WordRepo extends DbService {
+class WordRepo extends RepoBase {
   @override
   final log = Logger('WordRepo');
 
@@ -35,6 +35,12 @@ class WordRepo extends DbService {
         where: '$columnId IN (?)',
         whereArgs: [wordIds.map((id) => id.toString()).toList().join(',')]);
     return records.map((record) => recordToWord(record)).toList();
+  }
+
+  Future<Word?> findWordByArabic(String arabic) async {
+    var records = await query(tableWords,
+        where: '$columnArabic = ?', whereArgs: [arabic]);
+    return records.map((record) => recordToWord(record)).toList().first;
   }
 
   Future<Word?> findWordById(int wordId) async {

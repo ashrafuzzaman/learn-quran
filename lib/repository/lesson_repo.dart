@@ -1,5 +1,5 @@
 import 'package:learnquran/dto/lesson.dart';
-import 'package:learnquran/service/database.dart';
+import 'package:learnquran/repository/repo_base.dart';
 import 'package:logging/logging.dart';
 
 const String tableLesson = 'lessons';
@@ -9,7 +9,7 @@ const String columnDescription = 'description';
 const String columnTotalWords = 'totalWords';
 const String columnWordsLearned = 'wordsLearned';
 
-class LessonRepo extends DbService {
+class LessonRepo extends RepoBase {
   @override
   final log = Logger('LessonRepo');
 

@@ -1,14 +1,18 @@
-import 'dart:collection';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 @freezed
 class Example {
+  final int wordId;
   final String arabic;
   final String meaning;
+  String? highlight;
+  String ayahRef;
 
-  Example({required this.arabic, required this.meaning});
-
-  Example.fromMap(MapBase data)
-      : arabic = data['arabic'],
-        meaning = data['meaning'];
+  Example({
+    required this.wordId,
+    required this.arabic,
+    required this.meaning,
+    required this.ayahRef,
+    this.highlight,
+  });
 }

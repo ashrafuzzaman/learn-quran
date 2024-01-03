@@ -1,7 +1,7 @@
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DbService {
+class RepoBase {
   final log = Logger('DbService');
 
   withDb(Function(Database db) callback) async {
@@ -43,6 +43,15 @@ class DbService {
         await db.execute("""
           CREATE TABLE IF NOT EXISTS bookmark_words (
             wordId INTEGER UNIQUE
+          );
+        """);
+        await db.execute("""
+          CREATE TABLE IF NOT EXISTS examples (
+            wordId INTEGER,
+            arabic text,
+            highlight varchar(32),
+            meaning text,
+            ayah_ref varchar(8)
           );
         """);
       },

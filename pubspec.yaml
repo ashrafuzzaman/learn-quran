@@ -34,7 +34,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_bloc: ^8.1.3
-  yaml: ^3.1.2
   flutter_localizations:
     sdk: flutter
   intl: any
@@ -42,7 +41,6 @@ dependencies:
   shared_preferences: ^2.2.2
   freezed_annotation: ^2.4.1
   sqflite: ^2.3.0
-  path: ^1.8.3
   logging: ^1.2.0
   font_awesome_flutter: ^10.6.0
   flex_color_scheme: ^7.3.1
@@ -83,8 +81,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/data/word-lesson-en.yaml
     - assets/data/words.csv
+    - assets/data/examples.csv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

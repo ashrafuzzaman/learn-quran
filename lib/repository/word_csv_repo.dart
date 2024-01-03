@@ -13,7 +13,7 @@ const Map<String, Gender> genderMap = {
   'Female': Gender.female,
 };
 
-class WordLessonCSVRepo {
+class WordCSVRepo {
   Future<List<Word>> getWords() async {
     String wordsFileContent;
     try {

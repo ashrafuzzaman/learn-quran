@@ -1,5 +1,5 @@
 import 'package:learnquran/repository/words_repo.dart';
-import 'package:learnquran/service/database.dart';
+import 'package:learnquran/repository/repo_base.dart';
 import 'package:logging/logging.dart';
 
 const String tableQuizAttempt = 'mcq_attempts';
@@ -14,7 +14,7 @@ class WordAttempt {
   WordAttempt({required this.wordId});
 }
 
-class MCQAttemptRepo extends DbService {
+class MCQAttemptRepo extends RepoBase {
   @override
   final log = Logger('MCQAttemptRepo');
 
