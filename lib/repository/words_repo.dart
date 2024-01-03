@@ -34,14 +34,14 @@ class WordRepo extends DbService {
     var records = await query(tableWords,
         where: '$columnId IN (?)',
         whereArgs: [wordIds.map((id) => id.toString()).toList().join(',')]);
-    return records.map((record) => _recordToWord(record)).toList();
+    return records.map((record) => recordToWord(record)).toList();
   }
 
   Future<Word?> findWordById(int wordId) async {
     var result =
         await query(tableWords, where: '$columnId = ?', whereArgs: [wordId]);
     if (result.isNotEmpty) {
-      return _recordToWord(result.first);
+      return recordToWord(result.first);
     }
     return null;
   }
@@ -83,7 +83,7 @@ class WordRepo extends DbService {
   Future<List<Word>> getAllWords(int limit) async {
     var records =
         await query(tableWords, orderBy: '$columnId ASC', limit: limit);
-    return records.map((record) => _recordToWord(record)).toList();
+    return records.map((record) => recordToWord(record)).toList();
   }
 
   Future<List<Word>> getWordsToLearn(int limit) async {
@@ -92,13 +92,13 @@ class WordRepo extends DbService {
         whereArgs: [false],
         orderBy: '$columnId ASC, $columnRead DESC',
         limit: limit);
-    return records.map((record) => _recordToWord(record)).toList();
+    return records.map((record) => recordToWord(record)).toList();
   }
 
   Future<List<Word>> getWordsRead() async {
     var records = await query(tableWords,
         where: '$columnRead = ?', whereArgs: [true], orderBy: '$columnId ASC');
-    return records.map((record) => _recordToWord(record)).toList();
+    return records.map((record) => recordToWord(record)).toList();
   }
 
   Future<bool> isWordRead(int wordId) async {
@@ -107,7 +107,7 @@ class WordRepo extends DbService {
     return record.isNotEmpty;
   }
 
-  Word _recordToWord(Map<String, Object?> record) {
+  Word recordToWord(Map<String, Object?> record) {
     return Word.fromMap({
       'id': record[columnId],
       'lessonId': record[columnLessonId],

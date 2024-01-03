@@ -11,17 +11,16 @@ class BookmarkRepo extends DbService {
   @override
   final log = Logger('BookmarkRepo');
 
-  Future<List<int>> getBookmarkedWordIds() async {
-    var result = await query(tableBookmark, columns: [columnWordId]);
-    return result
-        .map((row) => int.parse(row[columnWordId].toString()))
-        .toList();
-  }
-
   Future<List<Word>> getBookmarkedWords() async {
-    var ids = await getBookmarkedWordIds();
     var wordRepo = WordRepo();
-    return await wordRepo.findWordsByIds(ids);
+
+    var result = await rawQuery('''
+        SELECT w.*
+        FROM words w
+        INNER JOIN bookmark_words b ON w.id = b.wordId
+        ORDER BY w.id DESC
+      ''');
+    return result.map((row) => wordRepo.recordToWord(row)).toList();
   }
 
   Future<bool> isMarked(int wordId) async {

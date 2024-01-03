@@ -108,6 +108,16 @@ class DbService {
     return result;
   }
 
+  Future<List<Map<String, Object?>>> rawQuery(String sql,
+      [List<Object?>? arguments]) async {
+    late List<Map<String, Object?>> result;
+
+    await withDb((db) async {
+      result = await db.rawQuery(sql, arguments);
+    });
+    return result;
+  }
+
   initiate() async {
     await withDb((db) async {
       log.info("Database Initialized...");
