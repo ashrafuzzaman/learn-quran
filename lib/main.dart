@@ -10,21 +10,17 @@ import 'package:learnquran/theme/app_theme.dart';
 import 'package:logging/logging.dart';
 
 void main() async {
+  runApp(const MyApp());
+}
+
+initializeApp() async {
   Logger.root.level = Level.ALL;
-  // TODO: move this to a loading screen, as this might take time.
   WidgetsFlutterBinding.ensureInitialized();
   await DbService().initiate();
   Logger.root.onRecord.listen((record) {
     print('${record.level.name}: ${record.message}');
   });
-  // await initializeWordsDatabaseFromYaml(const Locale("en"));
   await initializeWordsDatabaseFromCsv();
-
-  // final log = Logger('main');
-  // var result = await QuizAttemptRepo().getWordAttemptsWithCount();
-  // log.info(result);
-
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,29 +29,44 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ArabicFontCubit(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Learn Quran",
-        theme: getLightFlexTheme(FlexScheme.bahamaBlue),
-        // darkTheme: getDarkFlexTheme(FlexScheme.bahamaBlue),
-        // themeMode: ThemeMode.system,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en'), // English
-          Locale('bn'), // English
-        ],
-        home: const HomePage(),
-      ),
-    );
+    return FutureBuilder(
+        future: initializeApp(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Directionality(
+              textDirection: TextDirection.ltr,
+              child: Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            );
+          }
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => ArabicFontCubit(),
+              ),
+            ],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: "Learn Quran",
+              theme: getLightFlexTheme(FlexScheme.bahamaBlue),
+              // darkTheme: getDarkFlexTheme(FlexScheme.bahamaBlue),
+              // themeMode: ThemeMode.system,
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en'), // English
+                Locale('bn'), // English
+              ],
+              home: const HomePage(),
+            ),
+          );
+        });
   }
 }

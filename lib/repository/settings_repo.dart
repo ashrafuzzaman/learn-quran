@@ -16,8 +16,8 @@ class SettingsRepo {
 
   Future<FontFamilyOptions> getFontFamily() async {
     final String? fontFamily = await _getString(fontFamilyPrefKey);
-    var reversedfontMap = fontMap.map((k, v) => MapEntry(v, k));
-    return reversedfontMap[fontFamily] ?? FontFamilyOptions.alqalam;
+    var reversedFontMap = fontMap.map((k, v) => MapEntry(v, k));
+    return reversedFontMap[fontFamily] ?? FontFamilyOptions.alqalam;
   }
 
   Future<void> setFontFamily(FontFamilyOptions fontFamily) async {
