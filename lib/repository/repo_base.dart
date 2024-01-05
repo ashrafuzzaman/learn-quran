@@ -30,6 +30,7 @@ class RepoBase {
             gender varchar(2),
             learned BOOL default false,
             learnLevel INTEGER default 0,
+            totalExamples INTEGER default 0,
             read BOOL default false
           );
         """);
@@ -51,7 +52,8 @@ class RepoBase {
             arabic text,
             highlight varchar(32),
             meaning text,
-            ayah_ref varchar(8)
+            ayah_ref varchar(8),
+            UNIQUE(wordId,ayah_ref)
           );
         """);
       },

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/widgets/word/word_flipcard.dart';
 
-class WordsFlipcardScreen extends StatefulWidget {
+class WordsFlipCardScreen extends StatefulWidget {
   final List<Word> words;
   final int wordIndex;
-  const WordsFlipcardScreen(
+  const WordsFlipCardScreen(
       {super.key, required this.words, required this.wordIndex});
 
   @override
-  State<WordsFlipcardScreen> createState() => _WordsFlipcardScreenState();
+  State<WordsFlipCardScreen> createState() => _WordsFlipCardScreenState();
 }
 
-class _WordsFlipcardScreenState extends State<WordsFlipcardScreen> {
+class _WordsFlipCardScreenState extends State<WordsFlipCardScreen> {
   @override
   Widget build(BuildContext context) {
     final PageController controller =

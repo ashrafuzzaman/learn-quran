@@ -17,6 +17,7 @@ class WordExampleCSVRepo {
         const CsvToListConverter().convert(wordsFileContent, eol: "\n");
     var index = 0;
     var columAyaRef = index++;
+    var columWordId = index++;
     var columArabic = index++;
     var columMeaning = index++;
     var columHighlight = index++;
@@ -25,13 +26,17 @@ class WordExampleCSVRepo {
     List<ExampleFromCsv> examples = [];
 
     data.skip(1).forEach((entry) {
-      if (entry[columAyaRef].toString().isEmpty) {
-        currentWord = entry[columArabic];
+      // if (entry[columAyaRef].toString().isEmpty) {
+      //   currentWord = entry[columArabic];
+      //   return;
+      // }
+
+      if (entry[columWordId].toString().isEmpty) {
         return;
       }
 
       examples.add(ExampleFromCsv(
-        word: currentWord,
+        wordId: int.parse(entry[columWordId].toString()),
         arabic: entry[columArabic],
         meaning: entry[columMeaning],
         ayahRef: entry[columAyaRef],
@@ -44,14 +49,14 @@ class WordExampleCSVRepo {
 
 @freezed
 class ExampleFromCsv {
-  final String word;
+  final int wordId;
   final String arabic;
   final String meaning;
   final String ayahRef;
   String? highlight;
 
   ExampleFromCsv({
-    required this.word,
+    required this.wordId,
     required this.arabic,
     required this.meaning,
     required this.ayahRef,

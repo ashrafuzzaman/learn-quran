@@ -24,7 +24,7 @@ class WordListPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => WordsFlipcardScreen(
+          builder: (context) => WordsFlipCardScreen(
                 words: words,
                 wordIndex: wordIndex,
               )),

@@ -32,11 +32,11 @@ class WordCSVRepo {
     var columArabic = index++;
     var columMeaning = index++;
     return List<Word>.from(data.skip(1).map((entry) => Word(
-        arabic: entry[columArabic],
-        meaning: entry[columMeaning],
+        arabic: entry[columArabic].toString().trim(),
+        meaning: entry[columMeaning].toString().trim(),
         lessonId: entry[columLessonId],
         id: entry[columId],
-        plurality: pluralityMap[entry[columNumber]],
-        gender: genderMap[entry[columGender]])));
+        plurality: pluralityMap[entry[columNumber].toString().trim()],
+        gender: genderMap[entry[columGender].toString().trim()])));
   }
 }

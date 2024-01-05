@@ -29,6 +29,16 @@ class ExamplesRepo extends RepoBase {
     return null;
   }
 
+  Future<Example?> findByWordIdAndAyahRef(int wordId, String ayahRef) async {
+    var result = await query(tableExamples,
+        where: '$columnWordId = ? AND $columnAyahRef = ?',
+        whereArgs: [wordId, ayahRef]);
+    if (result.isNotEmpty) {
+      return _recordToExample(result.first);
+    }
+    return null;
+  }
+
   Future<List<Example>?> findExamplesByWordId(int wordId) async {
     var result = await query(tableExamples,
         where: '$columnWordId = ?', whereArgs: [wordId]);
@@ -38,11 +48,19 @@ class ExamplesRepo extends RepoBase {
     return null;
   }
 
+  Future<List<Map<String, Object?>>> getExampleCountByWord() async {
+    return await query(tableExamples, groupBy: columnWordId, columns: [
+      columnWordId,
+      'COUNT(*) as count',
+    ]);
+  }
+
   sync(ExampleFromCsv example) async {
-    var dbExample = await findByWordAndAyahRef(example.word, example.ayahRef);
+    var dbExample =
+        await findByWordIdAndAyahRef(example.wordId, example.ayahRef);
     var wordRepo = WordRepo();
     if (dbExample == null) {
-      var word = (await wordRepo.findWordByArabic(example.word))!;
+      var word = (await wordRepo.findWordById(example.wordId))!;
       await insert(tableExamples, {
         columnWordId: word.id,
         columnArabic: example.arabic,

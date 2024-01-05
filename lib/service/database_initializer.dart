@@ -33,9 +33,21 @@ initializeWordsDatabaseFromCsv() async {
   var examples = await WordExampleCSVRepo().getExamples();
   var exampleRepo = ExamplesRepo();
 
+  log.info("examples.length: ${examples.length}");
   for (var example in examples) {
-    // log.info(
-    //     "${example.word}:${example.ayahRef}\n${example.arabic}\n${example.meaning}");
-    await exampleRepo.sync(example);
+    log.info("${example.wordId}|${example.ayahRef}");
+    try {
+      await exampleRepo.sync(example);
+    } on Exception catch (e) {
+      log.warning("Error while loading example: ${e.toString()}");
+    }
+  }
+
+  var exampleCountByWords = await exampleRepo.getExampleCountByWord();
+  // log.info("exampleCountByWords :: ${exampleCountByWords.length}");
+  for (var record in exampleCountByWords) {
+    // log.info("${record['wordId']}, ${record['count']}");
+    await wordRepo.updateTotalExamples(
+        record['wordId'] as int, record['count'] as int);
   }
 }

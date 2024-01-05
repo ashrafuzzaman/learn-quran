@@ -14,6 +14,7 @@ const String columnGender = 'gender';
 const String columnLearned = 'learned';
 const String columnLearnLevel = 'learnLevel';
 const String columnRead = 'read';
+const String columnTotalExamples = 'totalExamples';
 
 const Map<Plurality, String> pluralityMap = {
   Plurality.singular: 's',
@@ -66,24 +67,27 @@ class WordRepo extends RepoBase {
     }
   }
 
+  updateWord(int wordId, values) async {
+    await update(tableWords, values,
+        where: '$columnId = ?', whereArgs: [wordId]);
+  }
+
   markLearned(int wordId) async {
-    await update(
-        tableWords,
-        {
-          columnLearned: true,
-        },
-        where: '$columnId = ?',
-        whereArgs: [wordId]);
+    await updateWord(wordId, {
+      columnLearned: true,
+    });
   }
 
   markRead(int wordId) async {
-    await update(
-        tableWords,
-        {
-          columnRead: true,
-        },
-        where: '$columnId = ?',
-        whereArgs: [wordId]);
+    await updateWord(wordId, {
+      columnRead: true,
+    });
+  }
+
+  updateTotalExamples(int wordId, int totalExamples) async {
+    await updateWord(wordId, {
+      columnTotalExamples: totalExamples,
+    });
   }
 
   Future<List<Word>> getAllWords(int limit) async {
@@ -121,6 +125,7 @@ class WordRepo extends RepoBase {
       'meaning': record[columnMeaning],
       'plurality': record[columnPlurality],
       'learned': record[columnLearned] == 1,
+      'totalExamples': record[columnTotalExamples],
       'gender': record[columnGender],
     } as MapBase);
   }
