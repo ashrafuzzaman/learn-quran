@@ -46,6 +46,7 @@ dependencies:
   flex_color_scheme: ^7.3.1
   csv: ^5.1.1
   dartarabic: ^0.1.2
+  percent_indicator: ^4.0.1
 
 dev_dependencies:
   flutter_test:

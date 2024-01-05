@@ -1,22 +1,14 @@
-import 'dart:collection';
-
-import 'package:learnquran/dto/word.dart';
-
 class Lesson {
-  String name;
-  String description;
-  int id;
+  final String name;
+  final String description;
+  final int id;
+  final int totalWords;
+  final int wordsLearned;
 
-  Lesson(this.id, this.name, this.description);
-}
-
-class LessonWithWords extends Lesson {
-  late List<Word> words;
-
-  LessonWithWords(super.id, super.name, super.description, this.words);
-
-  LessonWithWords.fromMap(MapBase data, int id)
-      : super(id, data['name'], data['description']) {
-    words = List<Word>.from(data['words'].map((entry) => Word.fromMap(entry)));
-  }
+  Lesson(
+      {required this.id,
+      required this.name,
+      required this.description,
+      this.totalWords = 0,
+      this.wordsLearned = 0});
 }

@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:learnquran/dto/word.dart';
+import 'package:learnquran/repository/lesson_repo.dart';
 import 'package:learnquran/repository/repo_base.dart';
 import 'package:logging/logging.dart';
 
@@ -76,6 +77,12 @@ class WordRepo extends RepoBase {
     await updateWord(wordId, {
       columnLearned: true,
     });
+
+    var word = await findWordById(wordId);
+    // update lesson count
+    int wordsLearned = await getWordLearnedByLessonId(word!.lessonId);
+    var lessonRepo = LessonRepo();
+    lessonRepo.updateWordsLearned(word.lessonId, wordsLearned);
   }
 
   markRead(int wordId) async {
@@ -115,6 +122,26 @@ class WordRepo extends RepoBase {
     var record = await query(tableWords,
         where: '$columnId = ? AND $columnRead', whereArgs: [wordId, true]);
     return record.isNotEmpty;
+  }
+
+  getWordCountByLesson() async {
+    var records = await query(
+      tableWords,
+      columns: ['lessonId', 'COUNT(*) as count'],
+      groupBy: 'lessonId',
+    );
+    return records;
+  }
+
+  Future<int> getWordLearnedByLessonId(int lessonId) async {
+    var records = await query(
+      tableWords,
+      columns: ['COUNT(*) as count'],
+      where: '$columnLessonId = ? AND $columnLearned = ?',
+      whereArgs: [lessonId, true],
+      groupBy: 'lessonId',
+    );
+    return records.first['count'] as int;
   }
 
   Word recordToWord(Map<String, Object?> record) {

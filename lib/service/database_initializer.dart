@@ -27,6 +27,14 @@ initializeWordsDatabaseFromCsv() async {
     await wordRepo.sync(word);
   }
 
+  var wordCountByLesson = await wordRepo.getWordCountByLesson();
+  log.info("wordCountByLesson :: ${wordCountByLesson.length}");
+  for (var record in wordCountByLesson) {
+    log.info("${record['lessonId']}, ${record['count']}");
+    await lessonRepo.updateTotalWords(
+        record['lessonId'] as int, record['count'] as int);
+  }
+
   log.info("Loading examples...");
 
   // import examples

@@ -13,27 +13,46 @@ class LessonRepo extends RepoBase {
   @override
   final log = Logger('LessonRepo');
 
-  Future<Lesson?> getByName(String name) async {
+  Future<Lesson?> findByName(String name) async {
     var record =
         await query(tableLesson, where: '$columnName = ?', whereArgs: [name]);
-    return record.isNotEmpty ? _recordToLesson(record) : null;
+    return record.isNotEmpty ? _recordToLesson(record.first) : null;
   }
 
-  Future<Lesson?> getById(int id) async {
+  Future<Lesson?> findById(int id) async {
     var record =
         await query(tableLesson, where: '$columnId = ?', whereArgs: [id]);
-    return record.isNotEmpty ? _recordToLesson(record) : null;
+    return record.isNotEmpty ? _recordToLesson(record.first) : null;
   }
 
-  Lesson _recordToLesson(List<Map<String, Object?>> record) {
+  Future<List<Lesson>> findAll() async {
+    var record = await query(tableLesson);
+    return record.isNotEmpty
+        ? record.map((row) => _recordToLesson(row)).toList()
+        : [];
+  }
+
+  updateWordsLearned(int id, int wordsLearned) async {
+    await update(tableLesson, {columnWordsLearned: wordsLearned},
+        where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  Lesson _recordToLesson(Map<String, Object?> record) {
     return Lesson(
-        int.parse(record.first[columnId].toString()),
-        record.first[columnName].toString(),
-        record.first[columnDescription].toString());
+        id: int.parse(record[columnId].toString()),
+        name: record[columnName].toString(),
+        description: record[columnDescription].toString(),
+        totalWords: int.parse(record[columnTotalWords].toString()),
+        wordsLearned: int.parse(record[columnWordsLearned].toString()));
+  }
+
+  updateTotalWords(int id, int totalWords) async {
+    await update(tableLesson, {columnTotalWords: totalWords},
+        where: '$columnId = ?', whereArgs: [id]);
   }
 
   sync(int id, String name, String description, int totalWords) async {
-    var lesson = await getById(id);
+    var lesson = await findById(id);
     if (lesson == null) {
       await insert(tableLesson, {
         columnName: name,
@@ -41,6 +60,16 @@ class LessonRepo extends RepoBase {
         columnTotalWords: totalWords,
         columnWordsLearned: 0,
       });
+    } else {
+      await update(
+          tableLesson,
+          {
+            columnName: name,
+            columnDescription: description,
+            columnTotalWords: totalWords,
+          },
+          where: '$columnId = ?',
+          whereArgs: [id]);
     }
   }
 }
