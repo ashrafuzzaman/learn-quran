@@ -1,4 +1,3 @@
-import 'package:dartarabic/dartarabic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learnquran/cubit/arabic_font_cubit.dart';
@@ -15,19 +14,14 @@ class ArabicHighlightedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var words = sentence.split(RegExp(' '));
+    var words = sentence.split(RegExp(r'\s+'));
 
     return BlocBuilder<ArabicFontCubit, FontFamilyOptions>(
       builder: (context, selectedFontFamilyOption) {
         return RichText(
           text: TextSpan(
             children: words.map((word) {
-              var patternWODiacritics =
-                  DartArabic.stripDiacritics(pattern).normalizeLetters();
-              var wordWODiacritics =
-                  DartArabic.stripDiacritics(word).normalizeLetters();
-
-              var isEqual = patternWODiacritics == wordWODiacritics;
+              var isEqual = pattern == word;
               return TextSpan(
                 text: '$word ',
                 style: isEqual

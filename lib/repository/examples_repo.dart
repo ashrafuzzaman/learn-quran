@@ -68,6 +68,19 @@ class ExamplesRepo extends RepoBase {
         columnMeaning: example.meaning,
         columnAyahRef: example.ayahRef,
       });
+    } else {
+      await update(
+          tableExamples,
+          {
+            columnArabic: example.arabic,
+            columnHighlight: example.highlight,
+            columnMeaning: example.meaning,
+          },
+          where: '$columnWordId = ? AND $columnAyahRef = ?',
+          whereArgs: [
+            example.wordId,
+            example.ayahRef,
+          ]);
     }
   }
 

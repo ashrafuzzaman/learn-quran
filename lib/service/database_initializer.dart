@@ -35,7 +35,7 @@ initializeWordsDatabaseFromCsv() async {
 
   log.info("examples.length: ${examples.length}");
   for (var example in examples) {
-    log.info("${example.wordId}|${example.ayahRef}");
+    // log.info("${example.wordId}|${example.ayahRef}");
     try {
       await exampleRepo.sync(example);
     } on Exception catch (e) {
