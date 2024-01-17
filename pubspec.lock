@@ -290,7 +290,7 @@ packages:
     source: hosted
     version: "1.4.0"
   flip_card:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flip_card
       sha256: "5d4aa58f3983cced0782f4ce45826b7eea36e8e464964d9209dcbc7a87b2292f"
