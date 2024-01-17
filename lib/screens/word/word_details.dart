@@ -34,60 +34,66 @@ class WordDetails extends StatelessWidget {
               ),
             ),
             backgroundColor: bgColor,
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ArabicText(
-                  word.arabic,
-                  fontSize: 48,
-                ),
-                Row(
+            body: SafeArea(
+                child: SingleChildScrollView(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Hero(
-                      tag: 'meaning:${word.id}',
-                      flightShuttleBuilder: (
-                        BuildContext flightContext,
-                        Animation<double> animation,
-                        HeroFlightDirection flightDirection,
-                        BuildContext fromHeroContext,
-                        BuildContext toHeroContext,
-                      ) {
-                        return DefaultTextStyle(
-                          style: DefaultTextStyle.of(toHeroContext).style,
-                          child: toHeroContext.widget,
-                        );
-                      },
-                      child: Text(
-                        word.meaning,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 32),
+                    ArabicText(
+                      word.arabic,
+                      fontSize: 48,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Hero(
+                          tag: 'meaning:${word.id}',
+                          flightShuttleBuilder: (
+                            BuildContext flightContext,
+                            Animation<double> animation,
+                            HeroFlightDirection flightDirection,
+                            BuildContext fromHeroContext,
+                            BuildContext toHeroContext,
+                          ) {
+                            return DefaultTextStyle(
+                              style: DefaultTextStyle.of(toHeroContext).style,
+                              child: toHeroContext.widget,
+                            );
+                          },
+                          child: Text(
+                            word.meaning,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 32),
+                          ),
+                        ),
+                        SizedBox(child: WordIcon(word: word))
+                      ],
+                    ),
+                    Divider(
+                      color: Theme.of(context).colorScheme.primary,
+                      height: 30,
+                      endIndent: 30,
+                      indent: 30,
+                      thickness: .5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(40),
+                      child: Column(
+                        children: [
+                          ExamplesWidget(
+                              defaultHighlight: word.arabic,
+                              examples: exampleSnapshot.data),
+                        ],
                       ),
                     ),
-                    SizedBox(child: WordIcon(word: word))
                   ],
                 ),
-                Divider(
-                  color: Theme.of(context).colorScheme.primary,
-                  height: 30,
-                  endIndent: 30,
-                  indent: 30,
-                  thickness: .5,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: [
-                      ExamplesWidget(
-                          defaultHighlight: word.arabic,
-                          examples: exampleSnapshot.data),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            )),
           );
         });
   }
