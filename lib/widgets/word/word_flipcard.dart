@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learnquran/widgets/text/arabic_text.dart';
 import 'package:learnquran/dto/word.dart';
 import 'package:learnquran/widgets/word/bookmark_button.dart';
+import 'package:learnquran/widgets/word/audio_button.dart';
 
 class WordFlipCardWidget extends StatelessWidget {
   final Word word;
@@ -59,8 +60,9 @@ class FlipCardWord extends StatelessWidget {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                AudioButton(wordId: word.id),
                 BookmarkButton(wordId: word.id),
               ],
             )
