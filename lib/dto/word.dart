@@ -20,9 +20,11 @@ const Map<String, Gender> genderMap = {
 @freezed
 class Word {
   int id;
+  int stageId;
+  int lessonId;
+  final String audioId;
   final String arabic;
   final String meaning;
-  int lessonId;
   final Gender? gender;
   final Plurality? plurality;
   final bool? learned;
@@ -36,6 +38,8 @@ class Word {
       required this.meaning,
       required this.lessonId,
       this.totalExamples = 0,
+      required this.audioId,
+      required this.stageId,
       required this.id});
 
   Word.fromMap(MapBase data)
@@ -43,6 +47,8 @@ class Word {
         meaning = data['meaning'],
         learned = data['learned'] ?? false,
         id = data['id'],
+        stageId = data['stageId'],
+        audioId = data['audioId'],
         lessonId = data['lessonId'],
         plurality = pluralityMap[data['plurality']],
         totalExamples = data['totalExamples'] ?? 0,

@@ -8,6 +8,8 @@ import 'package:logging/logging.dart';
 const String tableWords = 'words';
 const String columnId = 'id';
 const String columnLessonId = 'lessonId';
+const String columnStageId = 'stageId';
+const String columnAudioId = 'audioId';
 const String columnArabic = 'arabic';
 const String columnMeaning = 'meaning';
 const String columnPlurality = 'plurality';
@@ -59,7 +61,9 @@ class WordRepo extends RepoBase {
     if (dbWord == null) {
       await insert(tableWords, {
         columnId: word.id,
+        columnStageId: word.stageId,
         columnLessonId: word.lessonId,
+        columnAudioId: word.audioId,
         columnArabic: word.arabic,
         columnMeaning: word.meaning,
         columnPlurality: pluralityMap[word.plurality],
@@ -148,6 +152,8 @@ class WordRepo extends RepoBase {
     return Word.fromMap({
       'id': record[columnId],
       'lessonId': record[columnLessonId],
+      'stageId': record[columnStageId],
+      'audioId': record[columnAudioId],
       'arabic': record[columnArabic],
       'meaning': record[columnMeaning],
       'plurality': record[columnPlurality],

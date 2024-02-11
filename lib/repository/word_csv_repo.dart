@@ -26,7 +26,9 @@ class WordCSVRepo {
         const CsvToListConverter().convert(wordsFileContent, eol: "\n");
     var index = 0;
     var columId = index++;
+    var columStageId = index++;
     var columLessonId = index++;
+    var columAudioId = index++;
     var columGender = index++;
     var columNumber = index++;
     var columArabic = index++;
@@ -36,6 +38,8 @@ class WordCSVRepo {
         meaning: entry[columMeaning].toString().trim(),
         lessonId: entry[columLessonId],
         id: entry[columId],
+        stageId: entry[columStageId],
+        audioId: entry[columAudioId].toString().trim(),
         plurality: pluralityMap[entry[columNumber].toString().trim()],
         gender: genderMap[entry[columGender].toString().trim()])));
   }

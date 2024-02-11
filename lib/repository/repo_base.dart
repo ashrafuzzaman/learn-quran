@@ -23,7 +23,9 @@ class RepoBase {
         await db.execute("""
           CREATE TABLE IF NOT EXISTS words (
             id INTEGER PRIMARY KEY,
+            stageId INTEGER,
             lessonId INTEGER,
+            audioId varchar(64),
             arabic varchar(64),
             meaning varchar(64),
             plurality varchar(2),
