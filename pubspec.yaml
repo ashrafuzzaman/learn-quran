@@ -85,6 +85,7 @@ flutter:
   assets:
     - assets/data/words.csv
     - assets/data/examples.csv
+    - assets/audio/words/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
