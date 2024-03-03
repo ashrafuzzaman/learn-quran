@@ -123,7 +123,6 @@ Id,LessonId,Gender,Number,Word,Meaning
 122,1,,,كَأَنَّمَا,As if
 123,1,,,كُلَّمَا  ,Every time Whenever
 124,1,,,أَيۡنَ مَا ,Wherever
-125,1,,,أَيۡنَمَا,Wherever
 126,1,,,نِعِمَّا,What good that
 127,1,,,بِئسَمَا,What bad that
 128,1,,,فَـمَا (فَمَا خَطۡبُكَ),then … not
@@ -131,7 +130,6 @@ Id,LessonId,Gender,Number,Word,Meaning
 130,1,,,أَمَّا,As for
 131,1,,,إِمَّا (فَإِمَّا يَأۡتِيَنَّكُم مِّنِّي هُدٗى),If
 132,1,,,إِمَّا (إِمَّا شَاكِرٗا وَإِمَّا كَفُورًا),Either .. or
-133,1,,,,
 134,2,,,رَبّ,Lord/ O Lord
 135,2,,,ٱلرَّحۡمَٰنِ ,Entirely Merciful
 136,2,,,ٱلرَّحِيم,Especially Merciful
@@ -368,7 +366,6 @@ Id,LessonId,Gender,Number,Word,Meaning
 367,2,,,فِئَة ,Party / Group
 368,2,,,طَآئِفَة ,Party / Group
 369,2,,, أَجۡمَعِينَ,All/ Everybody /Everyone
-370,2,,, أَجۡمَعِينَ,All/ Everybody /Everyone
 371,2,,,جَمِيع,All/ Everybody /Everyone
 372,2,,,سَوَآء,Same/ Equal/ Straight
 373,2,,,ٱسۡم,Name
