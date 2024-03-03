@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 class AudioButton extends StatelessWidget {
@@ -13,7 +14,11 @@ class AudioButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       child: const Icon(Icons.volume_up),
-      onPressed: () {},
+      onPressed: () async {
+        final player = AudioPlayer();
+        final String filePath = 'audio/words/$wordId.mp3';
+        await player.play(AssetSource(filePath));
+      },
     );
   }
 }
