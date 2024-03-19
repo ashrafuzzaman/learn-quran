@@ -22,19 +22,13 @@ class MCQWidget extends StatefulWidget {
 
 class _MCQWidgetState extends State<MCQWidget> {
   MCQOption? selectedOption;
-  bool submitted = false;
 
-  onSubmit() async {
-    if (selectedOption == null) {
-      return;
-    }
+  onSubmit(MCQOption option) async {
     await MCQAttemptRepo()
-        .recordAttempt(widget.question.word.id, selectedOption!.isCorrect);
-    setState(() {
-      submitted = true;
-    });
+        .recordAttempt(widget.question.word.id, option!.isCorrect);
+
     if (!widget.showNext) {
-      widget.onComplete(selectedOption!.isCorrect);
+      widget.onComplete(option!.isCorrect);
     }
   }
 
@@ -62,7 +56,7 @@ class _MCQWidgetState extends State<MCQWidget> {
                   option.title.text,
                   style: const TextStyle(fontSize: 24),
                 ),
-                tileColor: submitted && option.isCorrect
+                tileColor: selectedOption != null && option.isCorrect
                     ? successColor
                     : Colors.transparent,
                 leading: Radio<String>(
@@ -73,7 +67,7 @@ class _MCQWidgetState extends State<MCQWidget> {
                     setState(() {
                       selectedOption = option;
                     });
-                    onSubmit();
+                    onSubmit(option);
                   },
                 ),
               )),
@@ -89,9 +83,7 @@ class _MCQWidgetState extends State<MCQWidget> {
                     ),
                     CustomButton(
                       text: 'Next',
-                      onPressed: submitted != true
-                          ? null
-                          : () async => {await onNext()},
+                      onPressed: selectedOption != null ? onNext : null,
                     )
                   ]
                 : [],
