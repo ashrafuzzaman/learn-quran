@@ -73,6 +73,7 @@ class _MCQWidgetState extends State<MCQWidget> {
                     setState(() {
                       selectedOption = option;
                     });
+                    onSubmit();
                   },
                 ),
               )),
@@ -81,27 +82,19 @@ class _MCQWidgetState extends State<MCQWidget> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomButton(
-                text: 'Submit',
-                onPressed: selectedOption == null || submitted == true
-                    ? null
-                    : () async => {await onSubmit()},
-              ),
-              ...(widget.showNext
-                  ? [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      CustomButton(
-                        text: 'Next',
-                        onPressed: submitted != true
-                            ? null
-                            : () async => {await onNext()},
-                      )
-                    ]
-                  : []),
-            ],
+            children: widget.showNext
+                ? [
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomButton(
+                      text: 'Next',
+                      onPressed: submitted != true
+                          ? null
+                          : () async => {await onNext()},
+                    )
+                  ]
+                : [],
           ),
         ],
       ),
