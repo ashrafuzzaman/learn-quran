@@ -22,18 +22,22 @@ class MCQWidget extends StatefulWidget {
 
 class _MCQWidgetState extends State<MCQWidget> {
   MCQOption? selectedOption;
+  static const autoOnCompleteInvocationDelayInMS = 600;
 
   onSubmit(MCQOption option) async {
+    setState(() {
+      selectedOption = option;
+    });
+
     await MCQAttemptRepo()
         .recordAttempt(widget.question.word.id, option.isCorrect);
 
-    if (!widget.showNext) {
-      widget.onComplete(option.isCorrect);
-    }
-  }
-
-  onNext() async {
-    widget.onComplete(selectedOption!.isCorrect);
+    Future.delayed(
+        const Duration(milliseconds: autoOnCompleteInvocationDelayInMS), () {
+      if (mounted) {
+        widget.onComplete(option.isCorrect);
+      }
+    });
   }
 
   Color? getOptionBackgroundColor(
@@ -77,9 +81,6 @@ class _MCQWidgetState extends State<MCQWidget> {
                   groupValue:
                       selectedOption != null ? selectedOption!.title.text : '',
                   onChanged: (_) {
-                    setState(() {
-                      selectedOption = option;
-                    });
                     onSubmit(option);
                   },
                 ),
