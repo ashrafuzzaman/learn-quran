@@ -6,6 +6,7 @@ class ThemeExtensionColors extends ThemeExtension<ThemeExtensionColors> {
   final Color? femaleWordBackground;
 
   final Color? success;
+  final Color? failure;
 
   final Color? defaultWordIcon;
   final Color? maleWordIcon;
@@ -13,6 +14,7 @@ class ThemeExtensionColors extends ThemeExtension<ThemeExtensionColors> {
 
   const ThemeExtensionColors({
     required this.success,
+    required this.failure,
     required this.defaultWordBackground,
     required this.maleWordBackground,
     required this.femaleWordBackground,
@@ -24,6 +26,7 @@ class ThemeExtensionColors extends ThemeExtension<ThemeExtensionColors> {
   @override
   ThemeExtensionColors copyWith({
     Color? success,
+    Color? failure,
     Color? defaultWordBackground,
     Color? maleWordBackground,
     Color? femaleWordBackground,
@@ -33,6 +36,7 @@ class ThemeExtensionColors extends ThemeExtension<ThemeExtensionColors> {
   }) {
     return ThemeExtensionColors(
       success: success ?? this.success,
+      failure: failure ?? this.failure,
       defaultWordBackground:
           defaultWordBackground ?? this.defaultWordBackground,
       maleWordBackground: maleWordBackground ?? this.maleWordBackground,
@@ -51,6 +55,7 @@ class ThemeExtensionColors extends ThemeExtension<ThemeExtensionColors> {
     }
     return ThemeExtensionColors(
       success: Color.lerp(success, other.success, t),
+      failure: Color.lerp(failure, other.failure, t),
       defaultWordBackground:
           Color.lerp(defaultWordBackground, other.defaultWordBackground, t),
       maleWordBackground:

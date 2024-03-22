@@ -8,11 +8,9 @@ import 'package:learnquran/widgets/text/arabic_text.dart';
 class MCQWidget extends StatefulWidget {
   final MultiChoiceQuestion question;
   final Function(bool) onComplete;
-  final bool showNext;
 
   const MCQWidget(
       {super.key,
-      this.showNext = false,
       required this.question,
       required this.onComplete});
 
@@ -22,30 +20,42 @@ class MCQWidget extends StatefulWidget {
 
 class _MCQWidgetState extends State<MCQWidget> {
   MCQOption? selectedOption;
-  bool submitted = false;
+  static const autoOnCompleteInvocationDelayInMS = 600;
 
-  onSubmit() async {
-    if (selectedOption == null) {
-      return;
-    }
-    await MCQAttemptRepo()
-        .recordAttempt(widget.question.word.id, selectedOption!.isCorrect);
+  onSubmit(MCQOption option) async {
     setState(() {
-      submitted = true;
+      selectedOption = option;
     });
-    if (!widget.showNext) {
-      widget.onComplete(selectedOption!.isCorrect);
-    }
+
+    await MCQAttemptRepo()
+        .recordAttempt(widget.question.word.id, option.isCorrect);
+
+    Future.delayed(
+        const Duration(milliseconds: autoOnCompleteInvocationDelayInMS), () {
+      if (mounted) {
+        widget.onComplete(option.isCorrect);
+      }
+    });
   }
 
-  onNext() async {
-    widget.onComplete(selectedOption!.isCorrect);
+  Color? getOptionBackgroundColor(
+      MCQOption option,
+      Color? correctSelectionColor,
+      Color? incorrectSelectionColor,
+      Color notSelectedColor) {
+    if (selectedOption == null) return notSelectedColor;
+    if (option.isCorrect) return correctSelectionColor;
+    if (option.title != selectedOption?.title) return notSelectedColor;
+    return incorrectSelectionColor;
   }
 
   @override
   Widget build(BuildContext context) {
     var successColor =
         Theme.of(context).extension<ThemeExtensionColors>()!.success;
+    var failureColor =
+        Theme.of(context).extension<ThemeExtensionColors>()!.failure;
+
     return Padding(
       padding: const EdgeInsets.all(30),
       child: Column(
@@ -62,68 +72,21 @@ class _MCQWidgetState extends State<MCQWidget> {
                   option.title.text,
                   style: const TextStyle(fontSize: 24),
                 ),
-                tileColor: submitted && option.isCorrect
-                    ? successColor
-                    : Colors.transparent,
+                tileColor: getOptionBackgroundColor(
+                    option, successColor, failureColor, Colors.transparent),
                 leading: Radio<String>(
                   value: option.title.text,
                   groupValue:
                       selectedOption != null ? selectedOption!.title.text : '',
-                  onChanged: (_) {
-                    setState(() {
-                      selectedOption = option;
-                    });
-                  },
+                  onChanged: selectedOption == null
+                      ? (_) {
+                          onSubmit(option);
+                        }
+                      : null,
                 ),
               )),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomButton(
-                text: 'Submit',
-                onPressed: selectedOption == null || submitted == true
-                    ? null
-                    : () async => {await onSubmit()},
-              ),
-              ...(widget.showNext
-                  ? [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      CustomButton(
-                        text: 'Next',
-                        onPressed: submitted != true
-                            ? null
-                            : () async => {await onNext()},
-                      )
-                    ]
-                  : []),
-            ],
-          ),
         ],
       ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  final Function? onPressed;
-  final String text;
-  const CustomButton({super.key, this.onPressed, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-        ),
-      ),
-      onPressed: onPressed != null ? () => {onPressed!()} : null,
-      child: Text(text),
     );
   }
 }
