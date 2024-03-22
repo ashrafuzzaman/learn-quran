@@ -36,10 +36,24 @@ class _MCQWidgetState extends State<MCQWidget> {
     widget.onComplete(selectedOption!.isCorrect);
   }
 
+  Color? getOptionBackgroundColor(
+      MCQOption option,
+      Color? correctSelectionColor,
+      Color? incorrectSelectionColor,
+      Color notSelectedColor) {
+    if (selectedOption == null) return notSelectedColor;
+    if (option.isCorrect) return correctSelectionColor;
+    if (option.title != selectedOption?.title) return notSelectedColor;
+    return incorrectSelectionColor;
+  }
+
   @override
   Widget build(BuildContext context) {
     var successColor =
         Theme.of(context).extension<ThemeExtensionColors>()!.success;
+    var failureColor =
+        Theme.of(context).extension<ThemeExtensionColors>()!.failure;
+
     return Padding(
       padding: const EdgeInsets.all(30),
       child: Column(
@@ -56,9 +70,8 @@ class _MCQWidgetState extends State<MCQWidget> {
                   option.title.text,
                   style: const TextStyle(fontSize: 24),
                 ),
-                tileColor: selectedOption != null && option.isCorrect
-                    ? successColor
-                    : Colors.transparent,
+                tileColor: getOptionBackgroundColor(
+                    option, successColor, failureColor, Colors.transparent),
                 leading: Radio<String>(
                   value: option.title.text,
                   groupValue:
