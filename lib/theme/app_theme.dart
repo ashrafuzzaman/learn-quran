@@ -71,6 +71,7 @@ ThemeData getLightTheme() {
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         success: const Color(0xFF9ADE7B),
+        failure: Colors.red.shade400,
         defaultWordBackground: Colors.amber[50],
         maleWordBackground: Colors.blue.shade50,
         femaleWordBackground: Colors.pink.shade50,
@@ -90,6 +91,7 @@ ThemeData getLightFlexTheme(FlexScheme scheme) {
       extensions: <ThemeExtension<ThemeExtensionColors>>[
         ThemeExtensionColors(
           success: const Color(0xFF9ADE7B),
+          failure: Colors.red.shade400,
           defaultWordBackground: Colors.amber[50],
           maleWordBackground: Colors.blue.shade50,
           femaleWordBackground: Colors.pink.shade50,
@@ -152,6 +154,7 @@ ThemeData getDarkTheme() {
     extensions: <ThemeExtension<ThemeExtensionColors>>[
       ThemeExtensionColors(
         success: const Color(0xFF006D39),
+        failure: Colors.red.shade900,
         defaultWordBackground: Colors.amber.shade900,
         maleWordBackground: Colors.blue.shade700,
         femaleWordBackground: Colors.pink.shade900,
@@ -169,6 +172,7 @@ ThemeData getDarkFlexTheme(FlexScheme scheme) {
       extensions: <ThemeExtension<ThemeExtensionColors>>[
         ThemeExtensionColors(
           success: const Color(0xFF006D39),
+          failure: Colors.red.shade900,
           defaultWordBackground: Colors.amber.shade900,
           maleWordBackground: Colors.blue.shade700,
           femaleWordBackground: Colors.pink.shade900,
