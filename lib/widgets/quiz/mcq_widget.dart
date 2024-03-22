@@ -80,9 +80,11 @@ class _MCQWidgetState extends State<MCQWidget> {
                   value: option.title.text,
                   groupValue:
                       selectedOption != null ? selectedOption!.title.text : '',
-                  onChanged: (_) {
-                    onSubmit(option);
-                  },
+                  onChanged: selectedOption == null
+                      ? (_) {
+                          onSubmit(option);
+                        }
+                      : null,
                 ),
               )),
         ],
