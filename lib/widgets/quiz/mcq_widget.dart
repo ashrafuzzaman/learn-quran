@@ -84,44 +84,8 @@ class _MCQWidgetState extends State<MCQWidget> {
                   },
                 ),
               )),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.showNext
-                ? [
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CustomButton(
-                      text: 'Next',
-                      onPressed: selectedOption != null ? onNext : null,
-                    )
-                  ]
-                : [],
-          ),
         ],
       ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  final Function? onPressed;
-  final String text;
-  const CustomButton({super.key, this.onPressed, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-        ),
-      ),
-      onPressed: onPressed != null ? () => {onPressed!()} : null,
-      child: Text(text),
     );
   }
 }
