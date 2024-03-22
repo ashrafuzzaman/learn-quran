@@ -50,7 +50,6 @@ class _AllWordsQuizState extends State<AllWordsQuiz> {
                 return Center(
                     child: MCQWidget(
                   question: exp.getMCQ(),
-                  showNext: true,
                   onComplete: (bool isCorrect) {
                     controller.nextPage(
                         duration: const Duration(milliseconds: 500),

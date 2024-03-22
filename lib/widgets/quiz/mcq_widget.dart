@@ -8,11 +8,9 @@ import 'package:learnquran/widgets/text/arabic_text.dart';
 class MCQWidget extends StatefulWidget {
   final MultiChoiceQuestion question;
   final Function(bool) onComplete;
-  final bool showNext;
 
   const MCQWidget(
       {super.key,
-      this.showNext = false,
       required this.question,
       required this.onComplete});
 
