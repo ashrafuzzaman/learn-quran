@@ -25,10 +25,10 @@ class _MCQWidgetState extends State<MCQWidget> {
 
   onSubmit(MCQOption option) async {
     await MCQAttemptRepo()
-        .recordAttempt(widget.question.word.id, option!.isCorrect);
+        .recordAttempt(widget.question.word.id, option.isCorrect);
 
     if (!widget.showNext) {
-      widget.onComplete(option!.isCorrect);
+      widget.onComplete(option.isCorrect);
     }
   }
 
