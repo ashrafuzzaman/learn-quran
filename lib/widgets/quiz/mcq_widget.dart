@@ -57,34 +57,41 @@ class _MCQWidgetState extends State<MCQWidget> {
         Theme.of(context).extension<ThemeExtensionColors>()!.failure;
 
     return Padding(
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             child: ArabicText(
               widget.question.title.text,
               fontSize: 48,
             ),
           ),
-          ...widget.question.options.map((option) => ListTile(
-                title: Text(
-                  option.title.text,
-                  style: const TextStyle(fontSize: 24),
-                ),
-                tileColor: getOptionBackgroundColor(
-                    option, successColor, failureColor, Colors.transparent),
-                leading: Radio<String>(
-                  value: option.title.text,
-                  groupValue:
-                      selectedOption != null ? selectedOption!.title.text : '',
-                  onChanged: selectedOption == null
-                      ? (_) {
-                          onSubmit(option);
-                        }
-                      : null,
-                ),
-              )),
+          ...widget.question.options.map((option) => Column(children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  child: ListTile(
+                    title: Text(
+                      option.title.text,
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    tileColor: getOptionBackgroundColor(
+                        option, successColor, failureColor, Colors.black12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      side: const BorderSide(
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: selectedOption == null
+                        ? () {
+                            onSubmit(option);
+                          }
+                        : null,
+                  ),
+                )
+              ])),
         ],
       ),
     );
