@@ -10,9 +10,7 @@ class MCQWidget extends StatefulWidget {
   final Function(bool) onComplete;
 
   const MCQWidget(
-      {super.key,
-      required this.question,
-      required this.onComplete});
+      {super.key, required this.question, required this.onComplete});
 
   @override
   State<MCQWidget> createState() => _MCQWidgetState();
