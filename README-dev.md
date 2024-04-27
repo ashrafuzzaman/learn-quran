@@ -1,4 +1,12 @@
-# How to connect to db within emulator
+# Contribution guide
+
+## How to run the app
+
+1. Ensure you have flutter development setup ready following this [guide](https://docs.flutter.dev/get-started/install)
+2. Run `$ pub get` to install dependencies
+3. Run `$ flutter run` to run the app, or you may follow this [guide](https://docs.flutter.dev/get-started/test-drive?tab=terminal)
+
+## How to connect to db within emulator
 
 1. Run `$ ./adb devices`, usually in `~/Android/Sdk/platform-tools/`
 

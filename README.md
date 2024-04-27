@@ -15,5 +15,8 @@ The app need to have the following features,
    2. Making words that are not memorized well enough to be repeated more
 5. All information should be stored for multiple profile, as one device can be used by more than one people
 
-# Attribution
+## Attribution
 - Icon is from [iconscout](https://iconscout.com/free-icon/quran-1720787)
+
+## Contribution guide
+[README_DEV](./README-dev.md)
