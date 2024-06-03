@@ -38,6 +38,8 @@ class MCQAttemptRepo extends RepoBase {
     });
 
     if (isCorrect) {
+      await WordRepo().touchLastCorrectedAt(wordId);
+
       int totaltLastCorrected = await getTotalLastConsecutiveCorrect(wordId);
       if (totaltLastCorrected >= lastConsecutiveCorrect) {
         await WordRepo().markLearned(wordId);
