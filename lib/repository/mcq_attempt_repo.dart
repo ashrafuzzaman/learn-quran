@@ -1,5 +1,5 @@
-import 'package:learnquran/repository/words_repo.dart';
 import 'package:learnquran/repository/repo_base.dart';
+import 'package:learnquran/repository/words_repo.dart';
 import 'package:logging/logging.dart';
 
 const String tableQuizAttempt = 'mcq_attempts';
@@ -37,6 +37,8 @@ class MCQAttemptRepo extends RepoBase {
     return await query(tableQuizAttempt);
   }
 
+  // Not planning use this method as this would be very expensive
+  @deprecated
   Future<List<WordAttempt>> getWordAttemptsWithCount() async {
     var result = await query(tableQuizAttempt,
         distinct: true,
