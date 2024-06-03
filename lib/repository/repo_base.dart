@@ -31,13 +31,14 @@ class RepoBase {
             learned BOOL default false,
             learnLevel INTEGER default 0,
             totalExamples INTEGER default 0,
-            read BOOL default false
+            read BOOL default false,
+            lastCorrectedAt DATETIME
           );
         """);
         await db.execute("""
           CREATE TABLE IF NOT EXISTS mcq_attempts (
             wordId INTEGER,
-            attemptAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            attemptAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             isCorrect BOOL
           );
         """);

@@ -16,6 +16,7 @@ const String columnLearned = 'learned';
 const String columnLearnLevel = 'learnLevel';
 const String columnRead = 'read';
 const String columnTotalExamples = 'totalExamples';
+const String columnLastCorrectedAt = 'lastCorrectedAt';
 
 const Map<Plurality, String> pluralityMap = {
   Plurality.singular: 's',
@@ -91,6 +92,12 @@ class WordRepo extends RepoBase {
     });
   }
 
+  touchLastCorrectedAt(int wordId) async {
+    await updateWord(wordId, {
+      columnLastCorrectedAt: "DATETIME('now')",
+    });
+  }
+
   updateTotalExamples(int wordId, int totalExamples) async {
     await updateWord(wordId, {
       columnTotalExamples: totalExamples,
@@ -105,7 +112,11 @@ class WordRepo extends RepoBase {
 
   Future<List<Word>> getWordsToLearn(int limit) async {
     var records = await query(tableWords,
-        where: '$columnLearned = ?',
+        where: """
+          $columnLearned = ? AND
+          ($columnLastCorrectedAt is NULL
+            OR $columnLastCorrectedAt < DATETIME('now', '-5 minutes'))
+        """,
         whereArgs: [false],
         orderBy: '$columnId ASC, $columnRead DESC',
         limit: limit);
