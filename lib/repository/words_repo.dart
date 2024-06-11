@@ -93,9 +93,8 @@ class WordRepo extends RepoBase {
   }
 
   touchLastCorrectedAt(int wordId) async {
-    await updateWord(wordId, {
-      columnLastCorrectedAt: "DATETIME('now')",
-    });
+    await rawQuery(
+        "UPDATE $tableWords SET $columnLastCorrectedAt = DATETIME('now') WHERE $columnId = $wordId");
   }
 
   updateTotalExamples(int wordId, int totalExamples) async {
@@ -115,7 +114,7 @@ class WordRepo extends RepoBase {
         where: """
           $columnLearned = ? AND
           ($columnLastCorrectedAt is NULL
-            OR $columnLastCorrectedAt < DATETIME('now', '-5 minutes'))
+            OR $columnLastCorrectedAt < DATETIME('now', '-30 seconds'))
         """,
         whereArgs: [false],
         orderBy: '$columnId ASC, $columnRead DESC',
