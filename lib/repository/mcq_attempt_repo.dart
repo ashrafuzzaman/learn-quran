@@ -29,7 +29,7 @@ class MCQAttemptRepo extends RepoBase {
   final log = Logger('MCQAttemptRepo');
 
   recordAttempt(int wordId, isCorrect) async {
-    const int lastConsecutiveCorrect = 2;
+    const int lastConsecutiveCorrect = 1;
     log.info('recordAttempt: $wordId $isCorrect');
 
     await insert(tableQuizAttempt, {

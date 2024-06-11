@@ -27,25 +27,32 @@ class LessonListScreen extends StatelessWidget {
                 var lesson = lessons[index];
                 return Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  child: Card(
-                    child: ListTile(
-                      title: Column(
-                        children: [
-                          Text(lesson.name,
-                              style: const TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold)),
-                          Text(
-                              "Learned ${lesson.wordsLearned.toString()}/${lesson.totalWords.toString()}"),
-                          CircularPercentIndicator(
-                            radius: 30.0,
-                            lineWidth: 10.0,
-                            percent: lesson.wordsLearned / lesson.totalWords,
-                            center: const FaIcon(FontAwesomeIcons.book),
-                            progressColor: Colors.green,
-                          )
-                        ],
-                      ),
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  child: ListTile(
+                    title: Row(
+                      children: [
+                        lesson.wordsLearned == lesson.totalWords
+                            ? FaIcon(FontAwesomeIcons.check,
+                                color: Colors.green)
+                            : SizedBox(
+                                width: 20,
+                              ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        CircularPercentIndicator(
+                          radius: 10.0,
+                          lineWidth: 10.0,
+                          percent: lesson.wordsLearned / lesson.totalWords,
+                          progressColor: Colors.green,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Text(lesson.name,
+                            style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold)),
+                      ],
                     ),
                   ),
                 );
