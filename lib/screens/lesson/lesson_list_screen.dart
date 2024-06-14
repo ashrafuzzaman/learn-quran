@@ -44,7 +44,7 @@ class LessonListScreen extends StatelessWidget {
                           radius: 10.0,
                           lineWidth: 10.0,
                           percent: lesson.wordsLearned / lesson.totalWords,
-                          progressColor: Colors.green,
+                          progressColor: Colors.blue[300],
                         ),
                         SizedBox(
                           width: 16,
