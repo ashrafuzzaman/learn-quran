@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "learn-quran-expo",
-    "slug": "learn-quran-expo",
+    "name": "Learn quran",
+    "slug": "learn-quran",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -13,9 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.arabic101.learnquran"
     },
     "android": {
+      "package": "com.arabic101.learnquran",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
