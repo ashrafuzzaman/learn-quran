@@ -2,6 +2,7 @@
   "name": "learn-quran-expo",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -9,7 +10,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "initialize-db": "node ./scripts/initialize-db.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -17,8 +19,10 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^6.0.2",
+    "@realm/react": "^0.8.0",
     "expo": "~51.0.20",
     "expo-constants": "~16.0.2",
+    "expo-dev-client": "~4.0.20",
     "expo-font": "~12.0.8",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.18",
@@ -34,7 +38,7 @@
     "react-native-safe-area-context": "4.10.1",
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
-    "expo-dev-client": "~4.0.20"
+    "realm": "^12.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
