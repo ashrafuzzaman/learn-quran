@@ -1,4 +1,4 @@
-Id,StageId,LessonId,Audio ID,Gender,Number,Word,Meaning
+id,stageId,lessonId,audioId,gender,number,word,meaning
 1,1,1,1-1-1,Male,Singular,هَٰذَا,This
 2,1,1,1-1-2,Male,Singular,ذَٰلِكَ,That
 3,1,1,1-1-3,Female,Singular,هَٰذِهِ,This
@@ -390,7 +390,6 @@ Id,StageId,LessonId,Audio ID,Gender,Number,Word,Meaning
 389,2,12,2-12-10,,Plural,أَلۡبَٰب,Minds/ Understanding
 390,2,12,2-12-11,,Plural,أَبۡوَٰب,Doors/ Gates
 391,2,12,2-12-12,,Plural,أَيۡمَٰن,Oaths
-392,,,,,,,
 393,3,1,3-1-1,,,بَدَّلَ,to (Ex)Change
 394,3,1,3-1-2,,,بَشََّّرَ,to Give good news
 395,3,1,3-1-3,,,بَيَّنَ,to Make clear

@@ -43,8 +43,40 @@ class Lesson extends Realm.Object {
     },
   };
 }
+
+class Word extends Realm.Object {
+  id;
+  lessonId;
+  stageId;
+  audioId;
+  gender;
+  number;
+  arabic;
+  meaning;
+
+  constructor(realm, description) {
+    super(realm, { description });
+  }
+
+  static schema = {
+    name: "Word",
+    primaryKey: "id",
+
+    properties: {
+      id: "int",
+      lessonId: "int",
+      stageId: "int",
+      audioId: "string",
+      gender: "string",
+      number: "string",
+      arabic: "string",
+      meaning: "string",
+    },
+  };
+}
+
 const localConfig = {
-  schema: [Stage, Lesson],
+  schema: [Stage, Lesson, Word],
   path: "assets/db.realm",
 };
 const realm = await Realm.open(localConfig);
@@ -65,17 +97,19 @@ async function getLessons() {
   return await getData('Lessons');
 }
 
-async function getExamples() {
-  return await getData('Examples');
+async function getWords() {
+  return await getData('Words');
 }
 
 async function seed() {
   const stages = await getStages();
   const lessons = await getLessons();
+  const words = await getWords();
 
   realm.write(() => {
     stages.map(stage => upsertStage(stage));
     lessons.map(lesson => upsertLesson(lesson));
+    words.map(word => upsertWord(word));
   });
 }
 
@@ -100,6 +134,15 @@ function upsertLesson(lesson) {
   }, "modified");
 }
 
+function upsertWord(word) {
+  realm.create("Word", {
+    ...word,
+    id: parseInt(word.id),
+    lessonId: parseInt(word.lessonId),
+    stageId: parseInt(word.stageId),
+    arabic: word.word,
+  }, "modified");
+}
 
 await seed();
 
