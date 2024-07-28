@@ -205,6 +205,13 @@ async function updateCounters() {
       stage.totalLessons = totalLessons;
     });
   });
+  realm.objects("Lesson").map(lesson => {
+    const totalWords = realm.objects('Word').filtered('lessonId = $0 and stageId == $1',
+      lesson.id, lesson.stageId).length;
+    realm.write(() => {
+      lesson.totalWords = totalWords;
+    });
+  });
 }
 
 async function seed() {
