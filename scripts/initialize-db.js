@@ -7,16 +7,20 @@ import Realm from 'realm';
 // TODO: Can not import Stage from existing app in the script directory. Fix it
 class Stage extends Realm.Object {
   id;
+  name;
   description;
-  isComplete = false;
+  totalLessons;
+  totalLessonsComplete;
 
   static schema = {
     name: "Stage",
     primaryKey: "id",
     properties: {
       id: "int",
+      totalLessons: { type: "int", default: 0 },
+      totalLessonsComplete: { type: "int", default: 0 },
+      name: "string",
       description: "string",
-      isComplete: "bool",
     },
   };
 }
@@ -25,12 +29,16 @@ class Lesson extends Realm.Object {
   id;
   stageId;
   name;
+  totalWords;
+  totalWordsLearned;
 
   static schema = {
     name: "Lesson",
     properties: {
       id: "int",
       stageId: "int",
+      totalWords: { type: "int", default: 0 },
+      totalWordsLearned: { type: "int", default: 0 },
       name: "string",
     },
   };
@@ -45,6 +53,7 @@ class Word extends Realm.Object {
   number;
   arabic;
   meaning;
+  learned;
 
   static schema = {
     name: "Word",
@@ -59,6 +68,7 @@ class Word extends Realm.Object {
       number: "string",
       arabic: "string",
       meaning: "string",
+      learned: { type: "bool", default: false },
     },
   };
 }
@@ -86,6 +96,7 @@ class Example extends Realm.Object {
 const localConfig = {
   schema: [Stage, Lesson, Word, Example],
   path: "assets/db.realm",
+  deleteRealmIfMigrationNeeded: true,
 };
 const realm = await Realm.open(localConfig);
 
@@ -121,14 +132,14 @@ function loadExamplesToDB(examples) {
   let currentWordId, totalWordsNotFound = 0;
   examples.forEach(example => {
     const isWordNewWord = example.ayahRef === '' && example.highlight === '';
-    if(isWordNewWord) {
+    if (isWordNewWord) {
       if (example.wordId !== '') {
         currentWordId = parseInt(example.wordId);
         return;
       }
       const currentWord = getWordByArabic(example.word);
       if (currentWord === undefined) {
-        console.log(`Word not found[${currentWordId+1}]: ${example.word}`);
+        console.log(`Word not found[${currentWordId + 1}]: ${example.word}`);
         totalWordsNotFound++;
         currentWordId = undefined;
         return;
@@ -152,20 +163,6 @@ function loadExamplesToDB(examples) {
   console.log(`Total words not found: ${totalWordsNotFound}`);
 }
 
-
-async function seed() {
-  const stages = await getStages();
-  const lessons = await getLessons();
-  const words = await getWords();
-  const examples = await getExamples();
-
-  realm.write(() => {
-    stages.map(stage => upsertStage(stage));
-    lessons.map(lesson => upsertLesson(lesson));
-    words.map(word => upsertWord(word));
-    loadExamplesToDB(examples);
-  });
-}
 
 function upsertStage(stage) {
   realm.create("Stage", {
@@ -199,6 +196,31 @@ function upsertWord(word) {
     number: word.number.trim(),
     audioId: word.audioId.trim(),
   }, "modified");
+}
+
+async function updateCounters() {
+  realm.objects("Stage").map(stage => {
+    const totalLessons = realm.objects('Lesson').filtered('stageId == $0', stage.id).length;
+    realm.write(() => {
+      stage.totalLessons = totalLessons;
+    });
+  });
+}
+
+async function seed() {
+  const stages = await getStages();
+  const lessons = await getLessons();
+  const words = await getWords();
+  const examples = await getExamples();
+
+  realm.write(() => {
+    stages.map(stage => upsertStage(stage));
+    lessons.map(lesson => upsertLesson(lesson));
+    words.map(word => upsertWord(word));
+    loadExamplesToDB(examples);
+  });
+
+  updateCounters();
 }
 
 await seed();
