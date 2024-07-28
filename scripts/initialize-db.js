@@ -113,35 +113,43 @@ async function getExamples() {
   return await getData('Examples');
 }
 
-function getWordByArabic(id, arabic) {
-  if(id) {
-    return realm.objects('Word').filtered('id = $0', id)[0];
-  }
-  return realm.objects('Word').filtered('arabic = $0', arabic)[0];
+function getWordByArabic(arabic) {
+  return realm.objects('Word').filtered('arabic = $0', arabic.trim())[0];
 }
 
 function loadExamplesToDB(examples) {
-  let currentWordId;
-  examples.map(example => {
+  let currentWordId, totalWordsNotFound = 0;
+  examples.forEach(example => {
     const isWordNewWord = example.ayahRef === '' && example.highlight === '';
     if(isWordNewWord) {
-      const currentWord = getWordByArabic(example.wordId, example.word);
+      if (example.wordId !== '') {
+        currentWordId = parseInt(example.wordId);
+        return;
+      }
+      const currentWord = getWordByArabic(example.word);
       if (currentWord === undefined) {
-        console.log(`Word not found: ${example.word}`);
+        console.log(`Word not found[${currentWordId+1}]: ${example.word}`);
+        totalWordsNotFound++;
+        currentWordId = undefined;
         return;
       }
       currentWordId = currentWord.id;
       return;
     }
 
+    if (currentWordId === undefined) {
+      return;
+    }
+
     realm.create("Example", {
-      ayahRef: example.ayahRef,
+      ayahRef: example.ayahRef.trim(),
       wordId: currentWordId,
-      arabic: example.word,
-      translation: example.translation,
-      highlight: example.highlight,
+      arabic: example.word.trim(),
+      translation: example.translation.trim(),
+      highlight: example.highlight.trim(),
     }, "modified");
   });
+  console.log(`Total words not found: ${totalWordsNotFound}`);
 }
 
 
@@ -186,12 +194,15 @@ function upsertWord(word) {
     id: parseInt(word.id),
     lessonId: parseInt(word.lessonId),
     stageId: parseInt(word.stageId),
-    arabic: word.word,
+    arabic: word.word.trim(),
+    gender: word.gender.trim(),
+    number: word.number.trim(),
+    audioId: word.audioId.trim(),
   }, "modified");
 }
 
 await seed();
 
-exec('rm -rf assets/db.realm.management assets/db.realm.lock assets/db.realm.note');
+exec('rm -rf assets/db.realm.*');
 
 process.exit();
