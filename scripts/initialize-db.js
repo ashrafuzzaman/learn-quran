@@ -92,13 +92,11 @@ class Example extends Realm.Object {
   };
 }
 
-
 const localConfig = {
   schema: [Stage, Lesson, Word, Example],
   path: "assets/db.realm",
   deleteRealmIfMigrationNeeded: true,
 };
-const realm = await Realm.open(localConfig);
 
 async function getData(fileName) {
   const content = await fsPromises.readFile(`${process.cwd()}/scripts/data/${fileName}.csv`);
@@ -124,11 +122,11 @@ async function getExamples() {
   return await getData('Examples');
 }
 
-function getWordByArabic(arabic) {
+function getWordByArabic(realm, arabic) {
   return realm.objects('Word').filtered('arabic = $0', arabic.trim())[0];
 }
 
-function loadExamplesToDB(examples) {
+function loadExamplesToDB(realm, examples) {
   let currentWordId, totalWordsNotFound = 0;
   examples.forEach(example => {
     const isWordNewWord = example.ayahRef === '' && example.highlight === '';
@@ -137,7 +135,7 @@ function loadExamplesToDB(examples) {
         currentWordId = parseInt(example.wordId);
         return;
       }
-      const currentWord = getWordByArabic(example.word);
+      const currentWord = getWordByArabic(realm, example.word);
       if (currentWord === undefined) {
         console.log(`Word not found[${currentWordId + 1}]: ${example.word}`);
         totalWordsNotFound++;
@@ -164,7 +162,7 @@ function loadExamplesToDB(examples) {
 }
 
 
-function upsertStage(stage) {
+function upsertStage(realm, stage) {
   realm.create("Stage", {
     id: parseInt(stage.id),
     name: stage.name,
@@ -173,7 +171,7 @@ function upsertStage(stage) {
   }, "modified");
 }
 
-function upsertLesson(lesson) {
+function upsertLesson(realm, lesson) {
   const lessonExists = realm.objects('Lesson').filtered('id = $0 && stageId = $1', lesson.id, lesson.stageId).length > 0;
   if (lessonExists) {
     return;
@@ -185,7 +183,7 @@ function upsertLesson(lesson) {
   }, "modified");
 }
 
-function upsertWord(word) {
+function upsertWord(realm, word) {
   realm.create("Word", {
     ...word,
     id: parseInt(word.id),
@@ -198,7 +196,7 @@ function upsertWord(word) {
   }, "modified");
 }
 
-async function updateCounters() {
+async function updateCounters(realm) {
   realm.objects("Stage").map(stage => {
     const totalLessons = realm.objects('Lesson').filtered('stageId == $0', stage.id).length;
     realm.write(() => {
@@ -215,23 +213,27 @@ async function updateCounters() {
 }
 
 async function seed() {
-  const stages = await getStages();
-  const lessons = await getLessons();
-  const words = await getWords();
-  const examples = await getExamples();
+  const realm = await Realm.open(localConfig);
+
+  const stages = await getStages(realm);
+  const lessons = await getLessons(realm);
+  const words = await getWords(realm);
+  const examples = await getExamples(realm);
 
   realm.write(() => {
-    stages.map(stage => upsertStage(stage));
-    lessons.map(lesson => upsertLesson(lesson));
-    words.map(word => upsertWord(word));
-    loadExamplesToDB(examples);
+    stages.map(stage => upsertStage(realm, stage));
+    lessons.map(lesson => upsertLesson(realm, lesson));
+    words.map(word => upsertWord(realm, word));
+    loadExamplesToDB(realm, examples);
   });
 
-  updateCounters();
+  updateCounters(realm);
 }
 
-await seed();
+async function main() {
+  await seed()
+  exec('rm -rf assets/db.realm.management* assets/db.realm.note*');
+  process.exit();
+}
 
-exec('rm -rf assets/db.realm.*');
-
-process.exit();
+await main();
