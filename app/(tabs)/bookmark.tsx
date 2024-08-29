@@ -15,7 +15,7 @@ export default function BookmarkScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type='title'>Under construction.</ThemedText>
       </ThemedView>
     </ParallaxScrollView>
   );

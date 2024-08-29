@@ -6,9 +6,14 @@ export class Lesson extends Realm.Object {
   name!: string;
   isComplete = false;
 
-  static primaryKey = "id";
-
-  constructor(realm: Realm, description: string) {
-    super(realm, { description });
-  }
+  static schema = {
+    name: "Lesson",
+    properties: {
+      id: "int",
+      stageId: "int",
+      totalWords: { type: "int", default: 0 },
+      totalWordsLearned: { type: "int", default: 0 },
+      name: "string",
+    },
+  };
 }

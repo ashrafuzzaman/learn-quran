@@ -13,7 +13,7 @@ export default function ExploreScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
+      <ThemedText type='title'>Under construction.</ThemedText>
     </ParallaxScrollView>
   );
 }

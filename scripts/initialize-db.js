@@ -1,4 +1,3 @@
-import { exec } from 'child_process';
 import { parse } from 'csv-parse/sync';
 import * as fsPromises from 'node:fs/promises';
 
@@ -94,7 +93,7 @@ class Example extends Realm.Object {
 
 const localConfig = {
   schema: [Stage, Lesson, Word, Example],
-  path: "assets/db.realm",
+  path: "assets/bundle.realm",
   deleteRealmIfMigrationNeeded: true,
 };
 
@@ -215,10 +214,10 @@ async function updateCounters(realm) {
 async function seed() {
   const realm = await Realm.open(localConfig);
 
-  const stages = await getStages(realm);
-  const lessons = await getLessons(realm);
-  const words = await getWords(realm);
-  const examples = await getExamples(realm);
+  const stages = await getStages();
+  const lessons = await getLessons();
+  const words = await getWords();
+  const examples = await getExamples();
 
   realm.write(() => {
     stages.map(stage => upsertStage(realm, stage));
@@ -228,11 +227,12 @@ async function seed() {
   });
 
   updateCounters(realm);
+  realm.close();
 }
 
 async function main() {
   await seed()
-  exec('rm -rf assets/db.realm.management* assets/db.realm.note*');
+  // exec('rm -rf assets/db.realm.management* assets/db.realm.note*');
   process.exit();
 }
 

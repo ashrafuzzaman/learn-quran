@@ -6,14 +6,19 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { RealmProvider } from '@realm/react';
-import { config } from './models/config';
-
+import { Realm, RealmProvider } from '@realm/react';
+import { config as realmConfig } from './models/config';
+ 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+Realm.copyBundledRealmFiles();
+// const realmContext = createRealmContext(realmConfig);
+// export const useRealmContext = () => realmContext;
+// const { RealmProvider } = useRealmContext();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  // useInitDb();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
@@ -29,13 +34,13 @@ export default function RootLayout() {
   }
 
   return (
-    <RealmProvider schema={config.schema}>
+    <RealmProvider schema={realmConfig.schema} path={realmConfig.path}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>
-    </RealmProvider>
+    </RealmProvider >
   );
 }

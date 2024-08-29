@@ -2,11 +2,12 @@ import { Realm } from 'realm';
 
 export class Stage extends Realm.Object {
   id!: number;
+  name!: string;
   description!: string;
   isComplete = false;
 
   static primaryKey = 'id';
-  static schema = {
+  static schema: Realm.ObjectSchema = {
     name: 'Stage',
     primaryKey: 'id',
     properties: {
@@ -17,8 +18,4 @@ export class Stage extends Realm.Object {
       description: 'string',
     },
   };
-
-  constructor(realm: Realm, description: string) {
-    super(realm, { description });
-  }
 }
