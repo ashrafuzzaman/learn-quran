@@ -9,7 +9,7 @@ import 'package:logging/logging.dart';
 final log = Logger('LoadDatabase');
 
 initializeWordsDatabaseFromCsv() async {
-  log.info("Loading data into database");
+  // log.info("Loading data into database");
   var lessonRepo = LessonRepo();
   var wordRepo = WordRepo();
   var words = await WordCSVRepo().getWords();
@@ -28,20 +28,20 @@ initializeWordsDatabaseFromCsv() async {
   }
 
   var wordCountByLesson = await wordRepo.getWordCountByLesson();
-  log.info("wordCountByLesson :: ${wordCountByLesson.length}");
+  // log.info("wordCountByLesson :: ${wordCountByLesson.length}");
   for (var record in wordCountByLesson) {
-    log.info("${record['lessonId']}, ${record['count']}");
+    // log.info("${record['lessonId']}, ${record['count']}");
     await lessonRepo.updateTotalWords(
         record['lessonId'] as int, record['count'] as int);
   }
 
-  log.info("Loading examples...");
+  // log.info("Loading examples...");
 
   // import examples
   var examples = await WordExampleCSVRepo().getExamples();
   var exampleRepo = ExamplesRepo();
 
-  log.info("examples.length: ${examples.length}");
+  // log.info("examples.length: ${examples.length}");
   for (var example in examples) {
     // log.info("${example.wordId}|${example.ayahRef}");
     try {

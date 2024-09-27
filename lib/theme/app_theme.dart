@@ -55,6 +55,7 @@ ThemeData getLightTheme() {
   return ThemeData(
     primaryColor: const Color(0xffF9EDD4),
     colorScheme: schemeLight,
+    scaffoldBackgroundColor: const Color(0xffF6F6F6),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
       elevation: 3,

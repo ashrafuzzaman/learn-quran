@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learnquran/cubit/arabic_font_cubit.dart';
 import 'package:learnquran/screens/home.dart';
+import 'package:learnquran/screens/home_v2.dart';
 import 'package:learnquran/repository/repo_base.dart';
 import 'package:learnquran/service/database_initializer.dart';
 import 'package:learnquran/theme/app_theme.dart';
@@ -52,9 +53,9 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Learn Quran",
-              theme: getLightFlexTheme(FlexScheme.bahamaBlue),
+              theme: getLightTheme(),
               // darkTheme: getDarkFlexTheme(FlexScheme.bahamaBlue),
-              // themeMode: ThemeMode.system,
+              themeMode: ThemeMode.light,
               localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
                 Locale('en'), // English
                 Locale('bn'), // English
               ],
-              home: const HomePage(),
+              home: HomePageV2(),
             ),
           );
         });
