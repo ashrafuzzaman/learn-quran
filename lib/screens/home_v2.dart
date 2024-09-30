@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learnquran/screens/learning_exp/learning_exp_screen.dart';
-import 'package:learnquran/screens/lesson/lesson_list_screen.dart';
-import 'package:learnquran/screens/quiz/all_words_quiz.dart';
-import 'package:learnquran/screens/settings.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:learnquran/screens/word/words_bookmarked.dart';
-import 'package:learnquran/screens/word/words_read.dart';
 
 class HomePageV2 extends StatefulWidget {
   const HomePageV2({super.key});
@@ -22,9 +15,11 @@ class _HomePageV2State extends State<HomePageV2> {
     });
   }
 
+  static const unselectedIconColor =
+      Color(0xFF757575); // Equivalent to Colors.grey[600]
+
   @override
   Widget build(BuildContext context) {
-    var defaultIconColor = Colors.grey[600];
     return Scaffold(
       body: const SafeArea(
           child: Padding(
@@ -36,28 +31,30 @@ class _HomePageV2State extends State<HomePageV2> {
         ),
       )),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: defaultIconColor),
+            icon: Icon(Icons.home, color: unselectedIconColor),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb, color: defaultIconColor),
+            icon: Icon(Icons.lightbulb, color: unselectedIconColor),
             label: 'Quiz',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book, color: defaultIconColor),
+            icon: Icon(Icons.menu_book, color: unselectedIconColor),
             label: 'Learn',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark, color: defaultIconColor),
+            icon: Icon(Icons.bookmark, color: unselectedIconColor),
             label: 'Bookmark',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore, color: defaultIconColor),
+            icon: Icon(Icons.explore, color: unselectedIconColor),
             label: 'Explore',
           ),
         ],
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.green[500],
         onTap: _onItemTapped,
